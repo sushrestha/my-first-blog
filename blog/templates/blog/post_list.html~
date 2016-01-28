@@ -1,1 +1,21 @@
-post_list.html
+<html>
+    <head>
+        <title>Django Girls blog</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="">Django Girls Blog</a></h1>
+        </div>
+
+        <div>
+          {{ posts }}
+		{% for post in posts %}
+			
+			<h1><a href="#">{{ post.title }}</a></h1>
+			<p> {{ post.text |linebreaks }}  </p>
+			<p>Published: {{post.published_date}}  </p>
+			<!--{{post}}-->
+		{% endfor %}
+        </div>
+    </body>
+</html>
