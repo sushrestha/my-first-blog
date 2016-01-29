@@ -1,1 +1,21 @@
-this is score
+{% extends 'pbl/base.html' %}
+{% block content %}
+<h1> Score Details</h1>
+		<div class="table-responsive hover">
+			<table class="table table-striped">
+    			<thead>
+			<tr>
+			<th>SN</th><th>Student</th><th>Highest Level</th><th>Score</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for score in scores %}
+			<tr>
+			<td>1</td><td><a href="#">{{ score.student }}</a></td><td>{{ score.level }}</td><td>{{ score.score }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+			</table>
+		</div>
+
+{% endblock %}

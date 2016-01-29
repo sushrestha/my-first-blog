@@ -7,7 +7,7 @@ from django.utils import timezone
 class Level(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=10)
-    score = models.IntegerField()
+    value = models.IntegerField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     def publish(self):
@@ -23,7 +23,32 @@ class Student(models.Model):
     position = models.CharField(max_length=100)
 	
     def __str__(self):
-        name = self.first_name+self.last_name
+        name = self.first_name+' '+self.last_name
         return name
+
+class Score(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
+    score = models.IntegerField(default=0)
+    def __str__(self):
+        st = self.student.first_name+' '+self.student.last_name
+        return st
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
