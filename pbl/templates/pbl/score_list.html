@@ -17,5 +17,23 @@
 			</tbody>
 			</table>
 		</div>
+<h1> Score Details</h1>
+		<div class="table-responsive hover">
+			<table class="table table-striped">
+    			<thead>
+			<tr>
+			<th>SN</th><th>Student</th><th>challenge</th><th>level</th><th>score</th><th>remarks</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for competition in competitions %}
+			<tr>
+			<td>1</td><td><a href="#">{{ competition.student_id }}</a></td><td>{{ competition.challenge_id }}</td><td>{{ competition.level_id }}</td>
+                        <td>{{ competition.level_id.value }}</td><td>{{ competition.remark }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+			</table>
+		</div>
 
 {% endblock %}
