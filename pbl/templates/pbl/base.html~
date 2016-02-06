@@ -63,7 +63,16 @@
             <li><a href="{% url 'about' %}">About Us</a></li><!-- for the about us information that will be added later when that page is created -->
             <li><a href="{% url 'contact' %}">Contact</a></li><!-- for the contact information that will be added later when that page is created -->
           </ul>
+		{% if request.user.is_authenticated %} <a class="navbar-brand" style="margin-left: 300px;"> 
+							Welcome,  
+							{% if request.user.first_name %} {{ request.user.first_name }} 
+							{% else %} {{ request.user.username }}
+							{% endif %}! 
+							</a> <a class="navbar-brand" href="{% url 'auth_logout' %}" style="margin-left: 20px;">Log out</a>
+		{% else %}<a class="navbar-brand" href="{% url 'auth_login' %}" style="margin-left: 350px;">Log In</a>
+		{% endif %}<a class="navbar-brand"  >{{ request.session.location }}</a>
         </div><!-- /.nav-collapse -->
+	
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
   <div class="container">
@@ -73,7 +82,7 @@
       <hr>
 
       <footer>
-        <p>&copy; 2015 University of Memphis, Center for Information Assurance(CFIA)</p>
+        <p>&copy; 2016 University of Memphis, Center for Information Assurance(CFIA)</p>
       </footer>
 
 

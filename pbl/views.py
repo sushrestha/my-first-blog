@@ -3,6 +3,10 @@ from .models import *
 
 # Create your views here.
 def index(request):
+    
+    request.session['location'] = "unknown"
+    if request.user.is_authenticated():
+        request.session['location'] = "Earth"
     return render(request,'pbl/index.html',{})
 
 def score_list(request):

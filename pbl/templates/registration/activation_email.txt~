@@ -1,0 +1,5 @@
+Greetings,
+You just signed up for an account {{ site.name }}.
+Please click the link below to activate it.
+http://{{ site.domain }}{% url 'registration_activation' activation_key %}
+This is valid for {{ expiration_days }}.
