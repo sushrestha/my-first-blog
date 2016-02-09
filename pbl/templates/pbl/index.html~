@@ -3,88 +3,124 @@
 
   
 
-
-      <div class="row row-offcanvas row-offcanvas-right">
+ <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-9">
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="jumbotron">
-            <h1>Web Security Puzzles</h1>
-            <p>These are web security puzzles to help reinforce what is needed for secure web applications. These puzzles go from very simple to more complex and modern examples.</p>
+            <h1>Testing Website Security</h1>
+            <p>These are mock websites that simulate actual websites with actual vulnerabilities. The Levels go from very basic procedures on how to search for Web vulnerabilities, and build on each other to create very complex security problems even current day websites.</p>
           </div>
           <div class="row">
-            <div class="col-xs-6 col-sm-4">
-              <h2>Level 0 Information</h2>
-              <p>Level 0 is a simple login page that has a simple solution to break. Solve Level 0 to get access to Level 1.</p>
+            <div class="col-xs-6 col-sm-6">
+              <h2 style="alignment: center;">Web Login Challenges</h2>
+              <p>These challenges deals with the login the website. User needs to have succesful login to complete each level.</p>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+              <h2>Web Form Challenges</h2>
+              <p>These challanges deals with the issue regarding the form validation. To complete each level user needs to do corresponding actions as per mentioned.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row">
+                <h2>Web Loging Challenges' Hints</h2>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level0">Level 0 Hints</button>
+                    <div id="level0" class="collapse">
+                      <ul class="list-group-item">
+                        <li>Try to Brute Force the login page</li>
+                        <li>Try to find out the input points</li>
+                        <li>View Source Code</li>
+                      </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level1">Level 1 Hints</button>
+                  <div id="level1" class="collapse">
+                    <ul class="list-group-item">
+                      <li>Try to Brute Force the login page</li>
+                      <li>Try to find out the input points</li>
+                      <li>View Source Code</li>
+                      <li>Are there any functions that I need to be looking at?</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level2">Level 2 Hints</button>
+                    <div id="level2" class="collapse">
+                      <ul class="list-group-item">
+                        <li>Try to Brute Force the login page</li>
+                        <li>Try to find out the input points</li>
+                        <li>View Source Code</li>
+                        <li>Are there any functions that I need to be looking at?</li>
+                        <li>Hex?</li>
+                        <li>Is there something I need to research?</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6">
+                <div class="row">
+                  <h2>Web Form Challenges' Hints</h2>
+                  <div class="col-xs-6 col-sm-6">
+                   <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#flevel0">Level 0 Hints</button>
+                   <div id="flevel0" class="collapse">
+                      <ul class="list-group-item">
+                       <li>Fill out all the required fields in the form.</li>
+                       <li>Try to figure out the missing validation or logic in the form submission.</li>
+                       <li>Try to submit the form with Shipping information different from Billing information.</li>
+                     </ul>
+                    </div>
+                  </div>
+                   <div class="col-xs-6 col-sm-6">
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#flevel1">Level 1 Hints</button>
+                    <div id="flevel1" class="collapse">
+                    <ul class="list-group-item">
+                      <li>Fill out all the required fields in the form.</li>
+                      <li>Try to figure out the missing validation in the form submission.</li>
+                      <li>Try to submit the form with Billing information different from Shipping information.</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Put new rows for hints in here-->
+              </div>
+            </div>
 	    </div>
-	    <div class="col-xs-6 col-sm-4">
-	      <h2>Level 1 Information</h2>
-              <p>Level 1 is another login page that has a simple solution to break, with something a little new thrown into it. Solve Level 1 to get access to Level 2.</p>
-	    </div>
-	    <div class="col-xs-6 col-sm-4">
-	      <h2>Level 2 Information</h2>
-              <p>Level 2 is built on top of Level 1 but again has a few new features that are going to require little more thought. Solve Level 2 to get access to Level 3.</p>
-	    </div>
+	    
 	  </div><!--/row-->
 
 <!-- Don't try to rely on these too much now. I can't do all your work in real life too you know.-->
 
-	  <div class="row">
-	    <div>
-	      <h2>Level Hints</h2>
-	    </div>
-	  </div>
-	  <div class="row">
-	    <div class="col-xs-6 col-sm-4">
-	      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level0">Level0 Hints</button>
-  	        <div id="level0" class="collapse">
-		  <ul class="list-group-item">
-		    <li>Try to Brute Force the login page</li>
-		    <li>Try to find out the input points</li>
-		    <li>View Source Code</li>
-	          </ul>
-  	        </div>
-	      </div>
-	      <div class="col-xs-6 col-sm-4">
-	        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level1">Level1 Hints</button>
-  		  <div id="level1" class="collapse">
-		    <ul class="list-group-item">
-		      <li>Try to Brute Force the login page</li>
-		      <li>Try to find out the input points</li>
-		      <li>View Source Code</li>
-		      <li>Are there any functions that I need to be looking at?</li>
-		    </ul>
-  		  </div>
-  		</div>
-	        <div class="col-xs-6 col-sm-4">
-		  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level2">Level2 Hints</button>
-  		    <div id="level2" class="collapse">
-		      <ul class="list-group-item">
-		        <li>Try to Brute Force the login page</li>
-			<li>Try to find out the input points</li>
-			<li>View Source Code</li>
-			<li>Are there any functions that I need to be looking at?</li>
-			<li>Hex?</li>
-			<li>Is there something I need to research?</li>
-		      </ul>
-  		    </div>
-  		  </div>
-                </div><!--/HintsRow-->
-        </div><!--/.col-xs-12.col-sm-9-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
-            <a class="list-group-item active">Web Login Challanges</a>
-            <a href="{% url 'demo0' %}" class="list-group-item">Level0</a>
-            <a href="demo1/demo1.html" class="list-group-item">Level1</a>
-            <a href="demo2/demo2.html" class="list-group-item">Level2</a>
-            <a href="demo3/demo3.html" class="list-group-item">Level3</a>
+            <a type="button"class="list-group-item active collapse">Web Login Challanges</a>
+            <span title="Try to Sign In"> 
+            <a href="{% url 'demo0' %}" class="list-group-item">Level 0</a></span>
+            <span title="Try to Sign In">
+            <a href="demo1/demo1.html" class="list-group-item">Level 1</a></span>
+            <span title="Try to Sign In">            
+            <a href="demo2/demo2.html" class="list-group-item">Level 2</a></span>
+
             <!--<a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>-->
+          </div>
+            <div class="list-group">
+            <a type="button"class="list-group-item active collapse">Web Form Challanges</a>
+            <span title="Complete Submit form action">
+            <a href="demo3/demo3.html" class="list-group-item">Level 0</a></span>
+            <span title="Complete Submit form action">
+            <a href="demo4/demo4.html" class="list-group-item">Level 1</a></span>
           </div>
         </div><!--/.sidebar-offcanvas-->
       </div><!--/Pagerow-->

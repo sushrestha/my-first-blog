@@ -2,11 +2,13 @@ from django.shortcuts import render
 from .models import *
 
 # Create your views here.
+context = {
+    'page' : 'web application security learning tools',
+}
 def index(request):
-    
-    request.session['location'] = "unknown"
-    if request.user.is_authenticated():
-        request.session['location'] = "Earth"
+#    request.session['location'] = "unknown"
+#    if request.user.is_authenticated():
+#        request.session['location'] = "Earth"
     return render(request,'pbl/index.html',{})
 
 def score_list(request):
@@ -21,3 +23,5 @@ def contact(request):
 
 def demo0(request):
     return render(request,'pbl/demo0/demo0.html',{})
+def demo0(request):
+    return render(request,'pbl/demo1/demo1.html',{})
