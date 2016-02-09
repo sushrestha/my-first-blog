@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <metacharset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="image/favicon.ico">
+
+    <title>Billing Info</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="js/reviewForm.js"></script>
+    <script src="js/billingAddr.js"></script>
+
+    <style>
+      div.bordered
+      {
+      	border-style: solid;
+      	border-width: 2px 2px 2px 2px;
+      	border-radius: 10px;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    
+    <nav class"navbar navbar-inverse navbar-fixed-top" style="background-color:#222;">
+      <div class="container">
+      	<div class="navbar-header">
+      	  <button type="button" class="navbar-toggle" data-toggle="collpase" data-target="#bs-example-navbar-collapse-1"> 
+      	    <span class="sr-only">Toggle navigation</span>
+      	    <span class="icon-bar"></span>
+      	    <span class="icon-bar"></span>
+      	    <span class="icon-bar"></span>
+      	  </button>
+      	  <a class="navbar-brand" href="demo3.html">Amazonian</a>
+          <a class="navbar-brand" href="#"  style="margin-left:20px; text-align: right;">*Submit the form having shipping information different than billing information even with a checked check-box.</a>
+      	</div>
+      </div>
+    </nav>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <h2 style="text-align:center;">To make a payment, please fill out the information below:</h2>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-sm-6 bordered">
+          <h3 style="text-align:center">Shipping Information</h3>
+          <form id="ShpngInfo">
+          	<div class="form-group">
+          	  <div class="row">
+          		<label class="control-label col-sm-4" for "shpngAddr">Street Address:</label>
+          		<input type="text" class="form-control col-sm-8" id="shpngAddr" placeholder="Address">
+          	  </div> 
+          	  <div class="row">
+          	  	<label class="control-label col-sm-4">City/Town:</label>
+          	  	<input type="text" class="form-control col-sm-8" id="cty" placeholder="City/Town">
+          	  </div>
+          	  <div class="row">
+          	  	<label class="control-label col-sm-4">State/Province:</label>
+          	  	<select class="form-control" id="state">
+                  <option selected="selected" value="">Select a State/Province</option>
+          	  		<option>Alabama</option>
+        					<option>Alaska</option>
+        					<option>Arizona</option>
+        					<option>Arkansas</option>
+        					<option>California</option>
+        					<option>Colorado</option>
+        					<option>Connecticut</option>
+        					<option>Delaware</option>
+        					<option>Florida</option>
+        					<option>Georgia</option>
+        					<option>Hawaii</option>
+        					<option>Idaho</option>
+        					<option>Illinois</option>
+        					<option>Indiana</option>
+        					<option>Iowa</option>
+        					<option>Kansas</option>
+        					<option>Kentucky</option>
+        					<option>Louisiana</option>
+        					<option>Maine</option>
+        					<option>Maryland</option>
+        					<option>Massachusetts</option>
+        					<option>Michigan</option>
+        					<option>Minnesota</option>
+        					<option>Mississippi</option>
+        					<option>Missouri</option>
+        					<option>Montana</option>
+        					<option>Nebraska</option>
+        					<option>Nevada</option>
+        					<option>New Hampshire</option>
+        					<option>New Jersey</option>
+        					<option>New Mexico</option>
+        					<option>New York</option>
+        					<option>North Carolina</option>
+        					<option>North Dakota</option>
+        					<option>Ohio</option>
+        					<option>Oklahoma</option>
+        					<option>Oregon</option>
+        					<option>Pennsylvania</option>
+        					<option>Rhode Island</option>
+        					<option>South Carolina</option>
+        					<option>South Dakota</option>
+        					<option>Tennessee</option>
+        					<option>Texas</option>
+        					<option>Utah</option>
+        					<option>Vermont</option>
+        					<option>Virginia</option>
+        					<option>Washington</option>
+        					<option>West Virginia</option>
+        					<option>Wisconsin</option>
+        					<option>Wyoming</option>
+        					<option>*</option>
+        					<option>District of Columbia</option>
+        					<option>Puerto Rico</option>
+        					<option>Guam</option>
+        					<option>American Samoa</option>
+        					<option>U.S. Virgin Islands</option>
+        					<option>Northern Mariana Islands</option>
+          	  	</select>
+          	  </div>
+          	  <div class="row">
+          	  	<label class="control-label col-sm-4">Zip/Postal Code</label>
+          	  	<input type="text" class="form-control col-sm-8" id="post" placeholder="Zip/Postal Code">
+          	  </div>
+          	  <div class="row">
+          	  	<label class="control-label col-sm-4">Phone Number:</label>
+          	  	<input type="text" class="form-control bfh-phone col-sm-8" placeholder="(###) ###-####" id="phnNum">
+          	  </div>
+          	  <div class="row">
+          	  	<label class="control-lavel col-sm-4">E-mail:</label>
+                <input type="text" class="form-control col-sm-8" id="email" placeholder="jDoe@example.com">
+          	  </div>
+          	</div>
+          </form>
+        </div>
+        <div class="col-xs-8 col-sm-6 bordered">
+          <h3 style="text-align:center;">Payment Information</h3>
+          <form id="PymntInfo">
+            <div class="form-group">
+              <div class="row">
+                <label class="control-label col-sm-5">Pick a Payment Method:</label>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" id="IOU" value="selected" checked>Credit Card</input>
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" id="CHKPLZ">Debit Card</input>
+                </label>
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-4">Type of Card</label>
+                <select class="form-control" id="crdType">
+                  <option selected="selected" value=""> Please Select a card Type</option>
+                  <option>Visa</option>
+                  <option>MasterCard</option>
+                  <option>American Express</option>
+                  <option>Discover</option>
+                </select>
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-4">Enter Card Number:</label>
+                <input type="text" class="form-control" id="crdNum" placeholder="xxxx-xxxx-xxxx-xxxx">
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-12">Enter Name: <small> As it appears on the card</small></label>
+                <input type="text" class="form-control" id="crdName" placeholder="John Doe">
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-3">Security Code:</label>
+                <input type="text" class="col-sm-2" id="crdCode" placeholder="xxx">
+                <label class="control-label col-sm-3">Expiration Date</label>
+                <input type="text" class="col-sm-2" id="crdExpDate" placeholder="mm/yyyy">
+              </div>
+              <h3>Billing Information</h3>
+              <div class="row">
+                <label class="checkbox-inline">
+                  <input class="control-label" type="checkbox" id="check" onclick="chkClicked();">
+                  <small>Billing address is the same as Shipping Address</small>
+                </label>
+              </div><div class="row">
+              <label class="control-label col-sm-4" for "billingAddr">Street Address:</label>
+              <input type="text" class="form-control col-sm-8" id="billingAddr" placeholder="Address">
+              </div> 
+              <div class="row">
+                <label class="control-label col-sm-4">City/Town:</label>
+                <input type="text" class="form-control col-sm-8" id="billingCty" placeholder="City/Town">
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-4">State/Province:</label>
+                <select class="form-control" id="billingState">
+                  <option selected="selected" value="">Select a State/Province</option>
+                  <option>Alabama</option>
+                  <option>Alaska</option>
+                  <option>Arizona</option>
+                  <option>Arkansas</option>
+                  <option>California</option>
+                  <option>Colorado</option>
+                  <option>Connecticut</option>
+                  <option>Delaware</option>
+                  <option>Florida</option>
+                  <option>Georgia</option>
+                  <option>Hawaii</option>
+                  <option>Idaho</option>
+                  <option>Illinois</option>
+                  <option>Indiana</option>
+                  <option>Iowa</option>
+                  <option>Kansas</option>
+                  <option>Kentucky</option>
+                  <option>Louisiana</option>
+                  <option>Maine</option>
+                  <option>Maryland</option>
+                  <option>Massachusetts</option>
+                  <option>Michigan</option>
+                  <option>Minnesota</option>
+                  <option>Mississippi</option>
+                  <option>Missouri</option>
+                  <option>Montana</option>
+                  <option>Nebraska</option>
+                  <option>Nevada</option>
+                  <option>New Hampshire</option>
+                  <option>New Jersey</option>
+                  <option>New Mexico</option>
+                  <option>New York</option>
+                  <option>North Carolina</option>
+                  <option>North Dakota</option>
+                  <option>Ohio</option>
+                  <option>Oklahoma</option>
+                  <option>Oregon</option>
+                  <option>Pennsylvania</option>
+                  <option>Rhode Island</option>
+                  <option>South Carolina</option>
+                  <option>South Dakota</option>
+                  <option>Tennessee</option>
+                  <option>Texas</option>
+                  <option>Utah</option>
+                  <option>Vermont</option>
+                  <option>Virginia</option>
+                  <option>Washington</option>
+                  <option>West Virginia</option>
+                  <option>Wisconsin</option>
+                  <option>Wyoming</option>
+                  <option>*</option>
+                  <option>District of Columbia</option>
+                  <option>Puerto Rico</option>
+                  <option>Guam</option>
+                  <option>American Samoa</option>
+                  <option>U.S. Virgin Islands</option>
+                  <option>Northern Mariana Islands</option>
+                </select>
+              </div>
+              <div class="row">
+                <label class="control-label col-sm-4">Zip/Postal Code</label>
+                <input type="text" class="form-control col-sm-8" id="billingPost" placeholder="Zip/Postal Code">
+              </div>
+            </div>
+          </form>
+          <div class="col-sm-10"></div>
+          <button style="" class="btn btn-success col-sm-2" type="submit" onclick="intentionalyHrd2Read();">Submit</button>
+        </div>
+        <div class="row">
+            <h2 style="text-align:center; color: red;">(This is a test only. Do not provide any real personal information !!!)</h2>
+        </div>
+      </div>
+        <footer>
+          <p>&copy; 2016, Center for Information Assurance (CfIA), University of Memphis.</p>
+        </footer>
+    </div>
+
+  </body>
+</html>
