@@ -36,17 +36,17 @@ class Challenge(models.Model):
         return self.title
 
 class Competition(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     challenge  = models.ForeignKey(Challenge, on_delete=models.CASCADE)
     level = models.ForeignKey(Level, on_delete=models.CASCADE)
     created_date = models.DateTimeField(default=timezone.now)
     remark = models.CharField(max_length=100 ,null=True ,blank=True)
-    score = models.IntegerField(default=0 ,)
+    score = models.IntegerField(default=0)
     def set_score(self):
-        self.score = self.score + level_id.value
+        self.score = self.score + self.level.value
         self.save()
     def __str__(self):
-        st = self.student.first_name+' '+self.student.last_name
+        st = self.student.username
         return st
 
 

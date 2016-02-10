@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="image/favicon.ico">
+    <link rel="icon" href="{% static 'demo3/image/favicon.ico' %}">
 
     <title>Billing Info</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'demo3/css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <script src="js/reviewForm.js"></script>
-    <script src="js/billingAddr.js"></script>
+    <script src="{% static 'demo3/js/reviewForm.js' %}"></script>
+    <script src="{% static 'demo3/js/billingAddr.js' %}"></script>
+    <script  type="text/javascript"> var home = {% url 'index' %}</script>
 
     <style>
       div.bordered
@@ -37,7 +39,7 @@
       	    <span class="icon-bar"></span>
       	    <span class="icon-bar"></span>
       	  </button>
-      	  <a class="navbar-brand" href="demo3.html">Amazonian</a>
+      	  <a class="navbar-brand" href="{% url 'demo3' %}">Amazonian</a>
           <a class="navbar-brand" href="#"  style="margin-left:20px; text-align: right;">*Submit the form having shipping information different than billing information even with a checked check-box.</a>
       	</div>
       </div>

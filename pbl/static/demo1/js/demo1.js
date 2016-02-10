@@ -1,4 +1,4 @@
-{% load staticfiles %}
+
 // If you finally stumbled in this dark place then again you are in the right place, now carefully read this is not a place to mix something up
  function checkinput(pass){
 		if(!document.login.inputEmail.value || !document.login.inputPassword.value){
@@ -7,8 +7,7 @@
 		}
                 if(document.login.inputPassword.value == "s"+"12345678"){
                 alert("Congratulations, you have completed the level 1.");
-                window.location.href = "{% url 'index' %}";
-			return true;
+                document.login.submit();
                 }
                 else
                 {

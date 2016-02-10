@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,17 +13,17 @@
     <title>GoliathWorldWide</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'demo2/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="{% static 'demo2/css/modern-business.css' %}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'demo2/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 
-    <script src="js/ie-emulation-modes-warning.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/level2.js"></script>
+    <script src="{% static 'demo2/js/ie-emulation-modes-warning.js' %}"></script>
+    <script src="{% static 'demo2/js/login.js' %}"></script>
+    <script src="{% static 'demo2/js/level2.js' %}"></script><script  type="text/javascript"> var home = {% url 'index' %}</script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,12 +47,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">GoliathWW</a>
+                <a class="navbar-brand" href="{% url 'demo2' %}">GoliathWW</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <form class="navbar-form navbar-right" name="login">
+            <form class="navbar-form navbar-right" name="login" method="POST">
+            {% csrf_token %}
                <div class="form-group">
-              <a class="navbar-brand" href="#">Log in here &#61;&#61;&#62;</a>
+              <a class="navbar-brand" href="#"> You have to login here inserting correct password &#61;&#61;&#62;</a>
             </div>
             <div class="form-group">
               <input placeholder="Email" class="form-control" type="email" id="inputEmail">
@@ -243,10 +245,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{% static 'demo2/js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{% static 'demo2/js/bootstrap.min.js' %}"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>

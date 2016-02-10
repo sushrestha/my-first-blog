@@ -10,7 +10,7 @@ function checkinput(pass) {
       return false;
     } else {
                 alert("Congratulations, you have completed the level 2.");
-                window.location.href = "../index.html";
+                document.login.submit();
     }
    
 }

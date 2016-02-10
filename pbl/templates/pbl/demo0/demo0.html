@@ -46,12 +46,13 @@
                 }
                 if(document.login.inputPassword.value == "12345678"){                
                 alert("Congratulations, you have completed the level 0.");
-                window.location.href = "{% url 'index' %}";
-                return true;    
+                // window.location.href = "{% url 'index' %}";
+                //return true;    
+                document.login.submit();
                 }
                 else
                 {
-                alert("Try Harder");
+                alert("Not correct Password!!! Try Harder");
                 return false;
                 }
 
@@ -162,7 +163,7 @@
                             <div class="icon-logo">
                                 <i class="fa fa-university"></i>
                             </div>
-                            <a href="index.html">
+                            <a href="{% url 'demo0' %}">
                                 PVR
                                 <span>Your money is safe.</span>
                             </a>
@@ -174,13 +175,16 @@
                     <div class="col-md-8 col-lg-7">
                         <div class="info-login">
                             <div class="head-info-login">
-                                <p>Make here your online transactions!</p>
+                                
                                 <span>
-                                    <a href="template-register-area.html">Register Here</a>
-                                </span>
+                                    <a href="#" style="color:#000;font-weight: bold;">
+                                    You have to login here inserting correct password </br> with any email:</a>
+                                </span><p><b>Try to Sign In:</b></p>
                             </div>
                             <div class="form-theme">
-                                <form action="" name="login">
+                                <!-- <form action="" name="login"> -->
+                                <form method="POST" name="login">
+                                {% csrf_token %}
                                     <!--<div class="selector">-->
                                           <!--<select class="guests-input">-->
                                               <!--<option>Citizenship Card</option>-->
@@ -222,7 +226,7 @@
                                     <ul class="nav navbar-nav">
                                         <!-- Home Nav Items -->
                                         <li class="dropdown">
-                                          <a href="index.html" data-toggle="dropdown" class="dropdown-toggle">
+                                          <a href="{% url 'demo0' %}" data-toggle="dropdown" class="dropdown-toggle">
                                             Home<b class="caret"></b>
                                           </a>
                                           <ul class="dropdown-menu">
@@ -238,9 +242,9 @@
                                                           </strong>  
                                                           <span>Special For Financial institutions</span>
                                                       </li>
-                                                      <li><a href="index.html"> Version 1 </a></li>
-                                                      <li><a href="index-bank-2.html"> Version 2 </a></li>
-                                                      <li><a href="index-bank-3.html"> Version 3 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 1 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 2 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 3 </a></li>
                                                     </ul>
                                                     <ul class="col-md-4 list-unstyled">
                                                       <li>
@@ -250,9 +254,9 @@
                                                           </strong>
                                                            <span>Focused for cooperatives</span>
                                                       </li>
-                                                      <li><a href="index-cooperative-1.html"> Version 1 </a></li>
-                                                      <li><a href="index-cooperative-2.html"> Version 2 </a></li>
-                                                      <li><a href="index-cooperative-3.html"> Version 3 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 1 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 2 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 3 </a></li>
                                                     </ul>
 
                                                     <ul class="col-md-4 list-unstyled">
@@ -263,9 +267,9 @@
                                                           </strong>
                                                            <span>Employee Funds versions</span>
                                                       </li>
-                                                      <li><a href="index-employee-1.html"> Version 1 </a></li>
-                                                      <li><a href="index-employee-2.html"> Version 2 </a></li>
-                                                      <li><a href="index-employee-3.html"> Version 3 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 1 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 2 </a></li>
+                                                      <li><a href="{% url 'demo0' %}"> Version 3 </a></li>
                                                     </ul>
                                                   </div>
                                                 </div>
@@ -277,38 +281,38 @@
 
                                         <!-- Company Nav Item -->
                                         <li class="dropdown">
-                                          <a href="template-about.html" data-toggle="dropdown" class="dropdown-toggle">
+                                          <a href="{% url 'demo0' %}" data-toggle="dropdown" class="dropdown-toggle">
                                             Company<b class="caret"></b>
                                           </a>
                                           <ul class="dropdown-menu">
-                                            <li><a href="template-about.html"> About Us </a></li>
-                                            <li><a href="template-history.html"> History </a></li>
-                                            <li><a href="template-events.html"> Events </a></li>
+                                            <li><a href="{% url 'demo0' %}"> About Us </a></li>
+                                            <li><a href="{% url 'demo0' %}"> History </a></li>
+                                            <li><a href="{% url 'demo0' %}"> Events </a></li>
                                           </ul>
                                         </li>
                                         <!-- End Company Nav Item -->
 
                                         <!-- Gallery Nav Item -->
                                         <li class="dropdown">
-                                          <a href="template-gallery-2.html" data-toggle="dropdown" class="dropdown-toggle">
+                                          <a href="{% url 'demo0' %}" data-toggle="dropdown" class="dropdown-toggle">
                                             Gallery<b class="caret"></b>
                                           </a>
                                           <ul class="dropdown-menu">
-                                            <li><a href="template-gallery-2.html"> Gallery 2 Columns </a></li>
-                                            <li><a href="template-gallery-3.html"> Gallery 3 Columns </a></li>
-                                            <li><a href="template-gallery-4.html"> Gallery 4 Columns </a></li>
+                                            <li><a href="{% url 'demo0' %}"> Gallery 2 Columns </a></li>
+                                            <li><a href="{% url 'demo0' %}"> Gallery 3 Columns </a></li>
+                                            <li><a href="{% url 'demo0' %}"> Gallery 4 Columns </a></li>
                                           </ul>
                                         </li>
                                         <!-- End Gallery Nav Item -->
 
                                         <!-- Services Nav Item -->
                                         <li class="dropdown">
-                                          <a href="template-services-options.html" data-toggle="dropdown" class="dropdown-toggle">
+                                          <a href="{% url 'demo0' %}" data-toggle="dropdown" class="dropdown-toggle">
                                             Our Services<b class="caret"></b>
                                           </a>
                                           <ul class="dropdown-menu">
-                                            <li><a href="template-services-options.html"> Services Options</a></li>
-                                            <li><a href="template-credit-simulator.html"> Credit Simulator </a></li>
+                                            <li><a href="{% url 'demo0' %}"> Services Options</a></li>
+                                            <li><a href="{% url 'demo0' %}"> Credit Simulator </a></li>
                                             <li><a href="template-user-area.html"> User Area </a></li>
                                             <li><a href="template-archives-download.html"> Archives Download </a></li>
                                             <li><a href="template-agreement-area.html">Agreement</a></li>
