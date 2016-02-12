@@ -55,7 +55,7 @@ def is_already_completed_level(user,c_id,l_id):
 
 def demo1(request):
 	if request.method != "POST":
-		return render(request,'pbl/demo0/demo0.html',{})
+		return render(request,'pbl/demo1/demo1.html',{})
 	else:
 		challenge_id = 1
 		level_id = 2
@@ -68,7 +68,7 @@ def demo1(request):
 
 def demo2(request):
 	if request.method != "POST":
-		return render(request,'pbl/demo0/demo0.html',{})
+		return render(request,'pbl/demo2/demo2.html',{})
 	else:
 		challenge_id = 1
 		level_id = 3
@@ -81,7 +81,7 @@ def demo2(request):
 
 def demo3(request):
 	if request.method != "POST":
-		return render(request,'pbl/demo0/demo0.html',{})
+		return render(request,'pbl/demo3/demo3.html',{})
 	else:
 		challenge_id = 2
 		level_id = 1
@@ -94,7 +94,7 @@ def demo3(request):
 
 def demo4(request):
 	if request.method != "POST":
-		return render(request,'pbl/demo0/demo0.html',{})
+		return render(request,'pbl/demo4/demo4.html',{})
 	else:
 		challenge_id = 2
 		level_id = 2
