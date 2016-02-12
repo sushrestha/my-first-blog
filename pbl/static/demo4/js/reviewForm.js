@@ -25,14 +25,14 @@ function intentionalyHrd2Read(){
 		result = result ^ comparing();
 		if(result == 0){
 		alert("Congratulations, you have completed the level 3");
-		window.location.href = home;
-		return true;
+		document.login.submit();
 		}
 	} else{
 		alert("Try to submit the form having shipping information different than billing information even with a checked check-box.");
+		return false;
 
 	}
-	alert("Try Harder");
+	// alert("Try Harder");
 }
 
 function alarmingRed(field){

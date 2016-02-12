@@ -1,0 +1,23 @@
+{% extends 'pbl/base.html' %}
+{% block content %}
+<h1> Score Details: {{ student_id }}</h1>
+		<div class="table-responsive hover">
+			<table class="table table-striped">
+    			<thead>
+			<tr>
+			<th>SN</th><th>Challenge</th><th>Level</th><th>Score</th>
+			</tr>
+			</thead>
+			<tbody>
+			
+			{% for comp in competition %}
+			<tr>
+			<td>1</td><td>{{ comp.challenge }}</td><td>{{ comp.level }}</td><td>{{ comp.score }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+			</table>
+		</div>
+
+
+{% endblock %}

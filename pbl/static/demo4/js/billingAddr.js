@@ -23,7 +23,7 @@ function chkClicked()
 		if (!billingAddr.value || !billingCty.value || !billingState.value || !billingPost.value){
 			alert("Please first fill up the shipping information !!!");
 			document.getElementById('check').checked = false;
-			return
+			return false;
 		}
 
 		// The disabling of the input billing information on the html doc

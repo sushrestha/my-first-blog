@@ -52,11 +52,14 @@ class Competition(models.Model):
 
 
 class Score(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    level = models.ForeignKey(Level, on_delete=models.CASCADE)
+    student = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    # level = models.ForeignKey(Level, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
+    def set_total_score(self, level_score):
+        self.score = self.score + level_score
+        self.save()
     def __str__(self):
-        st = self.student.first_name+' '+self.student.last_name
+        st = self.student.username
         return st
 
 

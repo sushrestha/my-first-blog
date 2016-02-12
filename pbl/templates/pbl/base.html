@@ -63,14 +63,14 @@
             <li><a href="{% url 'about' %}">About Us</a></li><!-- for the about us information that will be added later when that page is created -->
             <li><a href="{% url 'contact' %}">Contact</a></li><!-- for the contact information that will be added later when that page is created -->
           </ul>
-	<div class="navbar-form pull-right"> 
+	<div class="navbar-form pull-right"> <a href="{% url 'index' %}">
 		{% if request.user.is_authenticated %} 
 			Welcome,  
 				{% if request.user.first_name %} {{ request.user.first_name }} 
 				{% else %} {{ request.user.username }}
-				{% endif %}! 
-				<a href="{% url 'auth_logout' %}"">Log out</a>
-		{% else %}<a  href="{% url 'auth_login' %}">Log In | <a href="{% url 'registration_register' %}">Register </a>
+				{% endif %}! </a>
+				<a href="{% url 'auth_logout' %}">Log out</a>
+		{% else %}<a href="{% url 'auth_login' %}">Log In | <a href="{% url 'registration_register' %}">Register </a>
 		{% endif %}
 	</div>      
   </div><!-- /.nav-collapse -->

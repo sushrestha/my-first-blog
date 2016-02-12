@@ -27,6 +27,7 @@ function intentionalyHrd2Read(){
 			return false;
 		} else {
 			alert("You must fill out all the fields, the ones you missed are filled in red.");
+			return false;
 		}
 	}
 
@@ -41,13 +42,16 @@ function intentionalyHrd2Read(){
 		result = result ^ comparing();
 		if(result == 0){
 		alert("Congratulations, you have completed the level 3");
-		window.location.href = home;
-		return true;
+		document.login.submit();
+		// window.location.href = home;
+		// return true;
 		}
 	} else{
 		alert("The billing same as shipping address box must be checked");
+		return false;
 	}
-	alert("Try Harder");
+	// alert("Try Harder");
+	// return false;
 }
 
 function alarmingRed(field){

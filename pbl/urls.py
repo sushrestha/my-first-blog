@@ -3,6 +3,9 @@ from . import views
 urlpatterns=[
 	url(r'^$',views.index,name='index'),
         url(r'^score$',views.score_list,name='score_list'),
+        url(r'^score/(?P<student_id>[0-9]+)/$',views.score_details,name='score_details'),
+        # url(r'^score/(?P<st>[0-9]+)/$',views.score_details,name='score_details'),
+        # url(r'^post/(?P<pk>[0-9]+)/$',views.post_detail,name='post_detail'),
         url(r'^about$',views.about,name='about'),
         url(r'^contact$',views.contact,name='contact'),
         url(r'^demo0$',views.demo0,name='demo0'),

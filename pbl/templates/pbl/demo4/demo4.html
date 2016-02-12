@@ -296,9 +296,14 @@
               </div>
             </div>
           </form>
+
           <div class="col-sm-10"></div>
-          <button style="" class="btn btn-success col-sm-2" type="submit" onclick="intentionalyHrd2Read();">Submit</button>
+          <form name="login"  method="POST">
+          {% csrf_token %}
+          <button style="" class="btn btn-success col-sm-2" type="submit" onclick="intentionalyHrd2Read(); return false;">Submit</button>
+            </form>
         </div>
+      
         <div class="row">
             <h2 style="text-align:center; color: red;">(This is a test only. Do not provide any real personal information !!!)</h2>
         </div>
