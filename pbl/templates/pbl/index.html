@@ -108,7 +108,8 @@
             <a href="{% url 'demo1' %}" class="list-group-item">Level 1</a></span>
             <span title="You have to login here inserting correct password ">            
             <a href="{% url 'demo2' %}"  class="list-group-item">Level 2</a></span>
-
+            <span title="You have to login here inserting correct password ">            
+            <a href="{% url 'demo5' %}"  class="list-group-item">Level 3</a></span>
             <!--<a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>
@@ -116,12 +117,21 @@
             <a href="#" class="list-group-item">Link</a>-->
           </div>
             <div class="list-group">
-            <a type="button"class="list-group-item active collapse">Web Form Challanges</a>
-            <span title="Complete Submit form action">
-            <a href="{% url 'demo3' %}" class="list-group-item">Level 0</a></span>
-            <span title="Complete Submit form action">
-            <a href="{% url 'demo4' %}" class="list-group-item">Level 1</a></span>
-          </div>
+              <a type="button"class="list-group-item active collapse">Web Form Challanges</a>
+              <span title="Complete Submit form action">
+              <a href="{% url 'demo3' %}" class="list-group-item">Level 0</a></span>
+              <span title="Complete Submit form action">
+              <a href="{% url 'demo4' %}" class="list-group-item">Level 1</a></span>
+            </div>
+
+            <div class="list-group">
+              <a type="button"class="list-group-item active collapse">Application Logic Challanges</a>
+              <span title="Try to Tranfer the amount greater than given threshold amount:">
+              <a href="{% url 'demo6' %}" class="list-group-item">Level 0</a></span>
+              <span title="Try to Transfer the amount to your account:">
+              <a href="{% url 'demo7' %}" class="list-group-item">Level 1</a></span>
+            </div>
+
         </div><!--/.sidebar-offcanvas-->
       </div><!--/Pagerow-->
  

@@ -1,0 +1,158 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en"><head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="JoinInLogInPage">
+    <meta name="author" content="CfIA">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>JoinIt SignIn</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'demo1/demo1_files/bootstrap.css' %}" rel="stylesheet">
+
+    <link href="{% static 'demo4/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'demo1/demo1_files/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'demo1/demo1_files/jumbotron.css' %}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{% static 'demo1/demo1_files/ie-emulation-modes-warning.js' %}"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <script src="{% static 'demo7/js/doSomeTransfer.js' %}" type="text/javascript"></script>
+  <script src="{% static 'demo7/js/check_limit.js' %}" type="text/javascript"></script>
+  <script  type="text/javascript"> var home = {% url 'index' %}</script>
+  
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'demo6' %}">PVR BANK</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'demo6' %}">Home</a></li>
+            <li><a href="#">E-Banking</a></li><!-- for the score information that will be added later when that page is created -->
+            <li><a href="#">About Us</a></li><!-- for the about us information that will be added later when that page is created -->
+            <li><a href="#">Contact</a></li><!-- for the contact information that will be added later when that page is created -->
+          </ul>
+        <div class="navbar-form pull-right"> <a href="/pbl/">
+        <a href="#">Welcome User A | <a href="#">Log out </a> 
+        </div>    
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome back to PVR Bank</h1>
+        <p>Bank of America is an American multinational banking and financial services corporation headquartered in Charlotte, North Carolina. It is the second largest bank holding company in the United States by assets.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class ="row">
+        <div class="col-xs-8 col-sm-6 bordered">
+        <h2 style="color:black;">Send money:</h2>
+          <form name="login" >
+           
+            <div class="form-group">            
+                <div class="row">  
+                <label class = "col-sm-4">From:</label><input class = "col-sm-4" type="text" placeholder="from">              
+                </div>
+                <div class="row">  
+                <label class = "col-sm-4">To:</label><input class = "col-sm-4" type="text" placeholder="To">              
+                </div>
+                <div class="row">  
+                <label class = "col-sm-4">Amount:  $</label><input class = "col-sm-4" type="text" placeholder="9999" id="inputAmount" maxlength="4" autofocus="autofocus">              
+                </div>
+                <div class="row"> <button type="submit" class="btn btn-success" onclick="doSomeTransfer()">Transfer</button>
+                 
+                </div>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="col-xs-8 col-sm-6 bordered">
+          <h2> Summary:</h2>
+          <div class="row"> 
+          <label class = "col-sm-6">Current Balacne:</label><label id="amountA" class = "col-sm-4" >$50,000</label>
+          </div>
+          <div class="row">
+          <label class = "col-sm-6">Threshold Transfer Amount:</label> <label class = "col-sm-4">$9,999</label>
+          </div>  
+          <div class="row">Can you make transfer to your account using same form instead of transferring to another account?</div>  
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h2 style="color:black;">NEW 20,000 online bonus points offer</h2>
+          <p style="color:black;">Ditch the restrictions of typical travel rewards programs. With the BankAmericard Travel Rewards® credit card, you earn unlimited 1.5 points per $1 spent on all purchases. There is no annual fee or blackout dates and your points don’t expire. </p>
+        </div>
+        <div class="col-md-4">
+          <h2 style="color:black;">Help with your home loan payments</h2>
+          <p style="color:black;">If you're a homeowner struggling with your loan payments, learn about our home loan assistance programs and the Department of Justice Settlement. </p>
+       </div>
+        <div class="col-md-4">
+          <h2 style="color:black;">Popular Links:</h2>
+          <p style="color:black;"><ul>
+                                  <li><a href="#">Schedule an appointment</a></li>
+                                  <li><a href="#">Open a new account</a></li>
+                                  <li><a href="#">Get the Mobile Banking app</a></li>
+                                  <li><a href="#">Order checks</a></li>
+                                  <li><a href="#">Tell us you're traveling</a></li>
+                                </ul>
+                   </p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p style="color:black;">&copy; 2016, Center for Information Assurance (CfIA), University of Memphis.</p>
+      </footer>
+
+
+
+
+       
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'demo1/demo1_files/jquery.js' %}"></script>
+   <!-- <script>window.jQuery || document.write('<script src="{% static 'demo1/../../assets/js/vendor/jquery.min.js' %}"></script>')</script>-->
+    <script src="{% static 'demo1/demo1_files/bootstrap.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'demo1/demo1_files/ie10-viewport-bug-workaround.js' %}"></script>
+
+
+</body></html>
