@@ -12,7 +12,7 @@
 			{% for score in scores %}
 			<tr>
 			<td>1</td><td>
-			{% if score.student.id == request.user.id %}
+			{% if score.student.id == request.user.id or request.user.is_superuser %}
 			<a href="{% url 'score_details' student_id=score.student.id %}">
 			{% endif %}
 			{{ score.student}}</a></td><td>{{ score.score }}</td>

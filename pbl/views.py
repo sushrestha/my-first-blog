@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404 ,redirect ,HttpResponse
 from .models import *
 from django.views import generic
+# for login required decorator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 context = {
@@ -18,22 +20,27 @@ def index(request):
 #        request.session['location'] = "Earth"
     return render(request,'pbl/index.html',{})
 
+# @login_required(login_url='/accounts/login')
 def score_list(request):
-    if request.user.is_authenticated:
-        scores = Score.objects.all()
-        return render(request,'pbl/score_list.html',{'scores':scores})
-    else:
-    	return render(request,'pbl/index.html',{})
+    if not request.user.is_authenticated():
+    	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+    	return HttpResponse(html)
+    if not request.user.is_superuser:
+    	html = "<html><body>Invalid Access <span> <a href="'../'">Go Home page</a></span></body></html>"
+    	return HttpResponse(html)
+    scores = Score.objects.all()
+    return render(request,'pbl/score_list.html',{'scores':scores})        
+        
 
 def score_details(request, student_id):
-	if request.user.is_authenticated:
-		try:
-			competition = Competition.objects.filter(student=student_id)
-		except Competition.DoesNotExist:
-			pass
-		return render(request,'pbl/score_details.html',{'competition':competition, 'student_id':student_id})
-	else:
-		return render(request,'pbl/index.html',{})
+    if not request.user.is_authenticated():
+    	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+    	return HttpResponse(html)
+    try:
+        competition = Competition.objects.filter(student=student_id)
+    except Competition.DoesNotExist:
+        pass
+    return render(request,'pbl/score_details.html',{'competition':competition, 'student_id':student_id})
 
 
 
@@ -43,17 +50,20 @@ def contact(request):
     return render(request,'pbl/contact.html',{})
 
 def demo0(request):
-	if request.method != "POST":
-		return render(request,'pbl/demo0/demo0.html',{})
-	else:
-		challenge_id = 1
-		level_id = 1
-		completed = is_already_completed_level(request.user,challenge_id,level_id)
-		if not completed:
-			flag = compute_score(request,challenge_id,level_id)
-			if flag:
-				return redirect('index')
-		return redirect('index')
+    if not request.user.is_authenticated():
+        html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+        return HttpResponse(html)
+    if request.method != "POST":
+        return render(request,'pbl/demo0/demo0.html',{})
+    else:
+        challenge_id = 1
+        level_id = 1
+        completed = is_already_completed_level(request.user,challenge_id,level_id)
+        if not completed:
+            flag = compute_score(request,challenge_id,level_id)
+            if flag:
+               return redirect('index')
+        return redirect('index')
 
 def is_already_completed_level(user,c_id,l_id):
 	try:
@@ -64,6 +74,9 @@ def is_already_completed_level(user,c_id,l_id):
 		return 0
 
 def demo1(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo1/demo1.html',{})
 	else:
@@ -77,6 +90,9 @@ def demo1(request):
 		return redirect('index')
 
 def demo2(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo2/demo2.html',{})
 	else:
@@ -90,6 +106,9 @@ def demo2(request):
 		return redirect('index')
 
 def demo3(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo3/demo3.html',{})
 	else:
@@ -103,6 +122,9 @@ def demo3(request):
 		return redirect('index')
 
 def demo4(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo4/demo4.html',{})
 	else:
@@ -116,6 +138,9 @@ def demo4(request):
 		return redirect('index')
 
 def demo5(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo5/index.html',{})
 	else:
@@ -138,6 +163,9 @@ def demo5_1(request):
 	return render(request,'pbl/demo5/donotlookinhere/password.txt', {})
 
 def demo6(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo6/index.html',{})
 	else:
@@ -145,6 +173,9 @@ def demo6(request):
 		html = "<html><body>You got it.</body></html>"
 		return HttpResponse(html)
 def demo7(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo7/index.html',{})
 	else:
