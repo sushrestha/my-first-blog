@@ -5,15 +5,6 @@
 			alert("Please fill in the required field");
 			return false;
 		}
-                // if(document.login.inputPassword.value == "s"+"12345678"){
-                // alert("Congratulations, you have completed the level 1.");
-                document.login.submit();
-                // }
-  //               else
-  //               {
-  //               alert("Try Harder");
-		// return false;
-
-  //               }
+ document.login.submit();
 
 }

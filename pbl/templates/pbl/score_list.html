@@ -1,7 +1,7 @@
 {% extends 'pbl/base.html' %}
 {% block content %}
-{{ some_variable|add:"1" }}
-<h1> Total Scores:  {{ request.user }}</h1>
+
+<h1> Total Scores:  </h1>
 		<div class="table-responsive hover">
 			<table class="table table-striped">
     			<thead>
@@ -12,7 +12,7 @@
 			<tbody>
 			{% for score in scores %}
 			<tr>
-			<td>{{ some_variable|add:"1" }}</td><td>
+			<td>{{ forloop.counter }}</td><td>
 			{% if score.student.id == request.user.id or request.user.is_superuser %}
 			<a href="{% url 'score_details' student_id=score.student.id %}">
 			{% endif %}

@@ -179,24 +179,24 @@
                                 <span>
                                     <a href="#" style="color:#000;font-weight: bold;">
                                     You have to login here inserting correct password </br> with any email:</a>
-                                </span><p><b>Try to Sign In:</b></p>
+                                </span><p><b>Try to Sign In:
+                                            {% if messages %}
+                                            <ul class="messages">
+                                            {% for message in messages %}
+                                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                            {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                        </b></p>
                             </div>
                             <div class="form-theme">
                                 <!-- <form action="" name="login"> -->
-                                <form method="POST" name="login">
+                                <form method="POST" name="login"> 
                                 {% csrf_token %}
-                                    <!--<div class="selector">-->
-                                          <!--<select class="guests-input">-->
-                                              <!--<option>Citizenship Card</option>-->
-                                              <!--<option>Foreigners Card</option>-->
-                                              <!--<option>Tax identification number</option>-->
-                                              <!--<option>Identity Card</option>-->
-                                              <!--<option>Username</option>-->
-                                          <!--</select>-->
-                                          <!--<span class="custom-select">Document type</span>-->
+                                {{ form.as_p}}
                                      <input type="email" id = "inputEmail" placeholder="Email Address" class="input" required autofocus>
                                       <!--</div>-->
-                                     <input type="password" id = "inputPassword" placeholder="Password" class="input" required>
+                                     <input type="password" name="inputPassword" id = "inputPassword" placeholder="Password" class="input" required>
                                     <button onclick="var password = '12345678'; checkInput(password); return false;" type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button>
                                 </form>
                             </div>
