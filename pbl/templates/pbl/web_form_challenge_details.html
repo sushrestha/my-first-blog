@@ -1,0 +1,34 @@
+{% extends 'pbl/index.html' %}
+{% block web_form_challenge_details %}
+<div class="col-xs-6 col-sm-6">
+              <h2>Web Form Challenges</h2>
+              <p>These challanges deals with the issue regarding the form validation. To complete each level user needs to do corresponding actions as per mentioned.</p>
+            </div>
+              <div class="col-xs-6 col-sm-6">
+                <div class="row">
+                  <h2>Web Form Challenges' Hints</h2>
+                  <div class="col-xs-6 col-sm-6">
+                   <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#flevel0">Level 0 Hints</button>
+                   <div id="flevel0" class="collapse">
+                      <ul class="list-group-item">
+                       <li>Fill out all the required fields in the form.</li>
+                       <li>Try to figure out the missing validation or logic in the form submission.</li>
+                       <li>Try to submit the form with Shipping information different from Billing information.</li>
+                     </ul>
+                    </div>
+                  </div>
+                   <div class="col-xs-6 col-sm-6">
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#flevel1">Level 1 Hints</button>
+                    <div id="flevel1" class="collapse">
+                    <ul class="list-group-item">
+                      <li>Fill out all the required fields in the form.</li>
+                      <li>Try to figure out the missing validation in the form submission.</li>
+                      <li>Try to submit the form with Billing information different from Shipping information.</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Put new rows for hints in here-->
+              </div>
+            </div>
+</div>
+{% endblock %}

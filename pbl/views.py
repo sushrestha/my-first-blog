@@ -84,24 +84,16 @@ def demo1(request):
 		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo1/demo1.html',{})
-	challenge_id = 1
-	level_id = 2
-	completed = is_already_completed_level(request.user,challenge_id,level_id)
-	if not completed:
-		compute_score(request,challenge_id,level_id)
-	return redirect('index')
-	# passwd = escape(strip_tags(request.POST.get("inputPassword")))
-	# messages.info(request, 'Three credits remain in your account.')
-	# return render(request,'pbl/demo1/demo1.html',{})
-	# if passwd=="s12345678":
-	# 	challenge_id = 1
-	# 	level_id = 2
-	# 	completed = is_already_completed_level(request.user,challenge_id,level_id)
-	# 	if not completed:
-	# 		compute_score(request,challenge_id,level_id)
-	# 	return redirect('index')
-	# messages.error(request,"Incorrect Password")
-	# return render(request,'pbl/demo1/demo1.html',{})
+	passwd = escape(strip_tags(request.POST.get("inputPassword")))
+	if passwd=="s12345678":
+		challenge_id = 1
+		level_id = 2
+		completed = is_already_completed_level(request.user,challenge_id,level_id)
+		if not completed:
+			compute_score(request,challenge_id,level_id)
+		return redirect('index')
+	messages.error(request,"Incorrect Password")
+	return render(request,'pbl/demo1/demo1.html',{})
 
 def demo2(request):
 	if not request.user.is_authenticated():
@@ -109,22 +101,16 @@ def demo2(request):
 		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo2/demo2.html',{})
-	challenge_id = 1
-	level_id = 3
-	completed = is_already_completed_level(request.user,challenge_id,level_id)
-	if not completed:
-		compute_score(request,challenge_id,level_id)
-	return redirect('index')
-	# passwd = escape(strip_tags(request.POST.get("inputPassword")))
-	# if passwd=="b0b802febcbb710fbcc537dbce86745d":
-	# 	challenge_id = 1
-	# 	level_id = 3
-	# 	completed = is_already_completed_level(request.user,challenge_id,level_id)
-	# 	if not completed:
-	# 		compute_score(request,challenge_id,level_id)
-	# 	return redirect('index')
-	# messages.error(request,"Incorrect Password")
-	# return render(request,'pbl/demo2/demo2.html',{})
+	passwd = escape(strip_tags(request.POST.get("inputPassword")))
+	if passwd=="b0b802febcbb710fbcc537dbce86745d":
+		challenge_id = 1
+		level_id = 3
+		completed = is_already_completed_level(request.user,challenge_id,level_id)
+		if not completed:
+			compute_score(request,challenge_id,level_id)
+		return redirect('index')
+	messages.error(request,"Incorrect Password")
+	return render(request,'pbl/demo2/demo2.html',{})
 
 def demo3(request):
 	if not request.user.is_authenticated():
@@ -160,29 +146,23 @@ def demo4(request):
 			# 	return redirect('index')
 		return redirect('index')
 
-#web challenge Level 3 - challenge_id = 1 Level_id = 4
+#web login challenge Level 3 - challenge_id = 1 Level_id = 4
 def demo5(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/demo5/index.html',{})
-	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-	return HttpResponse(html)
-	# passwd = escape(strip_tags(request.POST.get("inputPassword")))
-	# if passwd=="nulltester":
-	# 	challenge_id = 1
-	# 	level_id = 4
-	# 	completed = is_already_completed_level(request.user,challenge_id,level_id)
-	# 	if not completed:
-	# 		compute_score(request,challenge_id,level_id)
-	# 	return redirect('index')
-	# 		# flag = compute_score(request,challenge_id,level_id)
-	# 		# if flag:
-	# 		# 	return redirect('index')
-	# 	# return redirect('index')
-	# messages.error(request,"Incorrect Password")
-	# return render(request,'pbl/demo5/demo5.html',{})
+	passwd = escape(strip_tags(request.POST.get("inputPassword")))
+	if passwd=="nulltester":
+		challenge_id = 1
+		level_id = 4
+		completed = is_already_completed_level(request.user,challenge_id,level_id)
+		if not completed:
+			compute_score(request,challenge_id,level_id)
+		return redirect('index')
+	messages.error(request,"Incorrect Password")
+	return render(request,'pbl/demo5/index.html',{})
 
 def demo5_1(request):
 	return render(request,'pbl/demo5/donotlookinhere/password.txt', {})

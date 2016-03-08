@@ -54,12 +54,19 @@
             {% csrf_token %}
                <div class="form-group">
               <a class="navbar-brand" href="#"> You have to login here inserting correct password &#61;&#61;&#62;</a>
+                              {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
             </div>
             <div class="form-group">
               <input placeholder="Email" class="form-control" type="email" id="inputEmail">
             </div>
             <div class="form-group">
-              <input placeholder="Password" class="form-control" type="password" id="inputPassword">
+              <input placeholder="Password" class="form-control" type="password" id="inputPassword" name="inputPassword">
             </div>
             <button onclick="var password='12345678';checkinput(password);document.login.inputPassword.value='';return false;" type="submit" class="btn btn-success">Sign in</button>
           </form>
