@@ -5,11 +5,30 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.html import strip_tags, escape
 from django.contrib import messages
+# 404 and 500 error
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+import random
 
 # Create your views here.
 context = {
     'page' : 'web application security learning tools',
 }
+
+# 404 error
+def handler404(request):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
+
+
+def handler500(request):
+    response = render_to_response('500.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 500
+    return response
+
 
 # class IndexView(generic.ListView):
 # 	template_name = 'pbl/index.html'
@@ -37,6 +56,9 @@ def score_list(request):
 def score_details(request, student_id):
     if not request.user.is_authenticated():
     	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+    	return HttpResponse(html)
+    if request.user.id != int(student_id):
+    	html = "<html><body>Invalid access <span> <a href="'../../'">Go Back</a></span></body></html>"
     	return HttpResponse(html)
     try:
         competition = Competition.objects.filter(student=student_id).order_by("-id")
@@ -203,6 +225,22 @@ def demo7(request):
 # 		return 0
 # 	return 1
 
+def xss_1(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	# if request.method != "GET":
+	# 	return render(request,'pbl/xss/1/index.html',{})
+	# input = request.GET.get("search")
+	# html = "<html><body><h1> Searched for:"+" <span> <a href="'../'">Go Home page</a></span></body></html>"
+	# context = {
+	# 	'searched' : input,
+	# }
+	# messages.info(request,input)
+	# return render(request,'pbl/xss/1/index.html',context,{})
+	input = request.GET.get('search')
+	return HttpResponse('<h1>Hello, %s!</h1>' % input)
+
 def compute_score(request,c_id, l_id):
 	if request.user:			
 		try:
@@ -216,3 +254,47 @@ def compute_score(request,c_id, l_id):
 		except Score.DoesNotExist:
 			score = Score(student=request.user, score=level.value)
 			score.save()
+
+def rand_form(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		rnd = str(random.randint(1,3))
+		#rnd_template = "template_0"+rnd+".html"
+		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
+		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd})
+
+def crypto(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		return render(request,'pbl/crypto/index.html',{})
+	inputtext = (strip_tags(request.POST.get("plaintext")))
+	if inputtext:
+		encryptedtext = doEncrypt(inputtext)
+		messages.info(request,encryptedtext)
+		return render(request,'pbl/crypto/index.html',{})
+	passwd = escape(strip_tags(request.POST.get("inputPassword")))
+	if passwd == doDecrypt("ADGJMPSV"):
+		return HttpResponse("<html><body>You got it.</body></html>")
+	return render(request,'pbl/crypto/index.html',{})
+	# return HttpResponse("<html><body>You mu <span> <a href="'../'">Go Home page</a></span></body></html>")
+def doEncrypt(p):
+	decrypt = ""
+	for index in range(len(p)):
+		asc = ord(p[index])
+		asc = asc+(index*2)
+		txt = chr(asc)
+		decrypt = decrypt+txt
+	return decrypt
+
+def doDecrypt(p):
+	decrypt = ""
+	for index in range(len(p)):
+		asc = ord(p[index])
+		asc = asc-(index*2)
+		txt = chr(asc)
+		decrypt = decrypt+txt
+	return decrypt
