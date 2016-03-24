@@ -35,8 +35,8 @@
     <![endif]-->
   </head>
 
-  <script src="{% static 'demo6/js/doSomeTransfer.js' %}" type="text/javascript"></script>
-  <script src="{% static 'demo6/js/check_limit.js' %}" type="text/javascript"></script>
+  <script src="{% static 'app_logic/1/js/doSomeTransfer.js' %}" type="text/javascript"></script>
+  <script src="{% static 'app_logic/1/js/check_limit.js' %}" type="text/javascript"></script>
   <script  type="text/javascript"> var home = {% url 'index' %}</script>
   
   <body>
@@ -50,12 +50,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'demo6' %}">PVR BANK</a>
+          <a class="navbar-brand" href="{% url 'app_logic1' %}">PVR BANK</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'demo6' %}">Home</a></li>
-            <li><a href="#">E-banking</a></li><!-- for the score information that will be added later when that page is created -->
+            <li class="active"><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="#">E-Banking</a></li><!-- for the score information that will be added later when that page is created -->
             <li><a href="#">About Us</a></li><!-- for the about us information that will be added later when that page is created -->
             <li><a href="#">Contact</a></li><!-- for the contact information that will be added later when that page is created -->
           </ul>
@@ -69,7 +69,7 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Welcome back to PVR Bank</h1>
-        <p>Bank of America is an American multinational banking and financial services corporation headquartered in Charlotte, North Carolina. It is the second largest bank holding company in the United States by assets.</p>
+        <p>PVR BANK is an American multinational banking and financial services corporation headquartered in Charlotte, North Carolina. It is the second largest bank holding company in the United States by assets.</p>
       </div>
     </div>
 
@@ -78,30 +78,36 @@
       <div class ="row">
         <div class="col-xs-8 col-sm-6 bordered">
         <h2 style="color:black;">Send money:</h2>
-          <form name="login" >
-           
+          <form class="form-group" name="transfer" method="POST">
+                    {% csrf_token %} 
             <div class="form-group">            
                 <div class="row">  
-                <label class = "col-sm-4">From:</label>
-                <label id="amountA" class = "col-sm-4" >$50,000</label>              
+                <label class = "col-sm-4">From:</label><input class = "col-sm-4" type="text" placeholder="from">              
                 </div>
                 <div class="row">  
-                <label class = "control-label col-sm-4">To:</label>
-                <select class="col-sm-4" id="to">
-                <option selected="selected" value="">Select Recipient</option> 
-                <option  value="500000">Account B</option> 
-                </select>      
+                <label class = "col-sm-4">To:</label><input class = "col-sm-4" type="text" placeholder="To">              
                 </div>
                 <div class="row">  
-                <label class = "col-sm-4">Amount:  $</label>
-                <input class = "col-sm-4" type="text" placeholder="9999" id="inputAmount" maxlength="4" autofocus="autofocus">           
+                <label class = "col-sm-4">Amount:  $</label><input class = "col-sm-4" type="text" placeholder="9999" id="inputAmount" maxlength="4" autofocus="autofocus" name="inputAmount">             
                 </div>
-                <div class="row"> <button type="submit" class="btn btn-success" onclick="doSomeTransfer()">Transfer</button>
+                <div class="row"> <button class="btn btn-success" onclick="doSomeTransfer(document.transfer.inputAmount.value); return false;" type="submit" >Transfer</button>
                  
                 </div>
             </div>
 
           </form>
+                      {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-danger" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    {{ smt }}
         </div>
 
         <div class="col-xs-8 col-sm-6 bordered">
@@ -111,12 +117,11 @@
           </div>
           <div class="row">
           <label class = "col-sm-6">Threshold Transfer Amount:</label> <label class = "col-sm-4">$9,999</label>
-          </div>
-          <div class="row">Can you transfer the amount greater than threshold transfer amount?</div>  
+          </div>  
+          <div class="row">Can you make transfer to your account using same form instead of transferring to another account?</div>  
         </div>
 
       </div>
-
       <div class="row">
         <div class="col-md-4">
           <h2 style="color:black;">NEW 20,000 online bonus points offer</h2>
@@ -134,7 +139,8 @@
                                   <li><a href="#">Get the Mobile Banking app</a></li>
                                   <li><a href="#">Order checks</a></li>
                                   <li><a href="#">Tell us you're traveling</a></li>
-                                </ul> </p>
+                                </ul>
+                   </p>
         </div>
       </div>
 

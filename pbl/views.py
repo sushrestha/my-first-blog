@@ -189,41 +189,67 @@ def demo5(request):
 def demo5_1(request):
 	return render(request,'pbl/demo5/donotlookinhere/password.txt', {})
 
-def demo6(request):
+def app_logic0(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	if request.method != "POST":
-		return render(request,'pbl/demo6/index.html',{})
-	else:
-		# return redirect('index')
-		html = "<html><body>You got it.</body></html>"
-		return HttpResponse(html)
-def demo7(request):
+		return render(request,'pbl/app_logic/0/index.html',{})
+	# if request.POST.get("inputAmount") is not None:
+	# 	inputAmount = escape((strip_tags(request.POST.get("inputAmount"))))
+	# 	if not(inputAmount) or len(inputAmount)>4:
+	# 		messages.error(request,"Enter the Amount: $1 to $9,999")
+	# 	else:
+	# 		success, msg = doTransfer(inputAmount)
+	# 		if success:
+
+	# 			return HttpResponse("<html><body>it works</body></html>")
+	# 		else: messages.error(request,msg)
+	# 	return render(request,'pbl/app_logic/0/index.html',{})
+	return render(request,'pbl/app_logic/0/index.html',{})
+
+def app_logic1(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	if request.method != "POST":
-		return render(request,'pbl/demo7/index.html',{})
+		return render(request,'pbl/app_logic/1/index.html',{})
+	if request.POST.get("inputAmount") is not None:
+		inputAmount = escape((strip_tags(request.POST.get("inputAmount"))))
+		try:
+			inp = int(inputAmount)
+			if inp > 9999:
+				messages.error(request,"Enter the Amount: $1 to $9,999")
+			else:
+				success,txt = doTransfer1(inp)
+				if success:
+					challenge_id = 3
+					level_id = 2
+					completed = is_already_completed_level(request.user,challenge_id,level_id)					
+					if not completed:
+						compute_score(request,challenge_id,level_id)
+						messages.success(request,"Congratulations, You have completed Application Flow Challenge - Level 1")
+					else: messages.success(request,"Congratulations beating up again- Application Flow Challenge - Level 1. But you will not get the score")
+					return render(request,'pbl/app_logic/1/answers.html',{})
+				else: 
+					txt = txt + "\n Can you pull money \nback to your account??"
+					messages.error(request,txt)
+			# messages.info(request,str(inp))
+		except ValueError:
+			messages.error(request,"Enter the Amount: $1 to $9,999")
+	# messages.error(request,"Enter the Amount: $1 to $9,999")
+	return render(request,'pbl/app_logic/1/index.html',{})
+
+def doTransfer1(ip):
+	amountOfA = 50000;
+	amountOfB = 50000;
+	newAmountOfA = amountOfA - ip
+	newAmountOfB = amountOfB + ip
+	if newAmountOfA > amountOfA:
+		return 1,"Successfully Money Transferred from Account B to Account A. </br> New Balance: A: "+str(newAmountOfA)+" and B: "+str(newAmountOfB)
 	else:
-		html = "<html><body>You got it.</body></html>"
-		return HttpResponse(html)
-# def compute_score(request,c_id, l_id):
-# 	if request.user:			
-# 		try:
-# 			challenge = Challenge.objects.get(id=c_id) # need to make id dynamic
-# 			level = Level.objects.get(id=l_id)
-# 			competition = Competition(student=request.user,challenge=challenge, level=level, score=level.value)
-# 			competition.save()
-# 			score = Score.objects.get(student=request.user)
-# 			score.score = score.score + level.value
-# 			score.save()
-# 		except Score.DoesNotExist:
-# 			score = Score(student=request.user, score=level.value)
-# 			score.save()
-# 	else:
-# 		return 0
-# 	return 1
+		return 0,"Successfully Money Transferred from Account A to Account B. \n New Balance: A: "+str(newAmountOfA)+" and B: "+str(newAmountOfB)
+
 
 def xss_1(request):
 	if not request.user.is_authenticated():
@@ -317,3 +343,15 @@ def doDecrypt(p):
 		txt = chr(asc)
 		decrypt = decrypt+txt
 	return decrypt
+
+def doTransfer(ia):
+	amountOfA = 50000;
+	amountOfB = 50000;
+	if ia <= 999:
+		return 0,"Try Harder"
+	if ia>amountOfA:
+		return 0,"Insufficient Amount in account!!!"
+	amountOfA = amountOfA - ia
+	amountOfB = amountOfB + ia
+	return 1,"Successfully Money Transferred from Account A to Account B. New Balance: A: "+str(amountOfA)+" and B: "+str(amountOfB)
+
