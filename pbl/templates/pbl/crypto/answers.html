@@ -1,0 +1,32 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    <p>
+        The algorithm for encryption was simple shift-ceaser algorithm. The letter is moved to next characters on the basis of position. Below is the algorithm used:
+        <pre class="prettyprint">
+        function doEncrypt(p){
+        var input = p;
+        encrypt ="";
+        for(i=0;i&ltinput.length;i++){
+            asc = input.charCodeAt(i);
+            asc += i*2;
+            char_acs = String.fromCharCode(asc);
+            encrypt += char_acs;
+            }
+        return encrypt;
+    }</pre>
+    </p>
+
+{% endblock %}

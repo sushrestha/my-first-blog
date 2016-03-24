@@ -14,9 +14,10 @@ urlpatterns = [
         url(r'^demo4/$',views.demo4,name='demo4'),
         url(r'^demo5/$',views.demo5,name='demo5'),
         url(r'^demo5/donotlookinhere/password.txt$',views.demo5_1,name='demo5_1'),
-        url(r'^crypto/index.html$',views.crypto,name='crypto'),
+        url(r'^crypto/$',views.crypto,name='crypto'),
         url(r'^demo6/$',views.demo6,name='demo6'),
         url(r'^demo7/$',views.demo7,name='demo7'),
         url(r'^xss/1/$',views.xss_1,name='xss_1'),
         url(r'^rand_form/$',views.rand_form,name='rand_form'),
+        url(r'^vuln_form/$',views.vuln_form,name='vuln_form'),
 ]

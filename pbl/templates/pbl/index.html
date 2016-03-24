@@ -42,7 +42,7 @@
               </div>
             </div>
 </div>
-            <div class="row">
+           <div class="row">
             <div class="col-xs-6 col-sm-6">
               <h2 style="alignment: center;">Web Login Challenges</h2>
               <p>These challenges deals with the login the website. User needs to have succesful login to complete each level.</p>
@@ -73,8 +73,7 @@
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div class="row">
+            
                 <div class="col-sm-6">
                   <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level2">Level 2 Hints</button>
                     <div id="level2" class="collapse">
@@ -88,6 +87,29 @@
                       </ul>
                     </div>
                   </div>
+
+                  <div class="col-sm-6">
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level3">Level 3 Hints</button>
+                    <div id="level3" class="collapse">
+                      <ul class="list-group-item">
+                        <li>Carefully read the information given in a web page:</li>
+                        <li>Try to figure out why the error is shown in the web page:</li>
+                        <li>Find the password and have a succesful login.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#level4">Level 4 Hints</button>
+                    <div id="level4" class="collapse">
+                      <ul class="list-group-item">
+                        <li>Play with the form "Encryption Method Used:" to figure out the encryption algorithm used.</li>
+                        <li>Try to find the encrypted password from source page</li>
+                        <li>Brtue force by entering the plain text in order to get the encyrpted passcode.</li>
+                        <li>Try with the decrypted code to have a succesful login.</li>
+                      </ul>
+                    </div>
+                  </div>
+
                 </div>
               </div>   
           </div> <!-- web login -->
@@ -101,8 +123,8 @@
                 <div class="row">
                   <h2>Application Logic Challenges' Hints</h2>
                   <div class="col-xs-6 col-sm-6">
-                   <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#flevel0">Level 0 Hints</button>
-                   <div id="flevel0" class="collapse">
+                   <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#llevel0">Level 0 Hints</button>
+                   <div id="llevel0" class="collapse">
                       <ul class="list-group-item">
                        <li>Figure out the application logic. i.e What the application is supoosed to do.</li>
                        <li>Figure out the objective of the puzzle and what the applicaiton might have failed to restrict.</li>
@@ -111,8 +133,8 @@
                     </div>
                   </div>
                    <div class="col-xs-6 col-sm-6">
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#flevel1">Level 1 Hints</button>
-                    <div id="flevel1" class="collapse">
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#llevel1">Level 1 Hints</button>
+                    <div id="llevel1" class="collapse">
                     <ul class="list-group-item">
                       <li>Figure out the application logic. i.e What the application is supoosed to do.</li>
                       <li>Figure out the objective of the puzzle and what the applicaiton might have failed to restrict.</li>
@@ -137,7 +159,9 @@
               <span title="Complete Submit form action">
               <a href="{% url 'demo4' %}" class="list-group-item">Level 1</a></span>
               <span title="Complete Submit form action">
-              <a href="{% url 'rand_form' %}" class="list-group-item">Level 2</a></span>
+              <a href="{% url 'vuln_form' %}" class="list-group-item">Level 2</a></span>
+              <span title="Complete Submit form action">
+              <a href="{% url 'rand_form' %}" class="list-group-item">Level 3</a></span>
             </div>
             <div class="list-group">
               <a type="button"class="list-group-item active collapse">Web Login Challanges</a>

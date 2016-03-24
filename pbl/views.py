@@ -265,20 +265,40 @@ def rand_form(request):
 		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
 		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd})
 
+# For form having vulnerablities
+def vuln_form(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		return render(request,'pbl/vuln_form/index.html',{})
+
+
 def crypto(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	if request.method != "POST":
-		return render(request,'pbl/crypto/index.html',{})
-	inputtext = (strip_tags(request.POST.get("plaintext")))
-	if inputtext:
-		encryptedtext = doEncrypt(inputtext)
-		messages.info(request,encryptedtext)
-		return render(request,'pbl/crypto/index.html',{})
-	passwd = escape(strip_tags(request.POST.get("inputPassword")))
-	if passwd == doDecrypt("ADGJMPSV"):
-		return HttpResponse("<html><body>You got it.</body></html>")
+		return render(request,'pbl/crypto/index.html',{})	
+	if request.POST.get("plainText") is not None:
+		inputtext = escape((strip_tags(request.POST.get("plainText"))))
+		if inputtext:
+			encryptedtext = doEncrypt(inputtext)
+			# messages.info(request,encryptedtext)
+			return render(request,'pbl/crypto/index.html',{'encryptedtext':encryptedtext})
+	if request.POST.get("inputPassword") is not None:
+		passwd = escape(strip_tags(request.POST.get("inputPassword")))
+		if passwd == doDecrypt("ADGJMPSV"):
+			challenge_id = 1
+			level_id = 5
+			completed = is_already_completed_level(request.user,challenge_id,level_id)
+			if not completed:
+				compute_score(request,challenge_id,level_id)
+				messages.success(request,"Congratulations, You have completed web login challenge - Level 4")
+			else: messages.success(request,"Congratulations beating up again- web login challenge - Level 4. But you will not get the score")
+			return render(request,'pbl/crypto/answers.html',{})
+			# return HttpResponse("<html><body>You got it.</body></html>")
+		messages.error(request,"Incorrect Password")
 	return render(request,'pbl/crypto/index.html',{})
 	# return HttpResponse("<html><body>You mu <span> <a href="'../'">Go Home page</a></span></body></html>")
 def doEncrypt(p):
@@ -289,7 +309,6 @@ def doEncrypt(p):
 		txt = chr(asc)
 		decrypt = decrypt+txt
 	return decrypt
-
 def doDecrypt(p):
 	decrypt = ""
 	for index in range(len(p)):

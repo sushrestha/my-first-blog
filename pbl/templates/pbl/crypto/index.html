@@ -13,6 +13,7 @@
     <title>GoliathWorldWide</title>
 
     <!-- Bootstrap Core CSS -->
+     <link href="{% static 'crypto/css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'crypto/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -69,27 +70,29 @@ $(document).ready(function(){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">GoliathWW</a>
+                <a class="navbar-brand" href="{% url 'crypto' %}">GoliathWW</a>
+                <a class="navbar-brand" href="{% url 'index' %}">HOME</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <form class="navbar-form navbar-right" name="login" method="POST">
                 {% csrf_token %}
-               <div class="form-group">
-              <a class="navbar-brand" href="#">Log in here &#61;&#61;&#62;</a>
-            </div>
-            <div class="form-group">
-              <input placeholder="Email" class="form-control" type="email" id="inputEmail">
-            </div>
-            <div class="form-group">
-              <input placeholder="Password" class="form-control" type="password" id="inputPassword" name="inputPassword">
-            </div>
-            <button onclick="checkinput(document.login.inputPassword.value);document.login.inputPassword.value='';return false;" type="submit" class="btn btn-success">Sign in</button>
+                <div class="form-group">
+                  <a class="navbar-brand" href="#">Log in here &#61;&#61;&#62;</a>            
+                </div>
+                <div class="form-group">
+                  <input placeholder="Email" class="form-control" type="email" id="inputEmail">
+                </div>
+                <div class="form-group">
+                  <input placeholder="Password" class="form-control" type="password" id="inputPassword" name="inputPassword">
+                </div>
+                <button onclick="checkinput(document.login.inputPassword.value);document.login.inputPassword.value='';return false;" type="submit" class="btn btn-success">Sign in</button>
             <!--  this code must be changed once the code is done in server side since all comparision must be done on server side-->
           </form>
             <!-- /.navbar-collapse --> <!-- for now password has been encrypted: ADGJMPSV -->
         </div>
         <!-- /.container -->
     </nav>
+
 
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
@@ -99,6 +102,7 @@ $(document).ready(function(){
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
+
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
@@ -133,7 +137,17 @@ $(document).ready(function(){
 
     <!-- Page Content -->
     <div class="container">
-
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-danger" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
@@ -147,25 +161,20 @@ $(document).ready(function(){
                         <h4><i class="fa fa-fw fa-check" data-toggle="tooltip" data-placement="top" title="DO hit and trial with this method!"></i> Encryption Method Used:</h4>
                     </div>
                     <div class="panel-body">
-                    <form class="navbar-form navbar-right" name="encrypt" method="POST">
-                        {% csrf_token %}
-                             <div class="form-group">            
+                    <form class="form-group" name="encrypt" method="POST">
+                    {% csrf_token %}
+                                        
                                 <div class="row">  
                                     <label class = "col-sm-3">Enter the text:</label>
-                                    <input class = "col-sm-3" type="text" id="plainText" autofocus="autofocus" name="plaintext">
-                                    <button type="submit" class="btn btn-success col-sm-3" onclick="doEncrypt(document.encrypt.plainText.value);document.encrypt.plainText.value='';return false;">Encrypt</button>
+                                    <input class = "col-sm-3" type="text" id="plainText" autofocus="autofocus" name="plainText">
+                                    <button onclick="doEncrypt(document.encrypt.plainText.value); return false;" type="submit" class="btn btn-success col-sm-3" >Encrypt</button>
                                 </div>
                                 <div class="row">
                                     <label class = "col-sm-3">Encrypted text:</label>
-                                    <label class = "col-sm-3" id="encryptedtext">
-                                    {% if messages %}
-                                        {% for message in messages %}
-                                        {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}
-                                        {% endfor %}
-                                    {% endif %}
+                                    <label class = "col-sm-3" id="encryptedtext">{{ encryptedtext }}
                                     </label>
                                 </div>
-                            </div>
+                           
                         </form>
                     </div>
                 </div>

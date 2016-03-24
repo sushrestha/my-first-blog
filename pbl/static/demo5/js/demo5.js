@@ -45,6 +45,4 @@ function checkinput(pass){
 		else{
 			document.login.submit();
 		}
- 
-
 }
