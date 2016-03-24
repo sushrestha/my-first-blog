@@ -57,7 +57,7 @@ def score_details(request, student_id):
     if not request.user.is_authenticated():
     	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
     	return HttpResponse(html)
-    if request.user.id != int(student_id):
+    if request.user.id != int(student_id) and not(request.user.is_superuser):
     	html = "<html><body>Invalid access <span> <a href="'../../'">Go Back</a></span></body></html>"
     	return HttpResponse(html)
     try:
