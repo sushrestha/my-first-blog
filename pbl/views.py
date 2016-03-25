@@ -255,17 +255,18 @@ def xss_1(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
-	# if request.method != "GET":
-	# 	return render(request,'pbl/xss/1/index.html',{})
-	# input = request.GET.get("search")
+	if request.method != "GET":
+		return render(request,'pbl/xss/1/index.html',{})
+	inputSearch = request.GET.get("search")
 	# html = "<html><body><h1> Searched for:"+" <span> <a href="'../'">Go Home page</a></span></body></html>"
 	# context = {
 	# 	'searched' : input,
 	# }
 	# messages.info(request,input)
-	# return render(request,'pbl/xss/1/index.html',context,{})
-	input = request.GET.get('search')
-	return HttpResponse('<h1>Hello, %s!</h1>' % input)
+	return render(request,'pbl/xss/1/index.html',{'inputSearch':inputSearch})
+	# input = request.GET.get('search')
+	# return HttpResponse('<h1>Hello, %s!</h1>' % input)
+	# return render(request,'pbl/xss/1/index.html',{})
 
 def compute_score(request,c_id, l_id):
 	if request.user:			
@@ -287,6 +288,8 @@ def rand_form(request):
 		return HttpResponse(html)
 	if request.method != "POST":
 		rnd = str(random.randint(1,3))
+		# response.set_cookie('rnd_nm',rnd)
+		# request.session['rnd_nm'] = rnd
 		#rnd_template = "template_0"+rnd+".html"
 		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
 		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd})
