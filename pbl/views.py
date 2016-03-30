@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404 ,redirect ,HttpResponse
 from .models import *
+from django.contrib.auth.models import User
 from django.views import generic
 # for login required decorator
 from django.contrib.auth.decorators import login_required
@@ -57,6 +58,7 @@ def score_list(request):
         
 
 def score_details(request, student_id):
+
     if not request.user.is_authenticated():
     	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
     	return HttpResponse(html)
@@ -67,7 +69,9 @@ def score_details(request, student_id):
         competition = Competition.objects.filter(student=student_id).order_by("-id")
     except Competition.DoesNotExist:
         pass
-    return render(request,'pbl/score_details.html',{'competition':competition, 'student_id':student_id})
+    students = User.objects.get(id=student_id)
+    student_name = students.username
+    return render(request,'pbl/score_details.html',{'competition':competition, 'student_name':student_name})
 
 
 
