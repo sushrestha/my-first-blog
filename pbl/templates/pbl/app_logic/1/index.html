@@ -82,10 +82,14 @@
                     {% csrf_token %} 
             <div class="form-group">            
                 <div class="row">  
-                <label class = "col-sm-4">From:</label><input class = "col-sm-4" type="text" placeholder="from">              
+                <label class = "col-sm-4">From:</label><label id="amountA" class = "col-sm-4" >$50,000</label> 
                 </div>
-                <div class="row">  
-                <label class = "col-sm-4">To:</label><input class = "col-sm-4" type="text" placeholder="To">              
+                  <div class="row">  
+                <label class = "control-label col-sm-4">To:</label>
+                <select class="col-sm-4" id="to">
+                <option selected="selected" value="">Select Recipient</option> 
+                <option  value="500000">Account B</option> 
+                </select>      
                 </div>
                 <div class="row">  
                 <label class = "col-sm-4">Amount:  $</label><input class = "col-sm-4" type="text" placeholder="9999" id="inputAmount" maxlength="4" autofocus="autofocus" name="inputAmount">             
