@@ -1,0 +1,30 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    <div class="row">
+    <p>
+        This is one of the vulnerablity raised for Insecure direct object reference. Here, it is assumed that if the certain items are only listed for the user, user is restricted to access only those items. But it is not true. User can modify either the value name or id which reflects to the item in the database. Thus, by hit and trial, user can evenutally access the item that are not supposed to access.
+        Prevention: Apply Access based control.
+ 
+    </p>
+    </div>
+     <div class="row">
+        <div class="col-sm-6"> </div>
+         <div class="col-sm-6 col-sm-offset-5">  <a href="{% url 'index' %}" >HOME</a>||<a href="{% url 'ido1' %}" >NEXT</a></div>
+        <div class="col-sm-6"> </div>
+     </div>
+
+
+{% endblock %}

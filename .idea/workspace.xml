@@ -4,7 +4,7 @@
     <list default="true" id="226ca51e-919f-4c0d-9781-41ebd3462fc7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbl/templates/pbl/index.html" afterPath="$PROJECT_DIR$/pbl/templates/pbl/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbl/templates/pbl/xss/1/index.html" afterPath="$PROJECT_DIR$/pbl/templates/pbl/xss/1/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbl/urls.py" afterPath="$PROJECT_DIR$/pbl/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pbl/views.py" afterPath="$PROJECT_DIR$/pbl/views.py" />
     </list>
     <ignored path="my-first-blog.iws" />
@@ -30,7 +30,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pbl/templates/pbl/crypto/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="31.875">
+            <state vertical-scroll-proportion="0.0">
               <caret line="205" column="18" selection-start-line="205" selection-start-column="18" selection-end-line="205" selection-end-column="18" />
               <folding />
             </state>
@@ -40,7 +40,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pbl/templates/pbl/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84951454">
+            <state vertical-scroll-proportion="0.88349515">
               <caret line="188" column="52" selection-start-line="188" selection-start-column="52" selection-end-line="188" selection-end-column="52" />
               <folding />
             </state>
@@ -61,12 +61,11 @@
         <entry file="file://$PROJECT_DIR$/pbl/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="269" column="0" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
+              <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
               <folding>
                 <element signature="e#0#78#0" expanded="true" />
                 <element signature="e#8067#9492#0" expanded="false" />
                 <element signature="e#9516#9936#0" expanded="false" />
-                <element signature="e#11836#12114#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -123,6 +122,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -198,7 +198,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -260,6 +259,14 @@
     <entry file="file://$PROJECT_DIR$/pbl/templates/pbl/crypto/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pbl/templates/pbl/crypto/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
           <folding />
         </state>
@@ -281,7 +288,6 @@
             <element signature="e#0#78#0" expanded="true" />
             <element signature="e#8067#9492#0" expanded="false" />
             <element signature="e#9516#9936#0" expanded="false" />
-            <element signature="e#11836#12114#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -310,7 +316,6 @@
             <element signature="e#0#78#0" expanded="true" />
             <element signature="e#8067#9492#0" expanded="false" />
             <element signature="e#9516#9936#0" expanded="false" />
-            <element signature="e#11836#12114#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -339,7 +344,6 @@
             <element signature="e#0#78#0" expanded="true" />
             <element signature="e#8067#9492#0" expanded="false" />
             <element signature="e#9516#9936#0" expanded="false" />
-            <element signature="e#11836#12114#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -368,7 +372,6 @@
             <element signature="e#0#78#0" expanded="true" />
             <element signature="e#8067#9492#0" expanded="false" />
             <element signature="e#9516#9936#0" expanded="false" />
-            <element signature="e#11836#12114#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -389,6 +392,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pbl/templates/pbl/crypto/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="205" column="18" selection-start-line="205" selection-start-column="18" selection-end-line="205" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pbl/templates/pbl/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88349515">
+          <caret line="188" column="52" selection-start-line="188" selection-start-column="52" selection-end-line="188" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pbl/static/crypto/js/misc.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -400,29 +419,12 @@
     <entry file="file://$PROJECT_DIR$/pbl/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="269" column="0" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
+          <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
           <folding>
             <element signature="e#0#78#0" expanded="true" />
             <element signature="e#8067#9492#0" expanded="false" />
             <element signature="e#9516#9936#0" expanded="false" />
-            <element signature="e#11836#12114#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pbl/templates/pbl/crypto/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="31.875">
-          <caret line="205" column="18" selection-start-line="205" selection-start-column="18" selection-end-line="205" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pbl/templates/pbl/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84951454">
-          <caret line="188" column="52" selection-start-line="188" selection-start-column="52" selection-end-line="188" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>

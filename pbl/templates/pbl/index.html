@@ -5,9 +5,19 @@
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
-          <div class="jumbotron">
-            <h1>Testing Website Security</h1>
-            <p>These are mock websites that simulate actual websites with actual vulnerabilities. The Levels go from very basic procedures on how to search for Web vulnerabilities, and build on each other to create very complex security problems even current day websites.</p>
+          <div class="jumbotron col-xs-16">
+            
+            
+            <h2><b>Web Application Security Exercise and Testing Platform</b></h2>
+            <div class="item" style="text-align: justify;">
+            
+              It is a platform which provides the challenges that simulate the actual websites with the vulnerability thus creating real scenarios. Each challenge has a vulnerability which is considered as an objective that user needs to find out.
+              <br/><a href="#" class="read_more">Read More</a><br/>
+  <!--             <span class="more_text">
+               The Level goes from very basic steps to high complexity levels depending upon how the vulnerabilities are detectable in real case. The score is also provided on the complexity level of the problem. Hence, the evaluation of user can be done based on the scoreboard. The basic information and tips are also provided along with the challenges so that user can reconnaissance the problem. In the end, user is provided with possible patches or solutions to mitigate the discovered vulnerabilities or issues. 
+             </span> -->
+            </div>
+           
           </div>
           <div class="row">
               
@@ -185,12 +195,16 @@
             </div>
             <div class="list-group">
               <a type="button"class="list-group-item active collapse">Indirect Object References Challanges</a>
-              <span title="Try to Tranfer the amount greater than given threshold amount:">
-              <a href="{% url 'index' %}" class="list-group-item">Level 0</a></span>
+              <span title="Try to access the another object that is not allowed">
+              <a href="{% url 'ido0' %}" class="list-group-item">Level 0</a></span>
               <span title="Try to Transfer the amount to your account:">
-              <a href="{% url 'index' %}" class="list-group-item">Level 1</a></span>
+              <a href="{% url 'ido1' %}" class="list-group-item">Level 1</a></span>
             </div>
-
+             <div class = "panel panel-primary">
+               <div class = "panel-heading">
+                  <a href ="{% url 'challenge_details' %}"><h3 class = "panel-title" style="text-align:center; color:white;">See more challanges</h3></a>
+               </div>  
+             </div>
         </div><!--/.sidebar-offcanvas-->
       </div><!--/Pagerow-->
  

@@ -41,6 +41,9 @@ def index(request):
 #        request.session['location'] = "Earth"
     return render(request,'pbl/index.html',{})
 
+def challenge_details(request):
+    return render(request,'pbl/challenge_details.html',{})
+
 # @login_required(login_url='/accounts/login')
 def score_list(request):
     if not request.user.is_authenticated():
@@ -293,6 +296,18 @@ def rand_form(request):
 		#rnd_template = "template_0"+rnd+".html"
 		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
 		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd})
+# for original version
+def rand_form0(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		rnd = str(random.randint(1,3))
+		# response.set_cookie('rnd_nm',rnd)
+		# request.session['rnd_nm'] = rnd
+		#rnd_template = "template_0"+rnd+".html"
+		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
+		return render(request,'pbl/rand_form0/index.html',{'rand_num': rnd})
 
 # For form having vulnerablities
 def vuln_form(request):
@@ -302,6 +317,62 @@ def vuln_form(request):
 	if request.method != "POST":
 		return render(request,'pbl/vuln_form/index.html',{})
 
+# for indirect object references...
+def ido0(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		return render(request,'pbl/ido/0/index.html',{})	
+	if request.POST.get("itemList") is not None:
+		inputItem = escape((strip_tags(request.POST.get("itemList"))))
+		if inputItem:
+			return render(request,'pbl/ido/0/index.html',{'inputItem':inputItem})	
+		else:
+			messages.error(request,"Please select an item!!!")
+			return render(request,'pbl/ido/0/index.html',{})
+	selItem = escape((strip_tags(request.POST.get("itemChoosen"))))
+	if not(selItem):
+		messages.error(request,"Please select an item!!!")
+	if selItem and selItem != 'banana':
+		messages.error(request,"Congratulations, You have Successfully added the item but can you add item that is in stock but not in the list? ")
+	if selItem == 'banana':
+		challenge_id = 4 
+		level_id = 1
+		completed = is_already_completed_level(request.user,challenge_id,level_id)
+		if not completed:
+			compute_score(request,challenge_id,level_id)
+			messages.success(request,"Congratulations, You have completed Insecure Direct object Reference challenge - Level 0")
+		else: messages.success(request,"Congratulations beating up again- Insecure Direct object Reference challenge - Level 0. But you will not get the score")
+		return render(request,'pbl/ido/0/answers.html',{})		
+	return render(request,'pbl/ido/0/index.html',{})
+	# return HttpResponse("<html><body>smth wrong. %s </body></html> "% selItem)
+
+# for indirect object references...
+def ido1(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		return render(request,'pbl/ido/1/index.html',{})	
+def ido1_userEdit1(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		return render(request,'pbl/ido/1/edit_1.html',{})	
+def ido1_userEdit2(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		return render(request,'pbl/ido/1/edit_2.html',{})
+def ido1_userEdit3(request):
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	if request.method != "POST":
+		return render(request,'pbl/ido/1/edit_3.html',{})
 
 def crypto(request):
 	if not request.user.is_authenticated():
@@ -357,4 +428,5 @@ def doTransfer(ia):
 	amountOfA = amountOfA - ia
 	amountOfB = amountOfB + ia
 	return 1,"Successfully Money Transferred from Account A to Account B. New Balance: A: "+str(amountOfA)+" and B: "+str(amountOfB)
+
 

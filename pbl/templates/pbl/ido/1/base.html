@@ -1,0 +1,119 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en"><head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="JoinInLogInPage">
+    <meta name="author" content="CfIA">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>JoinIt SignIn</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'ido/1/demo1_files/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'ido/1/demo1_files/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'ido/1/demo1_files/jumbotron.css' %}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{% static 'ido/1/demo1_files/ie-emulation-modes-warning.js' %}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <script src="{% static 'ido/1/js/demo1.js' %}" type="text/javascript"></script>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'ido1' %}">JoinIt</a>
+        
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+     
+             <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="#">JOInIt</a></li><!-- for the score information that will be added later when that page is created -->
+            <li><a href="#">About Us</a></li><!-- for the about us information that will be added later when that page is created -->
+            <li><a href="#">Contact</a></li><!-- for the contact information that will be added later when that page is created -->
+          </ul>
+          <div class="navbar-form pull-right"> <a href="/pbl/">
+          <a href="#">Welcome John Doe | <a href="#">Log out </a> 
+          </div> 
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome Back to JoinIt</h1>
+        <p>We love to see our media grow together by sharing their lives with other people. Please join and find your family, current friends, and make some new friends.</p>
+      </div>
+    </div>
+
+
+
+    <div class="container">
+      <!-- Example row of columns -->
+
+      <div class="row" style="color:black;">
+            {% block content %}
+      <!-- content block goes here -->
+        {% endblock %}
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <h2 style="color:black;">See and share photos</h2>
+          <p style="color:black;">Do you have those new photos from a vaction you took? Maybe a celebration with friends? Or some other special occassion? Post them and share them with friends, have them comment, and also look at other's photos. </p>
+        </div>
+        <div class="col-md-4">
+          <h2 style="color:black;">Share what's new in your life</h2>
+          <p style="color:black;">You can post your thoughts, feelings, or news that you thought was interesting. You don't have to share with everybody either, you can start a discussion with a circle of people. </p>
+       </div>
+        <div class="col-md-4">
+          <h2 style="color:black;">Join the largest community</h2>
+          <p style="color:black;">With millions of users, we have one of the largest communities on the internet, and still growing. </p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p style="color:black;">&copy; 2016, Center for Information Assurance (CfIA), University of Memphis.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'ido/1/demo1_files/jquery.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'ido/1/demo1_files/bootstrap.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'ido/1/demo1_files/ie10-viewport-bug-workaround.js' %}"></script>
+  
+
+</body></html>

@@ -1,0 +1,31 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    <p>
+       Here the application cares about comparing the threshold value i.e 9999 but forget to validate the lower boundary. In other words, it does not check for negative value (less than 0). Thus, any user can insert the negative amount and controls the application to behave abnormally such transferring amount to his own account from others.
+       Below is the code written for transfer:
+        <pre class="prettyprint">
+            function transferMoney(input){
+                var amountA = 50000;
+                var amountB = 50000;
+                amountA = amountA - input;
+                amountB = amountB + input;
+                return amountA,amountB;
+            }
+      </pre>
+      
+    </p>
+
+{% endblock %}

@@ -30,21 +30,22 @@
 
   <body>
     
-    <nav class"navbar navbar-inverse navbar-fixed-top" style="background-color:#222;">
+        <nav class"navbar navbar-inverse navbar-fixed-top" style="background-color:#ffff00;">
       <div class="container">
-      	<div class="navbar-header">
-      	  <button type="button" class="navbar-toggle" data-toggle="collpase" data-target="#bs-example-navbar-collapse-1"> 
-      	    <span class="sr-only">Toggle navigation</span>
-      	    <span class="icon-bar"></span>
-      	    <span class="icon-bar"></span>
-      	    <span class="icon-bar"></span>
-      	  </button>
-      	  <a class="navbar-brand" href="{% url 'demo3' %} ">Amazonian</a>
-          <a class="navbar-brand" href="#"  style="margin-left:20px; text-align: right;">*Submit the form having shipping information different than billing information even with a checked check-box.</a>
-      	</div>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collpase" data-target="#bs-example-navbar-collapse-1"> 
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'demo3' %} " style="color:#000;">Natural Foods:<small> Feeding us for a brighter tommorrow.</small></a>
+          <a class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;">*Try to give malformed info in certain boxes.</a>
+        </div>
       </div>
     </nav>
-  <body>
+    <h1 style="text-align:center;">Thanks for joining! Now we just need some Information.</h1>
+    </body>
 
     <div class="container">
         This is main page. The random number is {{ rand_num }}.

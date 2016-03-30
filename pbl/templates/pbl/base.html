@@ -21,7 +21,7 @@
     <meta name="author" content="">
     <link rel="icon" href="image/favicon.ico">
 
-    <title>Web Application Security Learning Tools</title>
+    <title>Web Application Security Exercise and Testing Platform</title>
 
     <!-- Bootstrap core CSS 
     <link href="css/bootstrap.min.css" rel="stylesheet">-->
@@ -54,7 +54,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Web Security</a>
+          <a class="navbar-brand" href="{% url 'index' %}">WASETP</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -103,11 +103,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
     <script>window.jQuery || document.write('<script src="{% static 'js/jquery.min.js' %}"><\/script>')</script>
+   
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'js/ie10-viewport-bug-workaround.js' %} "></script>
     <script src="{% static 'js/offcanvas.js' %}"></script>
+    <!--  <script language="JavaScript" type="text/javascript" src="{% static 'js/read_more.js' %}"> </script> -->
+
   </body>
 </html>
