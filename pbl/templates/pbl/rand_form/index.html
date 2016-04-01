@@ -22,7 +22,8 @@ var s="=tdsjqu!tsd>#kt0botxfst/kt#?=0tdsjqu?=tdsjqu!tsd>#kt0dmjfouDifdl/kt#?=0t
 m=""; for (i=0; i<s.length; i++) {  if(s.charCodeAt(i) == 28){    m+= '&';} else if (s.charCodeAt(i) == 23) {   m+= '!';} else {    m+=String.fromCharCode(s.charCodeAt(i)-1);  }}document.write(m);//-->
 </script>
 
-    <script src="{% static 'rand_form/js/answers_0'|add:rand_num|add:'.js' %}"></script>
+    <!--<script src="{% static 'rand_form/js/answers_0'|add:rand_num|add:'.js' %}"></script>-->
+    <script src="{% static 'rand_form/js/answer.js' %}"></script>
     <script src="{% static 'rand_form/js/clientCheck.js' %}"></script>
     <script src="{% static 'rand_form/js/validate_0'|add:rand_num|add:'.js' %}"></script>
     <style>
@@ -79,8 +80,8 @@ html{
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="{% url 'index' %}" style="color:#000;">Natural Foods:<small> Feeding us for a brighter tommorrow.</small></a>
-          <a class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;">*Try to give malformed info in certain boxes. </a>
-          <a type="hidden" value="{{ rand_num }}:: {{ ansr }}"></a>
+          <a class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;">*Try to give malformed info in certain boxes. </a> <a  class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;" href="{% url 'index' %}">HOME</a>
+<!--           <a type="hidden" value="{{ rand_num }}:: {{ ansr }}"></a> -->
         </div>
       </div>
     </nav>

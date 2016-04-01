@@ -303,7 +303,7 @@ def rand_form(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
-	rnd = str(random.randint(0,0))
+	rnd = str(random.randint(0,4))
 	ansr = load_file(rnd)
 	if request.method != "POST":
 		# rnd = str(random.randint(0,0))
@@ -325,41 +325,85 @@ def rand_form(request):
 		# items = []
 		for i in range(10):
 			field = 'field'+str(i)
-			# items = strip_tags(request.POST.getlist(field))
-			# items = items.sort()
-			# answer_submited[i] = items
 			answer_submited[i] = strip_tags(request.POST.getlist(field))
-		if answer_submited == ansr:
-			messages.success = (request,'Congratulations')
-		else:
-			messages.error = (request,'Error')
+		total_score = int(calculate_score(ansr,answer_submited))
+		messages.success(request,'Congratulations, your score is '+str(total_score)+". You can try again to score more. Only your highest score will be counted.")
+		challenge_id = 2
+		level_id = 3
+		insert_score(request,challenge_id,level_id,total_score)
 		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
+	return render(request,'pbl/rand_form/index.html',{'rand_num': rnd})
 
-	return HttpResponse("<html><body>some thing wrong  </body></html> ")
-		# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'item0':item0})
-	# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr})
-	# if request.method 
+# for inserting score in db for rand_form
+def insert_score(request,c_id,l_id,new_score):
+	# check if competition i.e data is already exist?
+	try:
+		comp = Competition.objects.filter(student=request.user,challenge=c_id, level=l_id)
+		# if already existed
+		if comp:
+			old_scores = Competition.objects.values_list('score',flat=True).filter(student=request.user,challenge=c_id, level=l_id)
+			old_score = old_scores[0]
+			comp1 = Competition.objects.get(student=request.user,challenge=c_id, level=l_id)
+			if new_score > old_score:
+				comp1.score = new_score
+				comp1.save()
+				diff = new_score - old_score
+				score = Score.objects.get(student=request.user)
+				score.score = score.score + diff
+				score.save()
+		# if not existed add new one
+		else:
+			challenge = Challenge.objects.get(id=c_id) # need to make id dynamic
+			level = Level.objects.get(id=l_id)
+			competition = Competition(student=request.user,challenge=challenge, level=level, score=new_score)
+			competition.save()
+			score = Score.objects.get(student=request.user)
+			score.score = score.score + new_score
+			score.save()				
+	except Competition.DoesNotExist:
+		pass	
+
+# for calculating score for rand_from puzzle
+def calculate_score(ans,sub):
+	score = 0
+	if sub == ans:
+		score = score + 100
+	else:		
+		for key in ans.keys():
+		    temp1 = ans[key]
+		    divider = 10/len(temp1)
+		    temp2 = sub[key]
+		    visited = []
+		    for index in range(len(temp2)):
+		        if temp2[index] in temp1 and temp2[index] not in visited:
+		        	visited.append(temp2[index])
+		        	score = score + divider
+		    if len(temp2)>len(temp1):
+		    	extra = len(temp2)-len(temp1)
+		    	score = score - (extra*round(10.00/len(temp2),2))
+		        	# print key,temp2[index],temp1
+	return score
 
 # for original version
-def rand_form0(request):
-	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
-	if request.method != "POST":
-		rnd = str(random.randint(1,4))
-		# response.set_cookie('rnd_nm',rnd)
-		# request.session['rnd_nm'] = rnd
-		#rnd_template = "template_0"+rnd+".html"
-		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
-		return render(request,'pbl/rand_form0/index.html',{'rand_num': rnd})
+# def rand_form0(request):
+# 	if not request.user.is_authenticated():
+# 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+# 		return HttpResponse(html)
+# 	if request.method != "POST":
+# 		rnd = str(random.randint(1,4))
+# 		# response.set_cookie('rnd_nm',rnd)
+# 		# request.session['rnd_nm'] = rnd
+# 		#rnd_template = "template_0"+rnd+".html"
+# 		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
+# 		return render(request,'pbl/rand_form0/index.html',{'rand_num': rnd})
 
-# For form having vulnerablities
-def vuln_form(request):
-	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
-	if request.method != "POST":
-		return render(request,'pbl/vuln_form/index.html',{})
+# # For form having vulnerablities
+# def vuln_form(request):
+# 	if not request.user.is_authenticated():
+# 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+# 		return HttpResponse(html)
+# 	if request.method != "POST":
+# 		return render(request,'pbl/vuln_form/index.html',{})
 
 # for indirect object references...
 def ido0(request):

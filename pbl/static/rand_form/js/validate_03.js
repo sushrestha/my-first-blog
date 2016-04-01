@@ -65,9 +65,9 @@ function phnNum()
 	}
 	if(!number.match(reg))
 	{
-		return "Phone Number: Your phone number doesn't match our format\n"
+		return "Phone Number: Your phone number doesn't match our format\n";
 	}
-
+	return "";
 }
 
 function bDay()

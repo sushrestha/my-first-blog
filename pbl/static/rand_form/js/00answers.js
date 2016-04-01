@@ -5,35 +5,37 @@ function answers()
 {
 	// Checks to see if the student has submitted the form on the other side at least once, otherwise its false
 	if(studentSubmittedOnce){
-		var field0 = getElements("field0");
-		var field1 = getElements("field1");
-		var field2 = getElements("field2");
-		var field3 = getElements("field3");
-		var field4 = getElements("field4");
-		var field5 = getElements("field5");
-		var field6 = getElements("field6");
-		var field7 = getElements("field7");
-		var field8 = getElements("field8");
-		var field9 = getElements("field9");
+		// var field0 = getElements("field0");
+		// var field1 = getElements("field1");
+		// var field2 = getElements("field2");
+		// var field3 = getElements("field3");
+		// var field4 = getElements("field4");
+		// var field5 = getElements("field5");
+		// var field6 = getElements("field6");
+		// var field7 = getElements("field7");
+		// var field8 = getElements("field8");
+		// var field9 = getElements("field9");
 
-		// Initializes the grade and starts it at 0
-		var grade = 0;
-		// Then runs all the checks on all of the fields
-		grade  += check(field0);
-		grade  += check(field1);
-		grade  += check(field2);
-		grade  += check(field3);
-		grade  += check(field4);
-		grade  += check(field5);
-	 	grade  += check(field6);
-		grade  += check(field7);
-		grade  += check(field8);
-		grade  += check(field9);
-		// Multiplies the grade by 10 to be out of 100
-		grade *= 10;
-		// Tells user the score
-		alert("This is your Score\n" + grade.toPrecision(3) + " : 100");
-		return true;
+		// // Initializes the grade and starts it at 0
+		// var grade = 0;
+		// // Then runs all the checks on all of the fields
+		// grade  += check(field0);
+		// grade  += check(field1);
+		// grade  += check(field2);
+		// grade  += check(field3);
+		// grade  += check(field4);
+		// grade  += check(field5);
+	 // 	grade  += check(field6);
+		// grade  += check(field7);
+		// grade  += check(field8);
+		// grade  += check(field9);
+		// // Multiplies the grade by 10 to be out of 100
+		// grade *= 10;
+		// // Tells user the score
+		// alert("This is your Score\n" + grade.toPrecision(3) + " : 100");
+
+		document.score.submit();
+		return false;
 	}
 	// If the user has not submitted the form at least once 
 	else 
