@@ -1,2 +1,208 @@
-
-  This is random page 03
+       <a type="hidden" value="random page 03"></a>
+   <div class="form-group">
+	          <form id="Submission" onsubmit="studentSub(); return validation();">
+		          <div class="col-sm-12 bordered" style="background-color:#f7f7f7; box-shadow: inset 0 0 0 4px red;">
+		            <div style="text-align:center;" class="row"><h2>Form Completion Exercise</h2></div>
+		      	    <div class="row padded">
+		              <label class="col-sm-2" for "usrAlias">Username: </label>
+		              <input type="text" class="col-sm-3" id="usrAlias" placeholder="jdoe123">
+		      	    </div>
+		      	    <div class="row padded">
+		      	      <label class="control-label col-sm-2" for "usrEmail">Email: </label>
+		      	      <input type="email" maxlength="20" class="col-sm-3" id="usrEmail" placeholder="jdoe@example.com">
+		      	      <label class="control-label col-sm-3" for "usrEmailCon">Confirm Email: </label>
+		      	      <input type="email" maxlength="20" class="col-sm-3" id="usrEmailCon" placeholder="jdoe@example.com" onkeyup="validateEmail()">
+		      	      <p id="testing"></p>
+		      	    </div>
+		      	    <div class="row padded">
+		      	      <label class="control-label col-sm-2">Password:</label>
+		      		  <input type="password" maxlength="14"class="col-sm-3" id="usrPass" placeholder="*********">
+		      		  <label class="control-label col-sm-3"> Confirm Password:</label>
+		      		  <input type="password" class="col-sm-3" id="usrPassCon" placeholder="*********"onkeyup="validatePass()">
+		      	    </div>
+		      	    <div class="row padded">
+		      	      <label class="control-label col-sm-2">Full Name: </label>
+		      		  <input type="text" class="col-sm-3" maxlength="20"id="usrFName" placeholder="John">
+		      		  <input type="text" class="col-sm-3" maxlength="20"id="usrLName" placeholder="Doe">
+		      		  <input type="text" class="col-sm-2" maxlength="1"id="usrInitial" placeholder="J">
+		      	    </div>
+		      	    <div class="row padded">
+		      	      <label class="col-sm-2">Phone number: </label>
+		      		  <input type="tel" class="col-sm-3" id="usrPNumber" placeholder="(xxx) xxx-xxxx">
+		      		  <label class="col-sm-2">Birth Date: </label>
+		      		  <input type="text" maxlength="10"  class="col-sm-3" id="usrBDay" placeholder="mm/dd/yyyy">
+		      	    </div>
+		      	    <div class="row">
+			      	    <div class="col-sm-3"></div>
+			            <button class="btn btn-success col-sm-2 pad" type="submit">Create Account</button>
+			            <span class="col-sm-2"></span>
+			            <button class="btn btn-info col-sm-2 pad" type="reset">Clear fields</button>
+			            <div class="col-sm-3"></div>
+			        </div>
+		            <div class="row padded"></div>
+		          </div>
+          	  </form>
+          <div class="row padded"></div>
+          <!-- Careful about messing too much in here it could ruin your grade if you alter anything....so
+          DO NOT TOUCH BELOW HERE!-->
+          <div class="col-sm-4"></div>
+          <button class="btn btn-info col-sm-3" data-toggle="collapse" data-target="#collapseEx" aria-expanded="false" aria-controls="collapseEx">Collapse/UnCollapse Submission Sheet</button>
+          <div class="collapse col-sm-12" id="collapseEx">
+            <form id="GradeMe" onsubmit="return answers();">
+              <div class="col-sm-12 bordered" style="background-color:#f7f7f7;"> 
+                <div class="row padded" style="background-color:#f7f7f7;;"><h2 style="text-align:center">Now that you've seen the form what vulnerabilities does it have?</h2></div>
+                <div class="row padded">
+                  <div class="col-sm-2">
+                    <label>Username:</label>
+                  </div>
+                  <div>
+		                 <select id="field0" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field0')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div> 
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>Email:</label>
+		              </div>
+		              <div>
+		                 <select id="field1" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field1')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div> 
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>Confirm Email:</label>
+		              </div>
+		              <div>
+		                 <select id="field2" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field2')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div>
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>Password:</label>
+		              </div>
+		              <div>
+		                 <select id="field3" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field3')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div> 
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>Confirm Password:</label>
+		              </div>
+		              <div>
+		                 <select id="field4" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field4')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div> 
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>FirstName:</label>
+		              </div>
+		              <div>
+		                 <select id="field5" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field5')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div> 
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>LastName:</label>
+		              </div>
+		              <div>
+		                 <select id="field6" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field6')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div> 
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>MidInitial:</label>
+		              </div>
+		              <div>
+		                 <select id="field7" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field7')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div> 
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>Phone #:</label>
+		              </div>
+		              <div>
+		                 <select id="field8" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field8')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div> 
+		            <div class="row padded">
+		              <div class="col-sm-2">
+		                <label>BirthDate:</label>
+		              </div>
+		              <div>
+		                 <select id="field9" class="col-sm-6" style="text-align:center;">
+		                  <option selected="">None</option>
+		                  <option>It does not have a maximum length</option>
+		                  <option>It does not validate the information given</option>
+		                  <option>It does not check the formatting of the information</option>
+		                </select>
+		                <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field9')"><small style="font-size: xx-small;">Add a box</small></button>
+		                <span id="placeHolder"></span>
+		              </div>
+		            </div>
+		          <div class="col-sm-8"></div>
+		          <button class="btn btn-success col-sm-4" type="submit">Submit</button>
+		          </div>
+	          </form>
+          </div>

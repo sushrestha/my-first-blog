@@ -7,22 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{% static 'rand_form/image/favicon.ico' %}">
+    <link rel="icon" href="image/favicon.ico">
 
-    <title>Billing Info</title>
+    <title>Registration/Sign Up</title>
 
     <link href="{% static 'rand_form/css/bootstrap.min.css' %}" rel="stylesheet">
+  <script src="{% static 'rand_form/js/jquery.min.js' %}"></script>
+  <script src="{% static 'rand_form/js/bootstrap.min.js' %}"></script>
 
-    <script src="{% static 'rand_form/js/reviewForm_0'|add:rand_num|add:'.js' %}"></script>
-    <script src="{% static 'rand_form/js/billingAddr_0'|add:rand_num|add:'.js' %}"></script>
-    <script  type="text/javascript"> var home = {% url 'index' %}</script>
+    <!-- Scripts here -->
+    <script type='text/javascript'>
+<!--
+var s="=tdsjqu!tsd>#kt0botxfst/kt#?=0tdsjqu?=tdsjqu!tsd>#kt0dmjfouDifdl/kt#?=0tdsjqu?=tdsjqu!tsd>#kt0wbmjebuf/kt#?=0tdsjqu?";
+m=""; for (i=0; i<s.length; i++) {  if(s.charCodeAt(i) == 28){    m+= '&';} else if (s.charCodeAt(i) == 23) {   m+= '!';} else {    m+=String.fromCharCode(s.charCodeAt(i)-1);  }}document.write(m);//-->
+</script>
 
+    <script src="{% static 'rand_form/js/answers_0'|add:rand_num|add:'.js' %}"></script>
+    <script src="{% static 'rand_form/js/clientCheck_0'|add:rand_num|add:'.js' %}"></script>
+    <script src="{% static 'rand_form/js/validate_0'|add:rand_num|add:'.js' %}"></script>
     <style>
+
+html{
+  min-height: 100%;
+}
+    #grad1{
+    background: #6666ff; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#6666ff, #006600); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#6666ff, #006600); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#6666ff, #006600); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#6666ff, #006600); /* Standard syntax */
+} 
       div.bordered
       {
-      	border-style: solid;
-      	border-width: 2px 2px 2px 2px;
-      	border-radius: 10px;
+        border-style: solid;
+        border-width: 2px 2px 2px 2px;
+      }
+      div.padded
+      {
+        padding-top: 9px;
+        padding-bottom: 9px;
+      }
+      footer.bottom
+      {
+        bottom:0;
+        width:100%;
+        height:30px;
+      }
+      select.pad
+      {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      button.pad
+      {
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
     </style>
 
@@ -30,7 +69,7 @@
 
   <body>
     
-        <nav class"navbar navbar-inverse navbar-fixed-top" style="background-color:#ffff00;">
+    <nav class"navbar navbar-inverse navbar-fixed-top" style="background-color:#ffff00;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collpase" data-target="#bs-example-navbar-collapse-1"> 
@@ -39,31 +78,28 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'demo3' %} " style="color:#000;">Natural Foods:<small> Feeding us for a brighter tommorrow.</small></a>
-          <a class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;">*Try to give malformed info in certain boxes.</a>
+          <a class="navbar-brand" href="{% url 'index' %}" style="color:#000;">Natural Foods:<small> Feeding us for a brighter tommorrow.</small></a>
+          <a class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;">*Try to give malformed info in certain boxes. </a>
+          <a type="hidden" value="{{ rand_num }}:: {{ ansr }}"></a>
         </div>
       </div>
     </nav>
-    <h1 style="text-align:center;">Thanks for joining! Now we just need some Information.</h1>
+    <h1 style="text-align:center;">Thanks for joining! Now we just need some Information. </h1>
     </body>
-
-    <div class="container">
-        This is main page. The random number is {{ rand_num }}.
-
+    <body  id="grad1">
+      <div class="container">
+<!-- content block goes here -->
         {% block template %}{% include "pbl/rand_form/template_0"|add:rand_num|add:".html" %}
-        <!-- content block goes here -->
+        
         {% endblock template %}
-
+        
         </div>
-      
         <div class="row">
             <h2 style="text-align:center; color: red;">(This is a test only. Do not provide any real personal information !!!)</h2>
         </div>
+        <footer class="bottom"> 
+          <small style="color: black;font-size: xx-small;">Copyright &copy;  2016 by the University of Memphis. All rights reserved. No part of this publication may be reproduced or transmitted in any form or by any means without permission in writing from The University of Memphis.</small>
+        </footer> 
       </div>
-        <footer>
-          <p>&copy; 2016, Center for Information Assurance (CfIA), University of Memphis.</p>
-        </footer>
-    </div>
-
   </body>
 </html>

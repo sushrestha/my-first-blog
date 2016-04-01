@@ -1,12 +1,11 @@
-       <a type="hidden" value="random page 01"></a>
-       
-        <div class="form-group">
+       <a type="hidden" value="random page 04"></a>
+   <div class="form-group">
 	          <form id="Submission" onsubmit="studentSub(); return validation();">
 		          <div class="col-sm-12 bordered" style="background-color:#f7f7f7; box-shadow: inset 0 0 0 4px red;">
 		            <div style="text-align:center;" class="row"><h2>Form Completion Exercise</h2></div>
 		      	    <div class="row padded">
 		              <label class="col-sm-2" for "usrAlias">Username: </label>
-		              <input type="text" maxlength="20" class="col-sm-3" id="usrAlias" placeholder="jdoe123">
+		              <input type="text" class="col-sm-3" id="usrAlias" placeholder="jdoe123">
 		      	    </div>
 		      	    <div class="row padded">
 		      	      <label class="control-label col-sm-2" for "usrEmail">Email: </label>
@@ -17,19 +16,19 @@
 		      	    </div>
 		      	    <div class="row padded">
 		      	      <label class="control-label col-sm-2">Password:</label>
-		      		  <input type="password" class="col-sm-3" id="usrPass" placeholder="*********">
+		      		  <input type="password" maxlength="14"class="col-sm-3" id="usrPass" placeholder="*********">
 		      		  <label class="control-label col-sm-3"> Confirm Password:</label>
-		      		  <input type="password" maxlength="14"class="col-sm-3" id="usrPassCon" placeholder="*********"onkeyup="validatePass()">
+		      		  <input type="password" class="col-sm-3" id="usrPassCon" placeholder="*********"onkeyup="validatePass()">
 		      	    </div>
 		      	    <div class="row padded">
 		      	      <label class="control-label col-sm-2">Full Name: </label>
-		      		  <input type="text" class="col-sm-3" id="usrFName" placeholder="John">
+		      		  <input type="text" class="col-sm-3" maxlength="20"id="usrFName" placeholder="John">
 		      		  <input type="text" class="col-sm-3" maxlength="20"id="usrLName" placeholder="Doe">
-		      		  <input type="text" class="col-sm-2" id="usrInitial" placeholder="J">
+		      		  <input type="text" class="col-sm-2" maxlength="1"id="usrInitial" placeholder="J">
 		      	    </div>
 		      	    <div class="row padded">
 		      	      <label class="col-sm-2">Phone number: </label>
-		      		  <input type="tel" maxlength="14"class="col-sm-3" id="usrPNumber" placeholder="(xxx) xxx-xxxx">
+		      		  <input type="tel" class="col-sm-3" id="usrPNumber" placeholder="(xxx) xxx-xxxx">
 		      		  <label class="col-sm-2">Birth Date: </label>
 		      		  <input type="text" maxlength="10"  class="col-sm-3" id="usrBDay" placeholder="mm/dd/yyyy">
 		      	    </div>
@@ -206,4 +205,4 @@
 		          <button class="btn btn-success col-sm-4" type="submit">Submit</button>
 		          </div>
 	          </form>
-          </div>
+	      </div>

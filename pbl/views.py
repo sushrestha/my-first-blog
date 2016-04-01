@@ -9,7 +9,8 @@ from django.contrib import messages
 # 404 and 500 error
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-import random
+import random, os
+
 
 # Create your views here.
 context = {
@@ -44,6 +45,15 @@ def index(request):
 
 def challenge_details(request):
     return render(request,'pbl/challenge_details.html',{})
+
+def instructor_page(request):
+    if not request.user.is_authenticated():
+    	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+    	return HttpResponse(html)
+    if not request.user.is_superuser:
+    	html = "<html><body>Invalid Access <span> <a href="'../'">Go Home page</a></span></body></html>"
+    	return HttpResponse(html)
+    return render(request,'pbl/instructor_page.html',{})
 
 # @login_required(login_url='/accounts/login')
 def score_list(request):
@@ -293,20 +303,27 @@ def rand_form(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
+	rnd = str(random.randint(0,0))
+	ansr = load_file(rnd)
 	if request.method != "POST":
-		rnd = str(random.randint(1,3))
-		# response.set_cookie('rnd_nm',rnd)
-		# request.session['rnd_nm'] = rnd
-		#rnd_template = "template_0"+rnd+".html"
-		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
-		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd})
+		# rnd = str(random.randint(0,0))
+		# ansr = load_file(rnd)
+		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr})
+	# field0 = request.POST.getlist('field0')
+	if request.POST.getlist('field0') is not None:
+		item0 = escape((strip_tags(request.POST.getlist("field0"))))
+	return HttpResponse("<html><body>%s</body></html> " % item0)
+		# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'item0':item0})
+	# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr})
+	# if request.method 
+
 # for original version
 def rand_form0(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	if request.method != "POST":
-		rnd = str(random.randint(1,3))
+		rnd = str(random.randint(1,4))
 		# response.set_cookie('rnd_nm',rnd)
 		# request.session['rnd_nm'] = rnd
 		#rnd_template = "template_0"+rnd+".html"
@@ -434,3 +451,22 @@ def doTransfer(ia):
 	return 1,"Successfully Money Transferred from Account A to Account B. New Balance: A: "+str(amountOfA)+" and B: "+str(amountOfB)
 
 
+def load_file(rnd):
+	currentdir = os.getcwd()
+	path_files = currentdir+'/pbl/static/rand_form/answers'
+	filename = "answer_0"+rnd+".txt"
+	infile = path_files+'/'+filename
+	# print infile
+	answer_dict = {}
+	try:
+		inputfile = open(infile,'r')
+		# index = 0
+		for index,line in enumerate(inputfile):
+			terms = line.split()
+			# answer_dict['field'+str(index)] = terms
+			answer_dict[index] = terms
+			# index = index + 1
+		inputfile.close()
+	except IOError as err:
+		return err
+	return answer_dict
