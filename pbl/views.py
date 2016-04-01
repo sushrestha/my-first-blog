@@ -310,9 +310,32 @@ def rand_form(request):
 		# ansr = load_file(rnd)
 		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr})
 	# field0 = request.POST.getlist('field0')
-	if request.POST.getlist('field0') is not None:
-		item0 = escape((strip_tags(request.POST.getlist("field0"))))
-	return HttpResponse("<html><body>%s</body></html> " % item0)
+	if request.POST.getlist('field0') is not None and request.POST.getlist('field1') is not None and request.POST.getlist('field2') is not None and request.POST.getlist('field3') is not None and request.POST.getlist('field4') is not None and request.POST.getlist('field5') is not None and request.POST.getlist('field6') is not None and request.POST.getlist('field7') is not None and request.POST.getlist('field8') is not None and request.POST.getlist('field9') is not None:
+		answer_submited = {}
+		# item0 = escape((strip_tags(request.POST.getlist("field0"))))
+		# item1 = escape((strip_tags(request.POST.getlist("field1"))))
+		# item2 = escape((strip_tags(request.POST.getlist("field2"))))
+		# item3 = escape((strip_tags(request.POST.getlist("field3"))))
+		# item4 = escape((strip_tags(request.POST.getlist("field4"))))
+		# item5 = escape((strip_tags(request.POST.getlist("field5"))))
+		# item6 = escape((strip_tags(request.POST.getlist("field6"))))
+		# item7 = escape((strip_tags(request.POST.getlist("field7"))))
+		# item8 = escape((strip_tags(request.POST.getlist("field8"))))
+		# item9 = escape((strip_tags(request.POST.getlist("field9"))))
+		# items = []
+		for i in range(10):
+			field = 'field'+str(i)
+			# items = strip_tags(request.POST.getlist(field))
+			# items = items.sort()
+			# answer_submited[i] = items
+			answer_submited[i] = strip_tags(request.POST.getlist(field))
+		if answer_submited == ansr:
+			messages.success = (request,'Congratulations')
+		else:
+			messages.error = (request,'Error')
+		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
+
+	return HttpResponse("<html><body>some thing wrong  </body></html> ")
 		# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'item0':item0})
 	# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr})
 	# if request.method 

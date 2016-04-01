@@ -11,6 +11,7 @@ function validation()
 
 	if(message == ""){
 		alert("You have made a successful submission of the form.");
+		return false;
 	} else {
 		alert(message);
 		return false;
@@ -65,11 +66,19 @@ function names()
 	var first = document.getElementById('usrFName').value;
 	var last = document.getElementById('usrLName').value;
 	var mid = document.getElementById('usrInitial').value;
-	if(!mid.match(regm))
+	if(mid == "")
+	{
+		result = result.concat("Middle Initial: You didn't put anything for your middle initial\n");
+	}
+	else if(!mid.match(regm))
 	{
 		result = result.concat("Middle Initial: Your middle initial isn't formatted correctly\n");
 	}
-	if(!last.match(reg))
+	if(last == "")
+	{
+		result = result.concat("Last Name: You didn't put anything for your last name\n");
+	}
+	else if(!last.match(reg))
 	{
 		result = result.concat("Last Name: Your last name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
 	}
@@ -81,7 +90,11 @@ function phnNum()
 	var result = "";
 	var number = document.getElementById('usrPNumber').value;
 	var reg = /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/;
-	if(!number.match(reg))
+	if(number == "")
+	{
+		return "Phone Number: You didn't put anything for your phone number\n";
+	}
+	else if(!number.match(reg))
 	{
 		return "Phone Number: Your phone number doesn't match our format\n"
 	}
@@ -94,6 +107,10 @@ function bDay()
 	var current = new Date();
 	var reg = /^[0-1]?[0-9]{1}\/[0-3]?[0-9]{1}\/[1-2]{1}[0-9]{3}$/;
 	var date = document.getElementById("usrBDay").value;
+	if(date == "")
+	{
+		return "Birth Date: You didn't put a birthday\n";
+	}
 	var year = date.substring(6,10);
 	var day = date.substring(3, 5);
 	var mon = date.substring(0, 2);

@@ -1,4 +1,16 @@
-       <a type="hidden" value="random page 00: {{ item0 }}"></a>
+       <a type="hidden" value="random page 00: {{ answer_submited }}::: {{ items }}"></a>
+
+                     {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-danger" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
    <div class="form-group">
             <form id="Submission" onsubmit="studentSub(); return validation();" >
               <div class="col-sm-12 bordered" style="background-color:#f7f7f7; box-shadow: inset 0 0 0 4px red;">
@@ -64,14 +76,6 @@
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field0')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
-                      <select id="field0" class="col-sm-6" style="text-align:center;" name="field0" >
-                      <option selected="" value="0">None</option>
-                      <option value="1">It does not have a maximum length</option>
-                      <option value="2">It does not validate the information given</option>
-                      <option value="3">It does not check the formatting of the information</option>
-                    </select>
-                    <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field0')"><small style="font-size: xx-small;">Add a box</small></button>
-                    <span id="placeHolder"></span>
                   </div>
                 </div> 
                 <div class="row padded">
@@ -80,10 +84,10 @@
                   </div>
                   <div>
                      <select id="field1" class="col-sm-6" style="text-align:center;" name="field1">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field1')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
@@ -95,10 +99,10 @@
                   </div>
                   <div>
                      <select id="field2" class="col-sm-6" style="text-align:center;" name="field2">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field2')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
@@ -110,10 +114,10 @@
                   </div>
                   <div>
                      <select id="field3" class="col-sm-6" style="text-align:center;" name="field3">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field3')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
@@ -125,10 +129,10 @@
                   </div>
                   <div>
                      <select id="field4" class="col-sm-6" style="text-align:center;" name="field4">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field4')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
@@ -140,10 +144,10 @@
                   </div>
                   <div>
                      <select id="field5" class="col-sm-6" style="text-align:center;" name="field5">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field5')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
@@ -155,10 +159,10 @@
                   </div>
                   <div>
                      <select id="field6" class="col-sm-6" style="text-align:center;" name="field6">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field6')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
@@ -170,10 +174,10 @@
                   </div>
                   <div>
                      <select id="field7" class="col-sm-6" style="text-align:center;" name="field7">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field7')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
@@ -185,10 +189,10 @@
                   </div>
                   <div>
                      <select id="field8" class="col-sm-6" style="text-align:center;" name="field8">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field8')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>
@@ -200,10 +204,10 @@
                   </div>
                   <div>
                      <select id="field9" class="col-sm-6" style="text-align:center;" name="field9">
-                      <option selected="">None</option>
-                      <option>It does not have a maximum length</option>
-                      <option>It does not validate the information given</option>
-                      <option>It does not check the formatting of the information</option>
+                      <option selected="" value="0">None</option>
+                      <option value="1">It does not have a maximum length</option>
+                      <option value="2">It does not validate the information given</option>
+                      <option value="3">It does not check the formatting of the information</option>
                     </select>
                     <button data-toggle="tooltip" title="There is another answer so another box is needed." type="button" class="col-sm-2" onclick="addButton('field9')"><small style="font-size: xx-small;">Add a box</small></button>
                     <span id="placeHolder"></span>

@@ -33,7 +33,10 @@ function answers()
 		grade *= 10;
 		// Tells user the score
 		alert("This is your Score\n" + grade.toPrecision(3) + " : 100");
-		return true;
+
+		document.score.submit();
+
+		// return true;
 	}
 	// If the user has not submitted the form at least once 
 	else 
