@@ -1,0 +1,22 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    <p>
+        This challenge tries to introduce the HTML Programming and JavaScript function. It also cover the basic client validation done for password comparision.
+        
+      
+    </p>
+
+{% endblock %}

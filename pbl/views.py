@@ -104,8 +104,11 @@ def demo0(request):
         level_id = 1
         completed = is_already_completed_level(request.user,challenge_id,level_id)
         if not completed:
-        	compute_score(request,challenge_id,level_id)
-        return redirect('index')
+            compute_score(request,challenge_id,level_id)
+            messages.success(request,"Congratulations, You have completed Web Login Challenge - Level 0.")
+        else: 
+            messages.success(request,"Congratulations for beating up again -Web Login Challenge - Level 0. But you will not get the score")
+        return render(request,'pbl/demo0/answers.html',{})
     messages.error(request,"Incorrect Password")
     return render(request,'pbl/demo0/demo0.html',{})
 
@@ -130,7 +133,9 @@ def demo1(request):
 		completed = is_already_completed_level(request.user,challenge_id,level_id)
 		if not completed:
 			compute_score(request,challenge_id,level_id)
-		return redirect('index')
+			messages.success(request,"Congratulations, You have completed Web Login Challenge - Level 1.")
+		else: messages.success(request,"Congratulations for beating up again -Web Login Challenge - Level 1. But you will not get the score")
+		return render(request,'pbl/demo1/answers.html',{})
 	messages.error(request,"Incorrect Password")
 	return render(request,'pbl/demo1/demo1.html',{})
 
@@ -147,7 +152,9 @@ def demo2(request):
 		completed = is_already_completed_level(request.user,challenge_id,level_id)
 		if not completed:
 			compute_score(request,challenge_id,level_id)
-		return redirect('index')
+			messages.success(request,"Congratulations, You have completed Web Login Challenge - Level 2.")
+		else: messages.success(request,"Congratulations for beating up again -Web Login Challenge - Level 2. But you will not get the score")
+		return render(request,'pbl/demo2/answers.html',{})
 	messages.error(request,"Incorrect Password")
 	return render(request,'pbl/demo2/demo2.html',{})
 
@@ -199,7 +206,9 @@ def demo5(request):
 		completed = is_already_completed_level(request.user,challenge_id,level_id)
 		if not completed:
 			compute_score(request,challenge_id,level_id)
-		return redirect('index')
+			messages.success(request,"Congratulations, You have completed Web Login Challenge - Level 3.")
+		else: messages.success(request,"Congratulations for beating up again -Web Login Challenge - Level 3. But you will not get the score")
+		return render(request,'pbl/demo5/answers.html',{})
 	messages.error(request,"Incorrect Password")
 	return render(request,'pbl/demo5/index.html',{})
 
@@ -245,7 +254,7 @@ def app_logic1(request):
 					completed = is_already_completed_level(request.user,challenge_id,level_id)					
 					if not completed:
 						compute_score(request,challenge_id,level_id)
-						messages.success(request,"Congratulations, You have completed Application Flow Challenge - Level 1")
+						messages.success(request,"Congratulations, You have completed Application Flow Challenge - Level 1.")
 					else: messages.success(request,"Congratulations beating up again- Application Flow Challenge - Level 1. But you will not get the score")
 					return render(request,'pbl/app_logic/1/answers.html',{})
 				else: 

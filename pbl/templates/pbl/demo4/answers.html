@@ -1,0 +1,21 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    <p>
+        The error message is not set off while deploying the application. Thus, attacker can easily exploit such error message to find the senstive information. 
+        Suggestions: Always set off the debug information.
+    </p>
+
+{% endblock %}
