@@ -21,7 +21,7 @@
     <meta name="author" content="">
     <link rel="icon" href="image/favicon.ico">
 
-    <title>Web Application Security Exercise and Learning Platform</title>
+    <title>A Fuzz-Testing Platform for Web Application Security</title>
 
     <!-- Bootstrap core CSS 
     <link href="css/bootstrap.min.css" rel="stylesheet">-->
@@ -67,6 +67,12 @@
                            {% endif %}
                            ">Score</a></li>
               {% endif %}        
+             {% if request.user.is_authenticated %}
+             <li><a href="{% if user.is_superuser %} 
+                           {%  url 'instructor_page' %}
+                           {% endif %}
+                           ">Instructor Page</a></li>
+              {% endif %}
             <li><a href="{% url 'about' %}">About Us</a></li><!-- for the about us information that will be added later when that page is created -->
             <li><a href="{% url 'contact' %}">Contact</a></li><!-- for the contact information that will be added later when that page is created -->
           </ul>

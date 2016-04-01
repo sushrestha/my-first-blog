@@ -3,94 +3,57 @@
  
 <div class = "panel panel-primary">
    <div class = "panel-heading">
-      <h3 class = "panel-title" style="text-align:center;">Challenges</h3>
+      <h3 class = "panel-title" style="text-align:center;">Instructor Hints</h3>
    </div>   
    <div class = "panel-body">
 
-    <div class="row" >
-        <div class="col-xs-12 col-sm-4 ">
-          <div class="list-group table-stripped">
-            <a type="button"class="list-group-item active collapse">Web Form Challanges</a>
-            <span title="Complete Submit form action">
-            <a href="{% url 'demo3' %}" class="list-group-item">Level 0</a></span>
-            <span title="Complete Submit form action">
-            <a href="{% url 'demo4' %}" class="list-group-item">Level 1</a></span>
-            <span title="Complete Submit form action">
-            <a href="{% url 'vuln_form' %}" class="list-group-item">Level 2</a></span>
-            <span title="Complete Submit form action">
-            <a href="{% url 'rand_form' %}" class="list-group-item">Level 3</a></span>
-          </div>     
-        </div>
-        <div class="col-xs-12 col-sm-4 ">
-            <div class="list-group">
-            <a type="button"class="list-group-item active collapse">Web Login Challanges</a>
-            <span title="You have to login here inserting correct password "> 
-            <a href="{% url 'demo0' %}" class="list-group-item">Level 0</a></span>
-            <span title="You have to login here inserting correct password ">
-            <a href="{% url 'demo1' %}" class="list-group-item">Level 1</a></span>
-            <span title="You have to login here inserting correct password ">            
-            <a href="{% url 'demo2' %}"  class="list-group-item">Level 2</a></span>
-            <span title="You have to login here inserting correct password ">            
-            <a href="{% url 'demo5' %}"  class="list-group-item">Level 3</a></span>
-            <span title="You have to login here inserting correct password ">
-            <a href="{% url 'crypto' %}"  class="list-group-item">Level 4</a></span>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 ">
-            <div class="list-group">
-            <a type="button"class="list-group-item active collapse">Cross-Site Scripting Challenges</a>
-            <span title="You have to login here inserting correct password "> 
-            <a href="{% url 'demo0' %}" class="list-group-item">Level 0</a></span>
-            <span title="You have to login here inserting correct password ">
-            <a href="{% url 'demo1' %}" class="list-group-item">Level 1</a></span>
-            <span title="You have to login here inserting correct password ">            
-            <a href="{% url 'demo2' %}"  class="list-group-item">Level 2</a></span>
-            <span title="You have to login here inserting correct password ">            
-            <a href="{% url 'demo5' %}"  class="list-group-item">Level 3</a></span>
-            <span title="You have to login here inserting correct password ">
-            <a href="{% url 'crypto' %}"  class="list-group-item">Level 4</a></span>
-          </div>
-        </div>
-     </div>
-
-     <div class="row">
-        <div class="col-xs-12 col-sm-4 ">
-          <div class="list-group">
-            <a type="button"class="list-group-item active collapse">Application Logic Challanges</a>
-            <span title="Try to Tranfer the amount greater than given threshold amount:">
-            <a href="{% url 'app_logic0' %}" class="list-group-item">Level 0</a></span>
-            <span title="Try to Transfer the amount to your account:">
-            <a href="{% url 'app_logic1' %}" class="list-group-item">Level 1</a></span>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 ">
-          <div class="list-group">
-            <a type="button"class="list-group-item active collapse">Indirect Object References Challanges</a>
-            <span title="Try to access the another object that is not allowed">
-            <a href="{% url 'ido0' %}" class="list-group-item">Level 0</a></span>
-            <span title="Try to Transfer the amount to your account:">
-            <a href="{% url 'ido1' %}" class="list-group-item">Level 1</a></span>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 ">
-          <div class="list-group">
-            <a type="button"class="list-group-item active collapse">Missing Level Access Control Challenges</a>
-            <span title="Try to access the another object that is not allowed">
-            <a href="{% url 'ido0' %}" class="list-group-item">Level 0</a></span>
-            <span title="Try to Transfer the amount to your account:">
-            <a href="{% url 'ido1' %}" class="list-group-item">Level 1</a></span>
-          </div>
-        </div>
-     </div>
 
     <div class="row" >
         <div class="col-xs-12 col-sm-4 ">
-            <a href="#">Show More Challenges &gt;&gt;</a>    
-        </div>
-      </div>
+             <div class = "panel-heading">
+                <h3 class = "panel-title" style="text-align:center;">Web Form Challenge Level 0</h3>
+             </div>   
+             <div class = "panel-body">
+              <ul class="list-group-item">
+                       <li>Fill out all the required fields in the form.</li>
+                       <li>Try to figure out the missing validation or logic in the form submission.</li>
+                       <li>Try to submit the form with Shipping information different from Billing information.</li>
+                       <li>Enter all the valid data in both section and change data on shipping information section</li>
+              </ul>
+             </div>
+          </div>   
+              <div class="col-xs-12 col-sm-4 ">
+             <div class = "panel-heading">
+                <h3 class = "panel-title" style="text-align:center;">Web Form Challenge Level 1</h3>
+             </div>   
+             <div class = "panel-body">
+                    <ul class="list-group-item">
+                      <li>Fill out all the required fields in the form.</li>
+                      <li>Try to figure out the missing validation in the form submission.</li>
+                      <li>Try to submit the form with Billing information different from Shipping information.</li>
+                      <li>Enter all the valid data in both section, then view inspect element and remove the disabled property of any one of the fields in Billing information section, You will get enabled field. Just modify the previous entered data. Finally submit the form and you will get score.</li>
+                    </ul>
+             </div>
+          </div> 
+              <div class="col-xs-12 col-sm-4 ">
+             <div class = "panel-heading">
+                <h3 class = "panel-title" style="text-align:center;">Web Form Challenge Level 2</h3>
+             </div>   
+             <div class = "panel-body">
+                    <ul class="list-group-item">
+                      <li>Perform the Form Completion Exercise and figure out the missing validation.</li>
+                      <li>Submit the answers on Submission section.</li>
+                      <li>Based on correct answer submitted, student will get the score.</li>
+                      <li> See the answers set for verfication </li>
+                    </ul>
+             </div>
+          </div> 
 
-       </div>
     </div>
+
+  </div>
+</div>
+
 
  
  {% endblock %}

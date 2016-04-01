@@ -170,10 +170,9 @@ def demo3(request):
 		completed = is_already_completed_level(request.user,challenge_id,level_id)
 		if not completed:
 			compute_score(request,challenge_id,level_id)
-			# flag = compute_score(request,challenge_id,level_id)
-			# if flag:
-			# 	return redirect('index')
-		return redirect('index')
+			messages.success(request,"Congratulations, You have completed Web form Challenge - Level 0.")
+		else: messages.success(request,"Congratulations for beating up again -Web form Challenge - Level 0. But you will not get the score")
+		return render(request,'pbl/demo3/answers.html',{})
 
 def demo4(request):
 	if not request.user.is_authenticated():
@@ -187,10 +186,10 @@ def demo4(request):
 		completed = is_already_completed_level(request.user,challenge_id,level_id)
 		if not completed:
 			compute_score(request,challenge_id,level_id)
-			# flag = compute_score(request,challenge_id,level_id)
-			# if flag:
-			# 	return redirect('index')
-		return redirect('index')
+			messages.success(request,"Congratulations, You have completed Web form Challenge - Level 1.")
+		else: messages.success(request,"Congratulations for beating up again -Web form Challenge - Level 1. But you will not get the score")
+		return render(request,'pbl/demo4/answers.html',{})
+	# return render(request,'pbl/demo4/demo4.html',{})
 
 #web login challenge Level 3 - challenge_id = 1 Level_id = 4
 def demo5(request):

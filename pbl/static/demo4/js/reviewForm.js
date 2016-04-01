@@ -24,7 +24,7 @@ function intentionalyHrd2Read(){
 		result = result ^ jDoe(AOL);
 		result = result ^ comparing();
 		if(result == 0){
-		alert("Congratulations, you have completed the level 3");
+		alert("Congratulations, you have completed the level 1");
 		document.login.submit();
 		}
 	} else{
