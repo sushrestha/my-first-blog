@@ -1,5 +1,10 @@
 function validation()
 {
+	if(!document.getElementById('usrEmail').value || !document.getElementById('usrEmailCon').value || !document.getElementById('usrPass').value || !document.getElementById('usrPassCon').value || !document.getElementById('usrAlias').value || !document.getElementById('usrFName').value || !document.getElementById('usrLName').value || !document.getElementById('usrInitial').value || !document.getElementById('usrPNumber').value || !document.getElementById('usrBDay').value )
+		{
+			alert("All fields are required");
+			return false;
+		}
 	var message = "";
 	var adding;
 
@@ -36,7 +41,7 @@ function checkEmails()
 
 function passStrength()
 {
-	var reg = /((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'*-+])[^ ]{6,14}$)/;
+	var reg = /((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'*-+])[^ ])/;
 	var pass = document.getElementById('usrPass').value;
 	var passCon = document.getElementById('usrPassCon').value;
 	var result = "";

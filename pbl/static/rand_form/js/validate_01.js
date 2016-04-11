@@ -1,5 +1,10 @@
 function validation()
 {
+	if(!document.getElementById('usrEmail').value || !document.getElementById('usrEmailCon').value || !document.getElementById('usrPass').value || !document.getElementById('usrPassCon').value || !document.getElementById('usrAlias').value || !document.getElementById('usrFName').value || !document.getElementById('usrLName').value || !document.getElementById('usrInitial').value || !document.getElementById('usrPNumber').value || !document.getElementById('usrBDay').value )
+		{
+			alert("All fields are required");
+			return false;
+		}
 	var message = "";
 	var adding;
 
@@ -34,7 +39,7 @@ function checkEmails()
 
 function passStrength()
 {
-	var reg = /((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'*-+])[^ ]{6,14}$)/;
+	var reg = /((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'*-+])[^ ])/;
 	var pass = document.getElementById('usrPass').value;
 	var passCon = document.getElementById('usrPassCon').value;
 	var result = "";
@@ -59,7 +64,7 @@ function names()
 {
 	var result = "";
 	var reg = /^([A-Z]{1,2})[a-z]+([A-Z]?)[a-z]+$/;
-	var regm = /^[A-Z]{1}$/;
+	var regm = /^[A-Z]+/;
 	var first = document.getElementById('usrFName').value;
 	var last = document.getElementById('usrLName').value;
 	var mid = document.getElementById('usrInitial').value;
@@ -85,9 +90,10 @@ function phnNum()
 	}
 	else if(!number.match(reg))
 	{
-		return "Phone Number: Your phone number doesn't match our format\n";
+		return "Phone Number: Your phone number doesn't match our format\n"
 	}
-	return "";
+	return result;
+
 }
 
 function bDay()

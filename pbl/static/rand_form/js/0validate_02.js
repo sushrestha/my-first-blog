@@ -1,15 +1,8 @@
 function validation()
 {
-
-	if(!document.getElementById('usrEmail').value || !document.getElementById('usrEmailCon').value || !document.getElementById('usrPass').value || !document.getElementById('usrPassCon').value || !document.getElementById('usrAlias').value || !document.getElementById('usrFName').value || !document.getElementById('usrLName').value || !document.getElementById('usrInitial').value || !document.getElementById('usrPNumber').value || !document.getElementById('usrBDay').value )
-		{
-			alert("All fields are required");
-			return false;
-		}
 	var message = "";
 	var adding;
 
-	message = message.concat(usrName());
 	message = message.concat(checkEmails());
 	message = message.concat(passStrength());
 	message = message.concat(names());
@@ -34,6 +27,10 @@ function checkEmails()
 	{
 		result = result.concat("Email: This email is not valid!\n");
 	}
+	if(email != emailCon)
+	{
+		result = result.concat("Email Confirmation: The emails do not match!\n");
+	}
 	return result;
 }
 
@@ -47,28 +44,14 @@ function passStrength()
 	{
 		result = result.concat("Password: Your password must have at least 6 characters with one uppercase letter, one lowercase letter, a number, and a special character\n");
 	}
-	if(pass != passCon)
-	{
-		result = result.concat("Password Confirmation: Your passwords must match.\n");
-	}
 	return result;
-}
-
-function usrName()
-{
-	var reg = /^(?=.{6,20}$)(?![_\\/.<>])(?!.*[_.]{2})[a-zA-Z0-9._]+(?![_.\\/<>])$/;
-	var name = document.getElementById('usrAlias').value;
-	if(!name.match(reg)){
-		return "Username: UserName must be at least 6 characters with no \\, /, <, > symbols\n";
-	}
-	return "";
 }
 
 function names()
 {
 	var result = "";
 	var reg = /^([A-Z]{1,2})[a-z]+([A-Z]?)[a-z]+$/;
-	var regm = /^[A-Z]+/;
+	var regm = /^[A-Z]{1}$/;
 	var first = document.getElementById('usrFName').value;
 	var last = document.getElementById('usrLName').value;
 	var mid = document.getElementById('usrInitial').value;
@@ -80,13 +63,13 @@ function names()
 	{
 		result = result.concat("First Name: Your first name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
 	}
-	if(last == "")
+	if(mid == "")
 	{
-		result = result.concat("Last Name: You didn't put anything for your last name\n");
+		result = result.concat("Middle Initial: You didn't put anything for your middle initial\n");
 	}
-	else if(!last.match(reg))
+	else if(!mid.match(regm))
 	{
-		result = result.concat("Last Name: Your last name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
+		result = result.concat("Middle Initial: Your middle initial isn't formatted correctly\n");
 	}
 	return result;
 }
@@ -104,10 +87,6 @@ function bDay()
 	var year = date.substring(6,10);
 	var day = date.substring(3, 5);
 	var mon = date.substring(0, 2);
-	if(!date.match(reg))
-	{
-		return "Birth Date: Your birthday is not formatted correctly\n";
-	}
 	if(current.getFullYear() - year < 18)
 	{
 		msg = msg.concat("Birth Date: You must be 18 or older to sign up\n");

@@ -313,14 +313,14 @@ def rand_form(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
-	rnd = str(random.randint(0,4))
-	BASE_DIR = settings.BASE_DIR
+	rnd = str(random.randint(0,1))
+	# BASE_DIR = settings.BASE_DIR
 	FILE_DIR = settings.FILE_DIR
 	ansr,filepath = load_file(rnd,FILE_DIR)
 	if request.method != "POST":
 		# rnd = str(random.randint(0,0))
 		# ansr = load_file(rnd)
-		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'filepath':filepath , 'BASE_DIR':BASE_DIR ,'FILE_DIR':FILE_DIR})
+		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'filepath':filepath , 'FILE_DIR':FILE_DIR})
 	# field0 = request.POST.getlist('field0')
 	if request.POST.getlist('field0') is not None and request.POST.getlist('field1') is not None and request.POST.getlist('field2') is not None and request.POST.getlist('field3') is not None and request.POST.getlist('field4') is not None and request.POST.getlist('field5') is not None and request.POST.getlist('field6') is not None and request.POST.getlist('field7') is not None and request.POST.getlist('field8') is not None and request.POST.getlist('field9') is not None:
 		answer_submited = {}

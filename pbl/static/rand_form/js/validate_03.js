@@ -1,5 +1,10 @@
 function validation()
 {
+	if(!document.getElementById('usrEmail').value || !document.getElementById('usrEmailCon').value || !document.getElementById('usrPass').value || !document.getElementById('usrPassCon').value || !document.getElementById('usrAlias').value || !document.getElementById('usrFName').value || !document.getElementById('usrLName').value || !document.getElementById('usrInitial').value || !document.getElementById('usrPNumber').value || !document.getElementById('usrBDay').value )
+		{
+			alert("All fields are required");
+			return false;
+		}
 	var message = "";
 	var adding;
 
@@ -19,7 +24,7 @@ function validation()
 
 function usrName()
 {
-	var reg = /^(?=.{6,20}$)(?![_\\/.<>])(?!.*[_.]{2})[a-zA-Z0-9._]+(?![_.\\/<>])$/;
+	var reg = /^(?![_\\/.<>])(?!.*[_.]{2})[a-zA-Z0-9._]+(?![_.\\/<>])$/;
 	var name = document.getElementById('usrAlias').value;
 	if(!name.match(reg)){
 		return "Username: UserName must be at least 6 characters with no \\, /, <, > symbols\n";
@@ -58,16 +63,17 @@ function phnNum()
 {
 	var result = "";
 	var number = document.getElementById('usrPNumber').value;
-	var reg = /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/;
+	var reg = /^\([0-9]{3}\) [0-9]{3}-[0-9]+/;
 	if(number == "")
 	{
 		return "Phone Number: You didn't put anything for your phone number\n";
 	}
 	if(!number.match(reg))
 	{
-		return "Phone Number: Your phone number doesn't match our format\n";
+		return "Phone Number: Your phone number doesn't match our format\n"
 	}
-	return "";
+	return result;
+
 }
 
 function bDay()
