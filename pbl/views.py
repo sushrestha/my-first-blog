@@ -10,6 +10,8 @@ from django.contrib import messages
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import random, os
+from django.conf  import settings
+
 
 
 # Create your views here.
@@ -312,25 +314,16 @@ def rand_form(request):
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	rnd = str(random.randint(0,4))
-	ansr = load_file(rnd)
+	BASE_DIR = settings.BASE_DIR
+	FILE_DIR = settings.FILE_DIR
+	ansr,filepath = load_file(rnd,FILE_DIR)
 	if request.method != "POST":
 		# rnd = str(random.randint(0,0))
 		# ansr = load_file(rnd)
-		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr})
+		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'filepath':filepath , 'BASE_DIR':BASE_DIR ,'FILE_DIR':FILE_DIR})
 	# field0 = request.POST.getlist('field0')
 	if request.POST.getlist('field0') is not None and request.POST.getlist('field1') is not None and request.POST.getlist('field2') is not None and request.POST.getlist('field3') is not None and request.POST.getlist('field4') is not None and request.POST.getlist('field5') is not None and request.POST.getlist('field6') is not None and request.POST.getlist('field7') is not None and request.POST.getlist('field8') is not None and request.POST.getlist('field9') is not None:
 		answer_submited = {}
-		# item0 = escape((strip_tags(request.POST.getlist("field0"))))
-		# item1 = escape((strip_tags(request.POST.getlist("field1"))))
-		# item2 = escape((strip_tags(request.POST.getlist("field2"))))
-		# item3 = escape((strip_tags(request.POST.getlist("field3"))))
-		# item4 = escape((strip_tags(request.POST.getlist("field4"))))
-		# item5 = escape((strip_tags(request.POST.getlist("field5"))))
-		# item6 = escape((strip_tags(request.POST.getlist("field6"))))
-		# item7 = escape((strip_tags(request.POST.getlist("field7"))))
-		# item8 = escape((strip_tags(request.POST.getlist("field8"))))
-		# item9 = escape((strip_tags(request.POST.getlist("field9"))))
-		# items = []
 		for i in range(10):
 			field = 'field'+str(i)
 			answer_submited[i] = strip_tags(request.POST.getlist(field))
@@ -392,26 +385,6 @@ def calculate_score(ans,sub):
 		        	# print key,temp2[index],temp1
 	return score
 
-# for original version
-# def rand_form0(request):
-# 	if not request.user.is_authenticated():
-# 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-# 		return HttpResponse(html)
-# 	if request.method != "POST":
-# 		rnd = str(random.randint(1,4))
-# 		# response.set_cookie('rnd_nm',rnd)
-# 		# request.session['rnd_nm'] = rnd
-# 		#rnd_template = "template_0"+rnd+".html"
-# 		# return HttpResponse("<html><body>You mu %d<span> <a href="'../'">Go Home page</a></span></body></html>" % rnd)
-# 		return render(request,'pbl/rand_form0/index.html',{'rand_num': rnd})
-
-# # For form having vulnerablities
-# def vuln_form(request):
-# 	if not request.user.is_authenticated():
-# 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-# 		return HttpResponse(html)
-# 	if request.method != "POST":
-# 		return render(request,'pbl/vuln_form/index.html',{})
 
 # for indirect object references...
 def ido0(request):
@@ -451,24 +424,44 @@ def ido1(request):
 		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/ido/1/index.html',{})	
+
+
 def ido1_userEdit1(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/ido/1/edit_1.html',{})	
+	messages.success(request,"Your profile is successfully updated. But can you update other's user profile?")
+	return render(request,'pbl/ido/1/index.html',{})
+
 def ido1_userEdit2(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/ido/1/edit_2.html',{})
+	send_to_success_ido1(request)
+	return render(request,'pbl/ido/1/answers.html',{})
+	
 def ido1_userEdit3(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
 	if request.method != "POST":
 		return render(request,'pbl/ido/1/edit_3.html',{})
+	send_to_success_ido1(request)
+	return render(request,'pbl/ido/1/answers.html',{})
+
+def send_to_success_ido1(request):
+	challenge_id = 4 
+	level_id = 2
+	completed = is_already_completed_level(request.user,challenge_id,level_id)
+	if not completed:
+		compute_score(request,challenge_id,level_id)
+		messages.success(request,"Congratulations, You have completed Insecure Direct object Reference challenge - Level 1")
+	else: 
+		messages.success(request,"Congratulations beating up again- Insecure Direct object Reference challenge - Level 1. But you will not get the score")
 
 def crypto(request):
 	if not request.user.is_authenticated():
@@ -526,9 +519,10 @@ def doTransfer(ia):
 	return 1,"Successfully Money Transferred from Account A to Account B. New Balance: A: "+str(amountOfA)+" and B: "+str(amountOfB)
 
 
-def load_file(rnd):
-	currentdir = os.getcwd()
-	path_files = currentdir+'/pbl/static/rand_form/answers'
+def load_file(rnd,FILE_DIR):
+	# currentdir = os.getcwd()
+	# path_files = currentdir+'/pbl/static/rand_form/answers'
+	path_files = FILE_DIR
 	filename = "answer_0"+rnd+".txt"
 	infile = path_files+'/'+filename
 	# print infile
@@ -544,4 +538,4 @@ def load_file(rnd):
 		inputfile.close()
 	except IOError as err:
 		return err
-	return answer_dict
+	return answer_dict,infile

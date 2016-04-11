@@ -2,56 +2,55 @@
 {% block content %}
         <h2 > Users Profile Edit:</h2>
 
- <form class="form-horizontal" role="form">
+ <form class="form-horizontal" role="form" method="POST" name="useredit">{% csrf_token %}
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="Mary">
+              <input class="form-control" type="text" value="Mary" id="fname">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="Moe">
+              <input class="form-control" type="text" value="Moe" id="lname">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Company:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="">
+              <input class="form-control" type="text" value="" id="cname">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="mmoe@gmail.com">
+              <input class="form-control" type="text" value="mmoe@gmail.com" id="email">
             </div>
           </div>
          
           <div class="form-group">
             <label class="col-md-3 control-label">Username:</label>
             <div class="col-md-8">
-              <input class="form-control" type="text" value="mmoe">
+              <input class="form-control" type="text" value="mmoe" id="uname">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Password:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password" value="11111122333">
+              <input class="form-control" type="password" value="11111122333" id="pwd">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Confirm password:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password" value="11111122333">
+              <input class="form-control" type="password" value="11111122333" id="cpwd">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <input type="button" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="reset" class="btn btn-default" value="Cancel">
+            <button onclick="validate(document.useredit); return false;" type="submit" class="btn btn-primary" >Save Changes</button>
+              <a href="{% url 'ido1' %}"  class="btn btn-default" value="Cancel" onclick="windows.location.href(home)">Cancel</a>
             </div>
           </div>
         </form>

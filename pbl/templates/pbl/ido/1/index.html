@@ -1,6 +1,20 @@
 {% extends 'pbl/ido/1/base.html' %}
 {% block content %}
+        <h4> Hi, John Doe, you can edit only your details. </h4>
         <h2 > Users list:</h2>
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-danger" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+
+
       <table class="table table-striped">
           <thead>
             <tr>
@@ -21,13 +35,13 @@
               <td>Mary</td>
               <td>Moe</td>
               <td>mary@example.com</td>
-              <td><a  href="{% url 'ido1_userEdit1' %}" class="btn btn-primary  disabled" role="button">Edit</a></td>
+              <td><a  href="{% url 'ido1_userEdit2' %}" class="btn btn-primary  disabled" role="button">Edit</a></td>
             </tr>
             <tr>
               <td>July</td>
               <td>Dooley</td>
               <td>july@example.com</td>
-              <td><a href="{% url 'ido1_userEdit1' %}" class="btn btn-primary  disabled" role="button">Edit</a></td>
+              <td><a href="{% url 'ido1_userEdit3' %}" class="btn btn-primary  disabled" role="button">Edit</a></td>
             </tr>
           </tbody>
         </table>

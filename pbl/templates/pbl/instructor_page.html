@@ -51,6 +51,92 @@
 
     </div>
 
+    <div class='row'>
+                    <div class="col-xs-12 col-sm-4 ">
+             <div class = "panel-heading">
+                <h3 class = "panel-title" style="text-align:center;">Web Login Challenge Level 0</h3>
+             </div>   
+             <div class = "panel-body list-group-item">
+            <p >
+              To solve this puzzle, user need to go to source page. Method: Right click on page and click "View 
+Page Source". If the source code is carefully reviewed, the line that contains code for 'Sign In' 
+button also includes the static hard-coded value for the password. e.g.: var password='12345678
+<pre class="prettyprint">
+&lt;button onclick="var password = '12345678'; checkInput(password); return false;" type="submit" 
+class="btn btn-lg btn-primary btn-block"&gt;Sign In&lt;/button&gt;
+</pre>
+User just needs to enter any email address and the hard coded password and click the 'Sign In' button.
+Answer: 
+abc@xyz.com 
+12345678
+            </p>
+             </div>
+          </div>
+
+                    <div class="col-xs-12 col-sm-4 ">
+             <div class = "panel-heading">
+                <h3 class = "panel-title" style="text-align:center;">Web Login Challenge Level 1</h3>
+             </div>   
+             <div class = "panel-body list-group-item">
+            <p >
+To solve this puzzle, user need to go to source page. Method: Right click on page and click "View 
+Page Source". If the source code is carefully reviewed, the line that contains code for 'Sign in' 
+button also includes the JavaScript function. On clicking the button, it calls the JavaScript function
+ 'checkinput(password)'. To access the JavaScript file, go to head section in  page source. 
+ e.g: 
+ <pre class="prettyprint">
+ &lt;head&gt;... 
+ &lt;script src="js/demo1.js" type="text/javascript"&gt;&lt;/script&gt;
+ &lt;/head&gt;
+</pre>
+The function 'checkinput()' checks the password if it matches with the concatenation of string "s" and "12345678".
+User just needs to enter any email address and the password 's12345678' and click the 'Sign In' button
+            </p>
+             </div>
+          </div>
+     
+                    <div class="col-xs-12 col-sm-4 ">
+             <div class = "panel-heading">
+                <h3 class = "panel-title" style="text-align:center;">Web Login Challenge Level 2</h3>
+             </div>   
+             <div class = "panel-body list-group-item">
+            <p >
+This puzzle is next version of previous puzzles with a difficulty level. It also uses same JavaScript function to check the input 
+password. The main difference is that it uses the concept of hexa-decimal and hexMD5 other than plain text.
+To compute the exact password, user needs to compute the corresponding text string for given hexa-decimal formatted strings and concatenate 
+with the string passed in function, then compute its hexMD5 value.
+Code: 
+<pre class="prettyprint">
+if(document.login.inputPassword.value != hexMD5("\x43\x4f\x4d\x50\x37\x33\x32\x37"+pass)) {
+</pre>
+Hints: 
+From hexa-decimal to text:
+visit http://www.unit-conversion.info/texttools/hexadecimal/, 
+enter the hexa-decimal chars in input data section, choose 'hex numbers to text' from 'convert' drop-down.
+Click on 'Output' text-area. The corresponding text string is shown on output.
+\x43\x4f\x4d\x50\x37\x33\x32\x37
+COMP7327
+
+Compute MD5 Hex:
+Visit http://md5sum.org/, enter the plain text (concatenating the string from hexa-decimal and string passed in function) 
+and click 'Get MD5 Hex' button.
+Plaintext: COMP732712345678
+Output: b0b802febcbb710fbcc537dbce86745d
+User just needs to enter any email address and the password as above output and click the 'Sign In' button
+
+Answer: 
+abc@xyz.com 
+b0b802febcbb710fbcc537dbce86745d
+
+
+            </p>
+             </div>
+          </div>
+
+
+
+    </div>
+
   </div>
 </div>
 

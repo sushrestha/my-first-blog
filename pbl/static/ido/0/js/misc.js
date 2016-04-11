@@ -50,14 +50,14 @@ function selectItem(p)
 }
 
 function proceed(p){
-	alert("Jello");
+	// alert("Jello");
 	if(!document.proceedItem.itemChoosen.value){
 		alert("Please select an item!!!");
 		return false;
 	}
 	else{
 	document.proceedItem.submit();
-	return true;		
+	// return true;		
 	}
 
 }

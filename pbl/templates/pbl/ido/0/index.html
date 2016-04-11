@@ -189,14 +189,14 @@ $(document).ready(function(){
                         <label id="itemSelected" name="itemSelected" for="{{ inputItem }}" value="{{ inputItem }}"> <h4>{{ inputItem }}</h4></label>
                         <input type="hidden" name="itemChoosen" value="{{ inputItem }}" id="itemChoosen" >
                     </div>
-                        <div class="row"><button onclick="alert("Hello")"  class="btn btn-success col-sm-4" type="submit"    >Submit</button>
+                        <div class="row"><button onclick="alert('Hello'); return false;" class="btn btn-success col-sm-4" type="submit"    >Submit</button>
                         </div>
                     {% else %}
                     <div class="row">
                         <label id="itemSelected"  for="" value=""> <h4>No item selected:</h4></label>
                         <input type="hidden" name="itemChoosen" value="" id="itemChoosen" >
                     </div>                
-                   <div class="row"><button onclick="alert("Hello")"  type="submit" class="btn btn-success col-sm-4" disabled="true">Submit</button>
+                   <div class="row"><button onclick="proceed(document.proceedItem.itemChoosen.value); return false;"  type="submit" class="btn btn-success col-sm-4" disabled="true">Submit</button>
                     </div>
                     {%  endif %}
                 </form>

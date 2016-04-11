@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FILE_DIR = os.path.join(BASE_DIR,'pbl/static/rand_form/answers')
 
 
 # Quick-start development settings - unsuitable for production

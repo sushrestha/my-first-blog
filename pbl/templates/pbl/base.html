@@ -54,7 +54,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'index' %}">WASELP</a>
+          <a class="navbar-brand" href="{% url 'index' %}">FuTPWAS</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -67,10 +67,10 @@
                            {% endif %}
                            ">Score</a></li>
               {% endif %}        
-             {% if request.user.is_authenticated %}
-             <li><a href="{% if user.is_superuser %} 
+             {% if request.user.is_authenticated and user.is_superuser %}
+             <li><a href="
                            {%  url 'instructor_page' %}
-                           {% endif %}
+                      
                            ">Instructor Page</a></li>
               {% endif %}
             <li><a href="{% url 'about' %}">About Us</a></li><!-- for the about us information that will be added later when that page is created -->

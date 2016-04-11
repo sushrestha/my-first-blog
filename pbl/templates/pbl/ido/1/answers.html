@@ -1,0 +1,31 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    <div class="row">
+    <p>
+        This is one of the vulnerablity raised for Insecure direct object reference.
+        The developer assumes that disabling the edit option will restrict the user to view or edit other's user profile. However, by manipulating url , invalid user can navigate to particular user profile and can edit.
+        Prevention: Put restriction on accessing other than user's page.
+ 
+    </p>
+    </div>
+     <div class="row">
+        <div class="col-sm-6"> </div>
+         <div class="col-sm-6 col-sm-offset-5"> <a href="{% url 'ido0' %}" >PREV</a>|| <a href="{% url 'index' %}" >HOME</a>||<a href="{% url 'index' %}" >NEXT</a></div>
+        <div class="col-sm-6"> </div>
+     </div>
+
+
+{% endblock %}

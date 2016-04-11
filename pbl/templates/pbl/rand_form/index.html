@@ -81,7 +81,7 @@ html{
           </button>
           <a class="navbar-brand" href="{% url 'index' %}" style="color:#000;">Natural Foods:<small> Feeding us for a brighter tommorrow.</small></a>
           <a class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;">*Try to give malformed info in certain boxes. </a> <a  class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;" href="{% url 'index' %}">HOME</a>
-<!--           <a type="hidden" value="{{ rand_num }}:: {{ ansr }}"></a> -->
+          <a type="hidden" value="{{ rand_num }}:: {{ ansr }} :: {{ filepath }} :: {{ BASE_DIR }} :: {{ FILE_DIR }} "></a>
         </div>
       </div>
     </nav>
