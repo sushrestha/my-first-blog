@@ -372,9 +372,12 @@ def insert_score(request,c_id,l_id,new_score):
 				comp1.score = new_score
 				comp1.save()
 				diff = new_score - old_score
-				score = Score.objects.get(student=request.user)
-				score.score = score.score + diff
-				score.save()
+				try:
+					score = Score.objects.get(student=request.user)
+					score.score = score.score + diff
+					score.save()
+				except Score.DoesNotExist:
+					pass
 		# if not existed add new one
 		else:
 			challenge = Challenge.objects.get(id=c_id) # need to make id dynamic
