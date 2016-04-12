@@ -309,11 +309,34 @@ def compute_score(request,c_id, l_id):
 			score = Score(student=request.user, score=level.value)
 			score.save()
 
+def rand_demo(request):
+	# rand_form(request)
+	if not request.user.is_authenticated():
+		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+		return HttpResponse(html)
+	FILE_DIR = settings.FILE_DIR
+	rnd = 'demo'
+	ansr,filepath = load_file(rnd,FILE_DIR)
+	if request.method != "POST":
+		return render(request,'pbl/rand_form/template_0demo.html',{'rand_num': rnd, 'ansr':ansr, 'filepath':filepath , 'FILE_DIR':FILE_DIR})
+	if request.POST.getlist('field0') is not None and request.POST.getlist('field1') is not None and request.POST.getlist('field2') is not None and request.POST.getlist('field3') is not None and request.POST.getlist('field4') is not None and request.POST.getlist('field5') is not None and request.POST.getlist('field6') is not None and request.POST.getlist('field7') is not None and request.POST.getlist('field8') is not None and request.POST.getlist('field9') is not None:
+		answer_submited = {}
+		for i in range(10):
+			field = 'field'+str(i)
+			answer_submited[i] = strip_tags(request.POST.getlist(field))
+		total_score = int(calculate_score(ansr,answer_submited))
+		messages.success(request,'Congratulations, your score is '+str(total_score)+". You can try again to score more. Only your highest score will be counted.")
+		challenge_id = 2
+		level_id = 3
+		insert_score(request,challenge_id,level_id,total_score)
+		return render(request,'pbl/rand_form/template_0demo.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
+	return render(request,'pbl/rand_form/template_0demo.html',{'rand_num': rnd})			
+
 def rand_form(request):
 	if not request.user.is_authenticated():
 		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
 		return HttpResponse(html)
-	rnd = str(random.randint(0,1))
+	rnd = str(random.randint(0,9))
 	# BASE_DIR = settings.BASE_DIR
 	FILE_DIR = settings.FILE_DIR
 	ansr,filepath = load_file(rnd,FILE_DIR)

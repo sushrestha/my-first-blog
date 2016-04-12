@@ -26,6 +26,7 @@ urlpatterns = [
         url(r'^ido/1/editUser/3/$',views.ido1_userEdit3,name='ido1_userEdit3'),
         url(r'^xss/1/$',views.xss_1,name='xss_1'),
         url(r'^rand_form/$',views.rand_form,name='rand_form'),
+        url(r'^rand_demo/$',views.rand_demo,name='rand_demo'),
         # url(r'^rand_form0/$',views.rand_form0,name='rand_form0'),
         # url(r'^vuln_form/$',views.vuln_form,name='vuln_form'),
 ]
