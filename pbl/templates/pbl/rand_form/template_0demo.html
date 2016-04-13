@@ -152,6 +152,7 @@ html{
             <form id="GradeMe" onsubmit="return answers();" name="score" method="POST">   {% csrf_token %}
               <div class="col-sm-12 bordered" style="background-color:#f7f7f7;"> 
                 <div class="row padded" style="background-color:#f7f7f7;;"><h2 style="text-align:center">Now that you've seen the form what vulnerabilities does it have?</h2></div>
+                <input type="hidden" name="formid" value="{{ rand_num }}">
                 <div class="row padded">
                   <div class="col-sm-2">
                     <label>Username:</label>
