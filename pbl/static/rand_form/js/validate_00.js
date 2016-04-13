@@ -80,13 +80,13 @@ function names()
 	{
 		result = result.concat("First Name: Your first name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
 	}
-	if(last == "")
+	if(mid == "")
 	{
-		result = result.concat("Last Name: You didn't put anything for your last name\n");
+		result = result.concat("Middle Initial: You didn't put anything for your middle name\n");
 	}
-	else if(!last.match(reg))
+	else if(!mid.match(regm))
 	{
-		result = result.concat("Last Name: Your last name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
+		result = result.concat("Middle Initial: Your middle name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
 	}
 	return result;
 }

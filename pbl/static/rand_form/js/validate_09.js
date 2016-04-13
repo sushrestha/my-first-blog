@@ -55,7 +55,7 @@ function names()
 {
 	var result = "";
 	var reg = /^([A-Z]{1,2})[a-z]+([A-Z]?)[a-z]+$/;
-	var regm = /^[A-Z]{1}$/;
+	var regm = /^[A-Z]{1}/;
 	var first = document.getElementById('usrFName').value;
 	var last = document.getElementById('usrLName').value;
 	var mid = document.getElementById('usrInitial').value;
@@ -67,13 +67,13 @@ function names()
 	{
 		result = result.concat("First Name: Your first name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
 	}
-	if(last == "")
+	if(mid == "")
 	{
-		result = result.concat("Last Name: You didn't put anything in for your last name\n");
+		result = result.concat("Middle Initial: You didn't put anything in for your middle initial\n");
 	}
-	else if(!last.match(reg))
+	else if(!mid.match(regm))
 	{
-		result = result.concat("Last Name: Your last name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
+		result = result.concat("Middle Initial: Your middle initial isn't formatted correctly\n");
 	}
 	return result;
 }
@@ -82,8 +82,8 @@ function phnNum()
 {
 	var result = "";
 	var number = document.getElementById('usrPNumber').value;
-	var reg = /^\([0-9]{3}\) [0-9]{3}-[0-9]+/;
-	if(number = "")
+	var reg = /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/;
+	if(number == "")
 	{
 		return "Phone Number: You didn't input your phone number\n"
 	}

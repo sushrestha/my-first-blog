@@ -63,7 +63,7 @@ function names()
 	var first = document.getElementById('usrFName').value;
 	var last = document.getElementById('usrLName').value;
 	var mid = document.getElementById('usrInitial').value;
-	if(first = "")
+	if(first == "")
 	{
 		result = result.concat("First Name: You didn't put anything for your first name\n");
 	}
@@ -75,7 +75,7 @@ function names()
 	{
 		result = result.concat("Last Name: You didn't put anything for your last name\n");
 	}
-	else if(!last.match(regm))
+	else if(!last.match(reg) && last.length <= 20)
 	{
 		result = result.concat("Last Name: Your last name isn't formatted correctly\n");
 	}
