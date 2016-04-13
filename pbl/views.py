@@ -329,8 +329,10 @@ def rand_demo(request):
 		challenge_id = 2
 		level_id = 3
 		insert_score(request,challenge_id,level_id,total_score)
+		return render(request,'pbl/rand_form/template_0demo.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})		
+	return render(request,'pbl/rand_form/template_0demo.html',{'rand_num': rnd})			
 		
-	return render(request,'pbl/rand_form/template_0demo.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})		
+	
 
 def rand_form(request):
 	if not request.user.is_authenticated():
@@ -355,9 +357,9 @@ def rand_form(request):
 		challenge_id = 2
 		level_id = 3
 		insert_score(request,challenge_id,level_id,total_score)
-		# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
-	return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
-	# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd})
+		return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
+	# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
+	return render(request,'pbl/rand_form/index.html',{'rand_num': rnd})
 
 # for inserting score in db for rand_form
 def insert_score(request,c_id,l_id,new_score):
