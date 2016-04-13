@@ -43,7 +43,7 @@ function usrName()
 {
 	var reg = /^(?![_\\/.<>])(?!.*[_.]{2})[a-zA-Z0-9._]+(?![_.\\/<>])$/;
 	var name = document.getElementById('usrAlias').value;
-	else if(!name.match(reg)){
+	if(!name.match(reg)){
 		return "Username: User Name must be at least 6 characters with no \\, /, <, > symbols\n";
 	}
 	return "";
