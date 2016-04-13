@@ -74,8 +74,9 @@ html{
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'index' %}" style="color:#000;">Natural Foods:<small> Feeding us for a brighter tommorrow.</small></a>
-          <a class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;">*Try to give malformed info in certain boxes. </a> <a  class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;" href="{% url 'index' %}">HOME</a>
+        <a class="navbar-brand"  style="margin-left:20px; text-align:right; color:#000;">*Try to give malformed info in certain boxes. </a> <a  class="navbar-brand"  style="margin-left:50px; text-align:right; color:#000;" href="{% url 'index' %}">HOME</a>
+          <a  class="navbar-brand"  style="margin-left:300px; text-align:right; color:#000;" href="{% url 'rand_form' %}">REFRESH</a>
+          
           <a type="hidden" value="{{ rand_num }}:: {{ ansr }} :: {{ filepath }}  :: {{ FILE_DIR }} "></a>
           <a type="hidden" value="{{ answer_submited }}"></a>
         </div>
