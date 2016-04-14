@@ -1,0 +1,20 @@
+{% extends 'pbl/base.html' %}
+{% block content %}
+
+<h1> 
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+
+</h1>
+
+{% endblock %}

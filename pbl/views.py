@@ -50,40 +50,52 @@ def challenge_details(request):
 
 def instructor_page(request):
     if not request.user.is_authenticated():
-    	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-    	return HttpResponse(html)
+    	# html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
+    	# return HttpResponse(html)
+    	messages.error(request,"You must first login to access this page.")
+    	return render(request,'pbl/invalid_access.html',{ })
     if not request.user.is_superuser:
-    	html = "<html><body>Invalid Access <span> <a href="'../'">Go Home page</a></span></body></html>"
-    	return HttpResponse(html)
+    	# html = "<html><body>Invalid Access <span> <a href="'../'">Go Home page</a></span></body></html>"
+    	# return HttpResponse(html)
+    	messages.error(request,"Invalid access")
+    	return render(request,'pbl/invalid_access.html',{ })
     return render(request,'pbl/instructor_page.html',{})
 
 # @login_required(login_url='/accounts/login')
 def score_list(request):
     if not request.user.is_authenticated():
-    	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-    	return HttpResponse(html)
+    	messages.error(request,"You must first login to access this page.")
+    	return render(request,'pbl/invalid_access.html',{ })
     if not request.user.is_superuser:
-    	html = "<html><body>Invalid Access <span> <a href="'../'">Go Home page</a></span></body></html>"
-    	return HttpResponse(html)
-    scores = Score.objects.all().order_by("-score")
-    return render(request,'pbl/score_list.html',{'scores':scores})        
+    	messages.error(request,"Invalid access")
+    	return render(request,'pbl/invalid_access.html',{ })
+    try:
+    	scores = Score.objects.all().order_by("-score")
+    	return render(request,'pbl/score_list.html',{'scores':scores}) 
+    except Score.DoesNotExist:
+    	pass    
+    return render(request,'pbl/score_list.html',{ })        
         
 
 def score_details(request, student_id):
 
     if not request.user.is_authenticated():
-    	html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-    	return HttpResponse(html)
+    	messages.error(request,"You must first login to access this page.")
+    	return render(request,'pbl/invalid_access.html',{ })
     if request.user.id != int(student_id) and not(request.user.is_superuser):
-    	html = "<html><body>Invalid access <span> <a href="'../../'">Go Back</a></span></body></html>"
-    	return HttpResponse(html)
+    	messages.error(request,"Invalid access")
+    	return render(request,'pbl/invalid_access.html',{ })
     try:
-        competition = Competition.objects.filter(student=student_id).order_by("-id")
-    except Competition.DoesNotExist:
-        pass
-    students = User.objects.get(id=student_id)
-    student_name = students.username
-    return render(request,'pbl/score_details.html',{'competition':competition, 'student_name':student_name})
+    	students = User.objects.get(id=student_id)
+    	student_name = students.username
+    	try:
+    		competition = Competition.objects.filter(student=student_id).order_by("-id")
+    		return render(request,'pbl/score_details.html',{'competition':competition, 'student_name':student_name})
+    	except Competition.DoesNotExist:
+    		pass
+    except User.DoesNotExist:
+    	pass
+    return render(request,'pbl/score_details.html',{ })
 
 
 
@@ -95,8 +107,8 @@ def contact(request):
 def demo0(request):
     # messages.error(request)
     if not request.user.is_authenticated():
-        html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-        return HttpResponse(html)
+    	messages.error(request,"You must first login to access this page.")
+    	return render(request,'pbl/invalid_access.html',{ })
     if request.method != "POST":
         return render(request,'pbl/demo0/demo0.html',{})
     passwd = escape(strip_tags(request.POST.get("inputPassword")))
@@ -124,8 +136,8 @@ def is_already_completed_level(user,c_id,l_id):
 
 def demo1(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/demo1/demo1.html',{})
 	passwd = escape(strip_tags(request.POST.get("inputPassword")))
@@ -143,8 +155,8 @@ def demo1(request):
 
 def demo2(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/demo2/demo2.html',{})
 	passwd = escape(strip_tags(request.POST.get("inputPassword")))
@@ -162,8 +174,8 @@ def demo2(request):
 
 def demo3(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/demo3/demo3.html',{})
 	else:
@@ -178,8 +190,8 @@ def demo3(request):
 
 def demo4(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/demo4/demo4.html',{})
 	else:
@@ -196,8 +208,8 @@ def demo4(request):
 #web login challenge Level 3 - challenge_id = 1 Level_id = 4
 def demo5(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/demo5/index.html',{})
 	passwd = escape(strip_tags(request.POST.get("inputPassword")))
@@ -214,12 +226,15 @@ def demo5(request):
 	return render(request,'pbl/demo5/index.html',{})
 
 def demo5_1(request):
+	if not request.user.is_authenticated():
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	return render(request,'pbl/demo5/donotlookinhere/password.txt', {})
 
 def app_logic0(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/app_logic/0/index.html',{})
 	# if request.POST.get("inputAmount") is not None:
@@ -237,8 +252,8 @@ def app_logic0(request):
 
 def app_logic1(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/app_logic/1/index.html',{})
 	if request.POST.get("inputAmount") is not None:
@@ -280,8 +295,8 @@ def doTransfer1(ip):
 
 def xss_1(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "GET":
 		return render(request,'pbl/xss/1/index.html',{})
 	inputSearch = request.GET.get("search")
@@ -312,8 +327,8 @@ def compute_score(request,c_id, l_id):
 def rand_demo(request):
 	# rand_form(request)
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		rnd = 'demo'
 		return render(request,'pbl/rand_form/template_0demo.html',{'rand_num': rnd})
@@ -337,8 +352,8 @@ def rand_demo(request):
 
 def rand_form(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	# rnd = str(random.randint(0,4))
 	# # BASE_DIR = settings.BASE_DIR
 	# FILE_DIR = settings.FILE_DIR
@@ -422,8 +437,8 @@ def calculate_score(ans,sub):
 # for indirect object references...
 def ido0(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/ido/0/index.html',{})	
 	if request.POST.get("itemList") is not None:
@@ -453,16 +468,16 @@ def ido0(request):
 # for indirect object references...
 def ido1(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/ido/1/index.html',{})	
 
 
 def ido1_userEdit1(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/ido/1/edit_1.html',{})	
 	messages.success(request,"Your profile is successfully updated. But can you update other's user profile?")
@@ -470,8 +485,8 @@ def ido1_userEdit1(request):
 
 def ido1_userEdit2(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/ido/1/edit_2.html',{})
 	send_to_success_ido1(request)
@@ -479,8 +494,8 @@ def ido1_userEdit2(request):
 	
 def ido1_userEdit3(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/ido/1/edit_3.html',{})
 	send_to_success_ido1(request)
@@ -498,8 +513,8 @@ def send_to_success_ido1(request):
 
 def crypto(request):
 	if not request.user.is_authenticated():
-		html = "<html><body>You must first login to access this page. <span> <a href="'../'">Go Home page</a></span></body></html>"
-		return HttpResponse(html)
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		return render(request,'pbl/crypto/index.html',{})	
 	if request.POST.get("plainText") is not None:
