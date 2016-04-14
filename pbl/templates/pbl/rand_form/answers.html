@@ -2,17 +2,23 @@
 
 {% block content %}
 <h1>
-    {% if messages %}
+    
     <div class="row">
-        <div class="col-sm-7 col-sm-offset-3">                 
-            {% for msg in messages %}       
-                <div class="alert alert-success" role="alert" style="text-align:center;">
-            {{msg.message}}
-            </div>
-            {% endfor %}
+        <div class="col-sm-7 col-sm-offset-3">
+                    {%  if total_score > 0 %} 
+                     <div class="alert alert-success"  style="text-align:center;">
+                        Congratulations, your total score is {{ total_score }}. Only your highest score will be counted.
+                         
+                    </div>
+                    {% else %}
+                        <div class="alert alert-danger"  style="text-align:center;">
+                            Opps your total score is {{ total_score }}. Please try harder.
+                             
+                        </div>
+                    {% endif %}
          </div>
      </div>
-    {% endif %}
+   
 </h1>
 <h2>
      <div class="row">
