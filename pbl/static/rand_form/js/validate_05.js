@@ -56,7 +56,7 @@ function names()
 	{
 		result = result.concat("Last Name: You didn't put anything for your last name\n");
 	}
-	else if(!last.match(reg))
+	else if(!last.match(reg) && last.length <= 20)
 	{
 		result = result.concat("Last Name: Your last name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
 	}

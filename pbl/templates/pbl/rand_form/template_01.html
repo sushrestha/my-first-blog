@@ -45,12 +45,23 @@
 		      		  <input type="text" maxlength="10"  class="col-sm-3" id="usrBDay" placeholder="mm/dd/yyyy">
 		      	    </div>
 		      	    <div class="row">
-			      	    <div class="col-sm-3"></div>
-			            <button class="btn btn-success col-sm-2 pad" type="submit">Create Account</button>
-			            <span class="col-sm-2"></span>
-			            <button class="btn btn-info col-sm-2 pad" type="reset">Clear fields</button>
-			            <div class="col-sm-3"></div>
-			        </div>
+                  	  <div class="col-sm-1"></div>
+                  	  <button class="btn btn-info col-sm-2 pad" style="right: -8%;" data-toggle="collapse" data-target="#Hints" onclick="return false;">Hints</button>
+                  	  <span class="col-sm-1"></span>
+                  	  <button class="btn btn-success col-sm-2 pad" type="submit" style="right: -8%;">Create Account</button>
+                  	  <div class="col-sm-1"></div>
+                  	  <button class="btn btn-info col-sm-2 pad" type="reset" style="right: -8%;">Clear fields</button>
+                	</div>
+                	<span class="col-sm-1"></span>
+		            <div class="collapse col-sm-11" style="right: -1%;" id="Hints">
+	                  <ul>
+	                    <h5>Hints</h5>
+	                    <li>What is validation?</li>
+	                    <li>Is it possibile to validate every item that appears on this list?</li>
+	                    <li>What is the possible formatting standards for input in this form?</li>
+	                    <li>Is not having a maximum length, or checking for character limits a problem?</li>
+	                  </ul>
+                	</div>
 		            <div class="row padded"></div>
 		          </div>
           	  </form>
