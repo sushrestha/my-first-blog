@@ -1,0 +1,125 @@
+# Cheat sheet for form vulnerability puzzle
+
+
+Random _number
+0:
+	UserName = ["None"];
+	Email = ["It does not have a maximum length", "It does not validate the information given"];
+	Confirm Email = ["It does not validate the information given"];
+	Password = ["None"];
+	Confirm Password = ["It does not have a maximum length"];
+	First Name = ["It does not have a maximum length"];
+	LastName = ["It does not check the formatting of the information"];
+	Middle Initial = ["It does not have a maximum length"];
+	Phone Number = ["It does not check the formatting of the information"];
+	BrithDay = ["None"];
+
+1:
+	UserName = ["None"];
+	Email = ["It does not validate the information given"];
+	Confirm Email = ["It does not validate the information given"];
+	Password = ["It does not have a maximum length","It does not check the formatting of the information"];
+	Confirm Password = ["It does not check the formatting of the information"];
+	First Name = ["It does not check the formatting of the information","It does not have a maximum length"];
+	LastName = ["None"];
+	Middle Initial = ["It does not check the formatting of the information", "It does not have a maximum length"];
+	Phone Number = ["None"];
+	BrithDay = ["It does not validate the information given"];
+
+2:
+	UserName = ["It does not check the formatting of the information"];
+	Email = ["It does not have a maximum length"];
+	Confirm Email = ["None"];
+	Password = ["It does not have a maximum length","It does not validate the information given"];
+	Confirm Password = ["It does not validate the information given"];
+	First Name = ["None"];
+	LastName = ["None"];
+	Middle Initial = ["It does not check the formatting of the information"];
+	Phone Number = ["It does not check the formatting of the information","It does not have a maximum length"];
+	BrithDay = ["It does not check the formatting of the information"];
+
+3:
+	UserName = ["It does not have a maximum length"];
+	Email = ["It does not check the formatting of the information","It does not validate the information given"];
+	Confirm Email = ["It does not check the formatting of the information","It does not validate the information given"];
+	Password = ["It does not check the formatting of the information","It does not validate the information given"];
+	Confirm Password = ["It does not check the formatting of the information","It does not validate the information given","It does not have a maximum length"];
+	First Name = ["None"];
+	LastName = ["It does not check the formatting of the information"];
+	Middle Initial = ["None"];
+	Phone Number = ["It does not have a maximum length"];
+	BrithDay = ["None"];
+
+4:
+	UserName = ["It does not have a maximum length","It does not check the formatting of the information"];
+	Email = ["None"];
+	Confirm Email = ["It does not have a maximum length"];
+	Password = ["It does not validate the information given"];
+	Confirm Password = ["It does not validate the information given"];
+	First Name = ["It does not have a maximum length","It does not check the formatting of the information"];
+	LastName = ["None"];
+	Middle Initial = ["None"];
+	Phone Number = ["None"];
+	BrithDay = ["It does not check the formatting of the information", "It does not have a maximum length"];
+
+5:
+	UserName = ["None"];
+	Email = ["It does not check the formatting of the information"];
+	Confirm Email = ["It does not check the formatting of the information"];
+	Password = ["It does not have a maximum length","It does not check the formatting of the information","It does not validate the information given"];
+	Confirm Password = ["It does not check the formatting of the information","It does not validate the information given"];
+	First Name = ["It does not check the formatting of the information"];
+	LastName = ["None"];
+	Middle Initial = ["It does not have a maximum length"];
+	Phone Number = ["It does not have a maximum length"];
+	BrithDay = ["None"];
+
+6:
+	UserName = ["It does not have a maximum length","It does not check the formatting of the information"];
+	Email = ["None"];
+	Confirm Email = ["None"];
+	Password = ["It does not check the formatting of the information","It does not validate the information given"];
+	Confirm Password = ["It does not check the formatting of the information","It does not validate the information given"];
+	First Name = ["None"];
+	LastName = ["It does not have a maximum length"];
+	Middle Initial = ["It does not check the formatting of the information"];
+	Phone Number = ["It does not check the formatting of the information"];
+	BrithDay = ["It does not validate the information given"];
+
+7:
+	UserName = ["It does not have a maximum length"];
+	Email = ["It does not have a maximum length","It does not check the formatting of the information","It does not validate the information given"];
+	Confirm Email = ["It does not have a maximum length","It does not check the formatting of the information","It does not validate the information given"];
+	Password = ["None"];
+	Confirm Password = ["None"];
+	First Name = ["None"];
+	LastName = ["None"];
+	Middle Initial = ["It does not have a maximum length","It does not check the formatting of the information"];
+	Phone Number = ["It does not have a maximum length","It does not check the formatting of the information"];
+	BrithDay = ["None"];
+
+8:
+	UserName = ["It does not check the formatting of the information"];
+	Email = ["None"];
+	Confirm Email = ["None"];
+	Password = ["It does not have a maximum length"];
+	Confirm Password = ["None"];
+	First Name = ["It does not have a maximum length"];
+	LastName = ["None"];
+	Middle Initial = ["It does not check the formatting of the information"];
+	Phone Number = ["It does not have a maximum length","It does not check the formatting of the information"];
+	BrithDay = ["It does not have a maximum length","It does not check the formatting of the information","It does not validate the information given"];
+
+9:
+	UserName = ["It does not have a maximum length"];
+	Email = ["It does not have a maximum length","It does not check the formatting of the information","It does not validate the information given"];
+	Confirm Email = ["It does not have a maximum length","It does not check the formatting of the information","It does not validate the information given"];
+	Password = ["None"];
+	Confirm Password = ["It does not have a maximum length"];
+	First Name = ["None"];
+	LastName = ["It does not have a maximum length","It does not check the formatting of the information"];
+	Middle Initial = ["It does not have a maximum length"];
+	Phone Number = ["None"];
+	BrithDay = ["It does not check the formatting of the information"];
+
+
