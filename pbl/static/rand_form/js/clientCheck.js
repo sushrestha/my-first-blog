@@ -122,6 +122,10 @@ function addButton(field)
 		textField.appendChild(removeText);
 		remove.appendChild(textField);
 		var element = document.createElement('SELECT');
+		var optionSelect = document.createElement('OPTION');
+		optionSelect.value = 4;
+		optionSelect.text = "Select an Option";
+		element.add(optionSelect);
 		var option0 = document.createElement('OPTION');
 		option0.value = 0;
 		option0.text = "None";
