@@ -1,0 +1,25 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+<h1>
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-7 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert" style="text-align:center;">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+</h1>
+<h2>
+     <div class="row">
+        <!-- <div class="col-sm-6"> </div> -->
+         <div class="col-sm-6 col-sm-offset-3" style="text-align:center;">  Do you want to play again? <a href="{% url 'rand_form' %}" >YES</a>||<a href="{% url 'index' %}" >NO</a></div>
+        <!-- <div class="col-sm-6"> </div> -->
+     </div>
+
+</h2>
+{% endblock %}
