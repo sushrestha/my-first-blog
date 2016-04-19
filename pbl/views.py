@@ -341,11 +341,13 @@ def rand_demo(request):
 			field = 'field'+str(i)
 			answer_submited[i] = strip_tags(request.POST.getlist(field))
 		total_score = int(calculate_score(ansr,answer_submited))
-		messages.success(request,'Congratulations, your score is '+str(total_score)+".\n 	 You can try again to score more. 	 Only your highest score will be counted.")
-		challenge_id = 2
-		level_id = 3
-		insert_score(request,challenge_id,level_id,total_score)
-		return render(request,'pbl/rand_form/answers.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})		
+		if total_score <= 0:
+			total_score = 0
+		else:
+			challenge_id = 2
+			level_id = 3
+			insert_score(request,challenge_id,level_id,total_score)
+		return render(request,'pbl/rand_form/answers.html',{'total_score':total_score,'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
 	return render(request,'pbl/rand_form/template_0demo.html',{})			
 		
 	
