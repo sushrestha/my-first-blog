@@ -343,10 +343,10 @@ def rand_demo(request):
 		total_score = int(calculate_score(ansr,answer_submited))
 		if total_score <= 0:
 			total_score = 0
-		else:
-			challenge_id = 2
-			level_id = 3
-			insert_score(request,challenge_id,level_id,total_score)
+		# else:
+		challenge_id = 2
+		level_id = 3
+		insert_score(request,challenge_id,level_id,total_score)
 		return render(request,'pbl/rand_form/answers.html',{'total_score':total_score,'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
 	return render(request,'pbl/rand_form/template_0demo.html',{})			
 		
@@ -377,10 +377,10 @@ def rand_form(request):
 		# 	messages.success(request,'Congratulations, your score is '+str(total_score)+".\n 	You can try again to score more.	Only your highest score will be counted.")
 		if total_score <= 0:
 			total_score = 0
-		else:
-			challenge_id = 2
-			level_id = 3
-			insert_score(request,challenge_id,level_id,total_score)
+		# else:
+		challenge_id = 2
+		level_id = 3
+		insert_score(request,challenge_id,level_id,total_score)
 		return render(request,'pbl/rand_form/answers.html',{'total_score':total_score,'rand_num': randnum, 'ansr':ansr, 'answer_submited':answer_submited})
 	# return render(request,'pbl/rand_form/index.html',{'rand_num': rnd, 'ansr':ansr, 'answer_submited':answer_submited})
 	return render(request,'pbl/rand_form/index.html',{ })
@@ -404,16 +404,21 @@ def insert_score(request,c_id,l_id,new_score):
 					score.score = score.score + diff
 					score.save()
 				except Score.DoesNotExist:
-					pass
+					score = Score(student=request.user, score=new_score)
+					score.save()
 		# if not existed add new one
 		else:
 			challenge = Challenge.objects.get(id=c_id) # need to make id dynamic
 			level = Level.objects.get(id=l_id)
 			competition = Competition(student=request.user,challenge=challenge, level=level, score=new_score)
 			competition.save()
-			score = Score.objects.get(student=request.user)
-			score.score = score.score + new_score
-			score.save()				
+			try:
+				score = Score.objects.get(student=request.user)
+				score.score = score.score + new_score
+				score.save()
+			except Score.DoesNotExist:
+				score = Score(student=request.user, score=new_score)
+				score.save()
 	except Competition.DoesNotExist:
 		pass	
 
