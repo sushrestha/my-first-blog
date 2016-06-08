@@ -1,27 +1,60 @@
 {% extends 'pbl/base.html' %}
 {% block content %}
+<div class="row">
+	<h1> Total Scores:</h1>
+</div>
 
-<h1> Total Scores:  </h1>
-		<div class="table-responsive hover">
-			<table class="table table-striped">
-    			<thead>
-			<tr>
-			<th>SN</th><th>Student</th><th>Score</th>
-			</tr>
-			</thead>
-			<tbody>
-			{% for score in scores %}
-			<tr>
-			<td>{{ forloop.counter }}</td><td>
-			{% if score.student.id == request.user.id or request.user.is_superuser %}
-			<a href="{% url 'score_details' student_id=score.student.id %}">
-			{% endif %}
-			{{ score.student}}</a></td><td>{{ score.score }}</td>
-			</tr>
-			{% endfor %}
-			</tbody>
-			</table>
-		</div>
+    <div class="row">
+    	 <div class="col-sm-12">
+        <!-- <div class="col-sm-6"> -->
+        	<h1> By Student   </h1>
+			<div class="table-responsive hover">
+				<table class="table table-striped">
+	    			<thead>
+				<tr>
+				<th>SN</th><th>Student</th><th>Score</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for score in scores %}
+				<tr>
+				<td>{{ forloop.counter }}</td><td>
+				{% if score.student.id == request.user.id or request.user.is_superuser %}
+				<a href="{% url 'score_details' student_id=score.student.id %}">
+				{% endif %}
+				{{ score.student}}</a></td><td>{{ score.score }}</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+				</table>
+			</div>
+        </div>
+
+<!--         <div class="col-sm-6">
+        	<h1> By Challenge {{ challanges  }} </h1>
+        		<div class="table-responsive hover">
+				<table class="table table-striped">
+	    		<thead>
+				<tr>
+				<th>SN</th><th>Challenge</th><th>level</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for challenge in challenges %}
+				<tr>
+				<td>{{ forloop.counter }}</td>
+				<td>{{ challenge.title }}</td>
+				<td>Level {{ forloop.counter }}</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+				</table>
+			</div>
+        </div> -->
+
+
+    </div>
+
 
 
 {% endblock %}
