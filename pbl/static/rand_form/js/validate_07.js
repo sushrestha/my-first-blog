@@ -24,17 +24,17 @@ function validation()
 
 function passStrength()
 {
-	var reg = /((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'*-+])[^ ]+$)/;
+	var reg = /((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'*-+])[^ ]{6,14}$)/;
 	var pass = document.getElementById('usrPass').value;
 	var passCon = document.getElementById('usrPassCon').value;
 	var result = "";
-	if(!pass.match(reg) && !passCon.match(reg) && (pass.length <= 14 && pass.length >=6) && (passCon.length <= 14 && passCon.length >=6))
+	if(!pass.match(reg))
 	{
-		result = result.concat("Passwords: Your password must have 6-14 characters with one uppercase letter, one lowercase letter, a number, and a special character\n");
+		result = result.concat("Password: Your password must have at least 6 characters with one uppercase letter, one lowercase letter, a number, and a special character\n");
 	}
 	if(pass != passCon)
 	{
-		result = result.concat("Passwords: Your passwords must match.\n");
+		result = result.concat("Password Confirmation: Your passwords must match.\n");
 	}
 	return result;
 }
@@ -44,7 +44,7 @@ function usrName()
 	var reg = /^(?![_\\/.<>])(?!.*[_.]{2})[a-zA-Z0-9._]+(?![_.\\/<>])$/;
 	var name = document.getElementById('usrAlias').value;
 	if(!name.match(reg)){
-		return "Username: User Name can't have any \\, /, <, > symbols\n";
+		return "Username: User Name must be at least 6 characters with no \\, /, <, > symbols\n";
 	}
 	return "";
 }
@@ -53,15 +53,23 @@ function names()
 {
 	var result = "";
 	var reg = /^([A-Z]{1,2})[a-z]+([A-Z]?)[a-z]+$/;
-	var regm = /^[A-Z]+$/;
+	var regm = /^[A-Z]+/;
 	var first = document.getElementById('usrFName').value;
 	var last = document.getElementById('usrLName').value;
 	var mid = document.getElementById('usrInitial').value;
-	if(!first.match(reg) && first.length <= 20)
+	if(first == "")
+	{
+		result = result.concat("First Name: You didn't put anything for you first name\n");
+	}
+	else if(!first.match(reg) && first.length <= 20)
 	{
 		result = result.concat("First Name: Your first name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
 	}
-	if(!last.match(reg) && last.length <= 20)
+	if(last == "")
+	{
+		result = result.concat("Last Name: You didn't put anything for your last name\n");
+	}
+	else if(!last.match(reg) && last.length <= 20)
 	{
 		result = result.concat("Last Name: Your last name isn't formatted correctly\n");
 	}
@@ -74,6 +82,10 @@ function bDay()
 	var current = new Date();
 	var reg = /^[0-1]?[0-9]{1}\/[0-3]?[0-9]{1}\/[1-2]{1}[0-9]{3}$/;
 	var date = document.getElementById("usrBDay").value;
+	if(date == "")
+	{
+		return "Birth Date: You didn't put a birthday\n";
+	}
 	var year = date.substring(6,10);
 	var day = date.substring(3, 5);
 	var mon = date.substring(0, 2);
@@ -91,11 +103,7 @@ function bDay()
 	}
 	if(mon < 1)
 	{
-		msg = msg.concat("Birth Date: Your birth month can't be below 1\n");
-	}
-	else if(mone > 12)
-	{
-		msg = msg.concat("Birth Date: Your birth month can't be greater than 12\n");
+		msg = msg.concat("Birth Date: Your birth month can't be below 1");
 	}
 	else if(mon == 2)
 	{

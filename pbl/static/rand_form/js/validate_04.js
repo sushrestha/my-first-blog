@@ -29,28 +29,24 @@ function checkEmails()
 	var reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	var email = document.getElementById('usrEmail').value;
 	var emailCon = document.getElementById('usrEmailCon').value;
-	if(!email.match(reg) && emailCon.match(reg) && (email.length <= 40 && email.length >=6))
+	if(!email.match(reg))
 	{
-		result = result.concat("Emails: These emails are not valid!\n");
+		result = result.concat("Email: This email is not valid!\n");
 	}
-	for(i=0; i < email.length; i++)
+	if(email != emailCon)
 	{
-		if(email.charAt(i)!=emailCon.charAt(i))
-		{
-			result = result.concat("Emails: Your emails must match.\n");
-			break;
-		}
+		result = result.concat("Email Confirmation: The emails do not match!\n");
 	}
 	return result;
 }
 
 function passStrength()
 {
-	var reg = /((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'*-+])[^ ]+$)/;
+	var reg = /((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'*-+])[^ ]{6,14}$)/;
 	var pass = document.getElementById('usrPass').value;
 	var passCon = document.getElementById('usrPassCon').value;
 	var result = "";
-	if(!pass.match(reg) && !passCon.match(reg) && (pass.length <= 14 && pass.length >=6) && (passCon.length <= 14 && passCon.length >=6))
+	if(!pass.match(reg))
 	{
 		result = result.concat("Password: Your password must have at least 6 characters with one uppercase letter, one lowercase letter, a number, and a special character\n");
 	}
@@ -59,10 +55,10 @@ function passStrength()
 
 function usrName()
 {
-	var reg = /^(?=.{6,20}$)(?![_\\/.<>])(?!.*[_.]{2})[a-zA-Z0-9._]+(?![_.\\/<>])$/;
+	var reg = /^(?![_\\/.<>])(?!.*[_.]{2})[a-zA-Z0-9._]+(?![_.\\/<>])$/;
 	var name = document.getElementById('usrAlias').value;
 	if(!name.match(reg)){
-		return "Username: UserName can only be 6-20 characters long with no \\, /, <, > symbols\n";
+		return "Username: UserName must be at least 6 characters with no \\, /, <, > symbols\n";
 	}
 	return "";
 }
@@ -71,17 +67,25 @@ function names()
 {
 	var result = "";
 	var reg = /^([A-Z]{1,2})[a-z]+([A-Z]?)[a-z]+$/;
-	var regm = /^[A-Z]+$/;
+	var regm = /^[A-Z]{1}$/;
 	var first = document.getElementById('usrFName').value;
 	var last = document.getElementById('usrLName').value;
 	var mid = document.getElementById('usrInitial').value;
-	if(!last.match(reg) && last.length <= 20)
+	if(mid == "")
 	{
-		result = result.concat("Last Name: Your last name isn't formatted correctly\n");
+		result = result.concat("Middle Initial: You didn't put anything for your middle initial\n");
 	}
-	if(!mid.match(regm) && mid.length != 1)
+	else if(!mid.match(regm))
 	{
 		result = result.concat("Middle Initial: Your middle initial isn't formatted correctly\n");
+	}
+	if(last == "")
+	{
+		result = result.concat("Last Name: You didn't put anything for your last name\n");
+	}
+	else if(!last.match(reg) && last.length <= 20)
+	{
+		result = result.concat("Last Name: Your last name isn't formatted correctly, if your name uses punctuation please don't enter it and try again\n");
 	}
 	return result;
 }
@@ -91,11 +95,15 @@ function phnNum()
 	var result = "";
 	var number = document.getElementById('usrPNumber').value;
 	var reg = /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/;
-	if(!number.match(reg))
+	if(number == "")
+	{
+		return "Phone Number: You didn't put anything for your phone number\n";
+	}
+	else if(!number.match(reg))
 	{
 		return "Phone Number: Your phone number doesn't match our format\n"
 	}
-	return result;
+return result;
 }
 
 function bDay()
@@ -104,6 +112,10 @@ function bDay()
 	var current = new Date();
 	var reg = /^[0-1]?[0-9]{1}\/[0-3]?[0-9]{1}\/[1-2]{1}[0-9]{3}/;
 	var date = document.getElementById("usrBDay").value;
+	if(date == "")
+	{
+		return "Birth Date: You didn't put a birthday\n";
+	}
 	var year = date.substring(6,10);
 	var day = date.substring(3, 5);
 	var mon = date.substring(0, 2);
@@ -117,11 +129,7 @@ function bDay()
 	}
 	if(mon < 1)
 	{
-		msg = msg.concat("Birth Date: Your birth month can't be below 1\n");
-	}
-	else if(mone > 12)
-	{
-		msg = msg.concat("Birth Date: Your birth month can't be greater than 12\n");
+		msg = msg.concat("Birth Date: Your birth month can't be below 1");
 	}
 	else if(mon == 2)
 	{

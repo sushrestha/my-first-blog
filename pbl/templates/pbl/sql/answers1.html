@@ -1,0 +1,42 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    <p style="text-align: center;">
+        This challenge intoduces filters being implemented on SQL, where you can no longer put in any spaces. As if that will stop you.<br>
+        <br>
+        Just like most websites today, we are first putting filters to remove anyhing that we do not wish to be<br>
+        processed serverside. Here we are filtering out the symbols that allowed us to make the first injection.<br>
+        <br>
+        Filtering: whitespaces<br>
+        * This filtering list will grow longer, along with the idea of escaping input to avoid injection.<br>
+        <br>
+        The sql statment being used to query the database is still staying the same:<br>
+        <span style="color: green;">SELECT * FROM Users WHERE username='jonDoe' AND password='123456';</span><br>
+        <br>
+        With the correct injection it should look like this<br>
+        <span style="text-align: center; color: green;">SELECT * FROM Users WHERE username='</span>
+        <span style="text-align: center; color: red;">'OR(1=1);-- </span>
+        <span style="text-align: center; color: darkgrey;">AND password='123456';</span><br>
+        <br>
+        OR:
+        <br>
+        <span style="text-align: center; color: green;">SELECT * FROM Users WHERE username='</span>
+        <span style="text-align: center; color: red;">'OR(1)=(1);-- </span>
+        <span style="text-align: center; color: darkgrey;">AND password='123456';</span><br>
+        A real simple way to get around the need for spaces is to simply put brackets around it instead of spaces,<br>
+        which will have the same effect. 
+    </p>
+
+{% endblock %}

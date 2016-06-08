@@ -1,0 +1,46 @@
+{% extends 'pbl/base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">                 
+            {% for msg in messages %}       
+                <div class="alert alert-success" role="alert">
+            {{msg.message}}
+            </div>
+            {% endfor %}
+         </div>
+     </div>
+    {% endif %}
+    <p style="text-align: center;">
+        This challenge introduces the basics of SQL Injection.<br>
+<br>
+        SQL(Standard Query Language): Is a language that is used to communciate to a database.<br>
+        It is commonly used in websites when logging in as a user. A typical query to log in <br>
+        jonDoe with 123456 for his password to a website may look like this:<br></p>
+<br>   
+    <p style="text-align: center; color: green;">SELECT * FROM Users WHERE username='jonDoe' AND password='123456';<br></p>
+<br>
+<br>
+        
+    <p style="text-align: center;">Some websites don't do any sanitization or escaping of characters when taking user input. <br>
+        An attacker to see if sql injection can work would try somethign similiar to how you<br>
+        solved the puzzle. The reason behind it is because you are giving malformed input that<br>
+        shouldn't be allowed with out some changes to it. With no sanitization the same query from<br>
+        above changes to something like this:<br></p>
+<br>
+        
+    <p style="text-align: center; color: green;">SELECT * FROM Users WHERE username='
+    <span style="text-align: center; color: red;">' OR 1=1; -- </span>
+    <span style="text-align: center; color: darkgrey;">AND password='123456';</span><br></p>
+<br>
+        
+    <p style="text-align: center;">This new SQL statment is true for every single user and prints their information out, <br>
+        because of two reasons.<br>
+        1: The addition of OR 1=1 makes the statment always true for every single user entry<br>
+        2: The new end of the statment is at the ;  right after 1=1, and the -- comments out the<br>
+           rest the statment( AND password='123456';).<br>
+    </p>
+
+{% endblock %}

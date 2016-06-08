@@ -11,6 +11,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 import random, os
 from django.conf  import settings
+from puzzleScripts import *
 
 
 
@@ -353,9 +354,9 @@ def rand_demo(request):
 	
 
 def rand_form(request):
-	if not request.user.is_authenticated():
-		messages.error(request,"You must first login to access this page.")
-		return render(request,'pbl/invalid_access.html',{ })
+	# if not request.user.is_authenticated():
+	# 	messages.error(request,"You must first login to access this page.")
+	# 	return render(request,'pbl/invalid_access.html',{ })
 	# rnd = str(random.randint(0,4))
 	# # BASE_DIR = settings.BASE_DIR
 	# FILE_DIR = settings.FILE_DIR
@@ -597,3 +598,53 @@ def load_file(rnd,FILE_DIR):
 	except IOError as err:
 		return err
 	return answer_dict,infile
+
+def sql0(request):
+	# if not request.user.is_authenticated():
+	# 	messages.error(request,"You must first login to access this page.")
+	# 	return render(request,'pbl/invalid_access.html',{ })
+	if request.method != 'POST':
+		return render(request, 'pbl/sql/sql0.html', {})
+	if request.POST.get('userName') is not None:
+		attempt = request.POST.get('userName')
+		passing = request.POST.get('passw')
+		if attempt == 'admin' and passing == '1Gr8$h4d0W':
+			# challenge_id = 6
+			# level_id = 1
+			# completed = is_already_completed_level(request.user,challenge_id,level_id)
+			# if not completed:
+			# 	compute_score(request,challenge_id,level_id)
+			# 	messages.success(request,"Congratulations, You have completed SQL Injection Challenge - Level 1.")
+			# else: messages.success(request,"Congratulations for beating up again -SQL Injection Challenge - Level 1. But you will not get the score")
+			return render(request,'pbl/sql/answers0.html',{})
+		error = injection0(attempt)
+		if error != "":
+			return render(request, 'pbl/sql/sql0.html', {'error': error})
+		return render(request, 'pbl/sql/sql0.html', {'injected': True})
+	else:
+		return render(request, 'pbl/sql/sql0.html', {})
+
+def sql1(request):
+	# if not request.user.is_authenticated():
+	# 	messages.error(request,"You must first login to access this page.")
+	# 	return render(request,'pbl/invalid_access.html',{ })
+	if request.method != 'POST':
+		return render(request, 'pbl/sql/sql1.html',{})
+	if request.POST.get('userName') is not None:
+		attempt = request.POST.get('userName')
+		passing = request.POST.get('passw')
+		if attempt == 'rootAdmin' and passing == 'N3v3R_F0Und_AgA1n!':
+			# challenge_id = 6
+			# level_id = 2
+			# completed = is_already_completed_level(request.user,challenge_id,level_id)
+			# if not completed:
+			# 	compute_score(request,challenge_id,level_id)
+			# 	messages.success(request,"Congratulations, You have completed SQL Injection Challenge - Level 1.")
+			# else: messages.success(request,"Congratulations for beating up again -SQL Injection Challenge - Level 1. But you will not get the score")
+			return render(request,'pbl/sql/answers1.html',{})
+		error = injection1(attempt)
+		if error != "":
+			return render(request, 'pbl/sql/sql1.html', {'error': error})
+		return render(request, 'pbl/sql/sql1.html', {'injected': True})
+	else:
+		return render(request, 'pbl/sql/sql1.html',{})
