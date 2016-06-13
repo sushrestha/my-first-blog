@@ -72,15 +72,9 @@ def score_list(request):
     	return render(request,'pbl/invalid_access.html',{ })
     try:
     	scores = Score.objects.all().order_by("-score")
-    	try:
-    		challanges = Challenge.objects.all()
-    	except:
-    		pass
-    	return render(request,'pbl/score_list.html',{'scores':scores, 'challanges':challanges}) 
-    
+    	return render(request,'pbl/score_list.html',{'scores':scores}) 
     except Score.DoesNotExist:
-    	pass
-
+    	pass    
     return render(request,'pbl/score_list.html',{ })        
         
 
@@ -104,20 +98,7 @@ def score_details(request, student_id):
     	pass
     return render(request,'pbl/score_details.html',{ })
 
-def challengeWiseScore(request, challenge_id):
-    if not request.user.is_authenticated():
-    	messages.error(request,"You must first login to access this page.")
-    	return render(request,'pbl/invalid_access.html',{ })
-    if request.user.id != int(student_id) and not(request.user.is_superuser):
-    	messages.error(request,"Invalid access")
-    	return render(request,'pbl/invalid_access.html',{ })
- #  	try:
-	# 	competition = Competition.objects.filter(student=challenge_id).order_by("-id")
-	# 	return render(request,'pbl/score_details.html',{'competition':competition, 'challenge_id':challenge_id})
-	# except Competition.DoesNotExist:
-	# 	pass
 
-    return render(request,'pbl/score_details.html',{ })
 
 def about(request):
     return render(request,'pbl/about.html',{})
@@ -348,9 +329,6 @@ def rand_demo(request):
 	# rand_form(request)
 	if not request.user.is_authenticated():
 		messages.error(request,"You must first login to access this page.")
-		return render(request,'pbl/invalid_access.html',{ })
-	if not request.user.is_superuser:
-		messages.error(request,"Invalid access")
 		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != "POST":
 		rnd = 'demo'
