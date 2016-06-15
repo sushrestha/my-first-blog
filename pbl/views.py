@@ -12,7 +12,7 @@ from django.template import RequestContext
 import random, os
 from django.conf  import settings
 from puzzleScripts import *
-from reportlab.pdfgen import canvas # pdf generator
+# from reportlab.pdfgen import canvas # pdf generator
 
 
 
@@ -74,18 +74,18 @@ def webForm_instructions(request):
     return render(request,'pbl/webForm_instructions.html',{}) #Web2Instrucitons_wuth_answerCheat_V1.0
     # return render(request,'pbl/Web2Instrucitons_wuth_answerCheat_V1.0.pdf',{})
 
-def hello_pdf(request):
-	# create HttpResponse object with PDF headers
-	response = HttpResponse(mimetype='application/pdf')
-	response['Content-Disposition'] = 'attachment;  filename=Web2Instrucitons_wuth_answerCheat_V1.pdf'
-	# create the PDF object using the response object as its 'file'
-	p = canvas.Canvas(response)
-	# Draw things on the PDF
-	p.drawString(100,100,"Instruction page")
-	# Close PDF
-	p.showpage()
-	p.save()
-	return response
+# def hello_pdf(request):
+# 	# create HttpResponse object with PDF headers
+# 	response = HttpResponse(mimetype='application/pdf')
+# 	response['Content-Disposition'] = 'attachment;  filename=Web2Instrucitons_wuth_answerCheat_V1.pdf'
+# 	# create the PDF object using the response object as its 'file'
+# 	p = canvas.Canvas(response)
+# 	# Draw things on the PDF
+# 	p.drawString(100,100,"Instruction page")
+# 	# Close PDF
+# 	p.showpage()
+# 	p.save()
+# 	return response
 
 
 # @login_required(login_url='/accounts/login')
