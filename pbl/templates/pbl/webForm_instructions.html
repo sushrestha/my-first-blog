@@ -1,4 +1,190 @@
 {% extends 'pbl/base.html' %}
 {% block content %}
- Answer cheat sheet
+
+
+
+<h2>Web Form 2 Instructions</h2>
+<p>
+<ul>
+	<li>
+Step 1:
+First open up any web-browser, and go to webpuzzle.pythonanywhere.com. </li><li>
+Step 2:
+Click in the Register link in the top right of the main website, or if you have an account already click the Log In option next to Register.</br>
+To register for an account all you need is to create your user name, give a valid e-mail, and create a password to use.</br> 
+If you had to register then check your email and click on the link in an email to activate the account, return to webpuzzle.pythonanywhere.com and log in.</li><li>
+Step 3:
+After you have logged in, you can tell because of the change in the links at the top right of the web page, if you haven't gone back to the main web page then return there.</li><li>
+Step 4:
+When on the main web page look the right with all of the level menus available, and click on Level 2 in the Web Form Challenges section.
+</li><li>Step 5 (Fuzzing):
+Now when the web form comes up it will be randomly chosen from several. What your objective here is to find all of the problems in the form, and what may trigger unexpected behavior server side:</br>
+<ul><li>
+None: There are no seen weaknesses for this input field.</li><li>
+Having no maximum length: The input field has not maximum length and when submitting the form the website still accepts it. Not having a length can cause a lot of problems server side if it goes unchecked. This can lead to a system crash for the server, or even something like SQL truncation and give an attacker administration level privileges.</li><li>
+Not checking Formatting: The program that checks the information in the background when submitting doesn't make sure that the format of the information given matches theirs. This can cause parsing errors, or even allow code injection which also may lead to some unexpected behavior for the web server taking this form.</li><li>
+Not validating any information: This is when the program in the background doesn't correctly check the information given leading to some logical errors. As far as logical errors not really seeming like a big deal when it comes to your birthday, it can vastly effect a bank transaction on-line by allowing negative values for the transfer. That would allow you to just take money from whatever other account your transaction is involved with.</li>
+</ul></br>
+Or some combination of the last three vulnerabilities. To test for these vulnerabilities in any input field:</br>
+<ul><li>
+For max length, try to give it some huge number of characters for the form to use.</li><li>
+For Formatting, try to give the form input doesn't expect, like special symbols <!--(<>! #)--> or input it doesn't expect, like letters instead of numbers. </li><li>
+For Validating, try to see if there is some logical errors you can create like it taking a birthday that hasn't even happened (9/13/2019), or possibly it doesn't even check if the emails or passwords given match the confirming versions.
+</li>
+</ul></br>
+</li><li>
+Step 6 (All vulnerabilities are found):
+After you have found all the vulnerabilities are found, then click on the button on the bottom to expose a submission sheet for you to put the answers in. After all of your answers are on the sheet, then hit the submit button to receive your grade.
+
+</li>
+</ul>
+</p>
+<h2>
+# Cheat sheet for form vulnerability puzzle </h2>
+<p>
+<ul>Answer options:
+	<li>
+0: None</li><li>
+1: It does not have a maximum length</li><li>
+2: It does not validate the information given</li><li>
+3: It does not check the formatting of the information</li>
+</ul>
+<ul>
+Random _number
+<li>
+0:<ul><li>
+	UserName = ["None"];</li><li>
+	Email = ["It does not have a maximum length", "It does not validate the information given"];</li><li>
+	Confirm Email = ["It does not validate the information given"];</li><li>
+	Password = ["None"];</li><li>
+	Confirm Password = ["It does not have a maximum length"];</li><li>
+	First Name = ["It does not have a maximum length"];</li><li>
+	LastName = ["It does not check the formatting of the information"];</li><li>
+	Middle Initial = ["It does not have a maximum length"];</li><li>
+	Phone Number = ["It does not check the formatting of the information"];</li><li>
+	BrithDay = ["None"];</li>
+</ul>
+</li><li>
+1:<ul><li>
+	UserName = ["None"];</li><li>
+	Email = ["It does not validate the information given"];</li><li>
+	Confirm Email = ["It does not validate the information given"];</li><li>
+	Password = ["It does not have a maximum length”, “It does not check the formatting of the information"];</li><li>
+	Confirm Password = ["It does not check the formatting of the information"];</li><li>
+	First Name = ["It does not check the formatting of the information”, “It does not have a maximum length"];</li><li>
+	LastName = ["None"];</li><li>
+	Middle Initial = ["It does not check the formatting of the information", "It does not have a maximum length"];</li><li>
+	Phone Number = ["None"];</li><li>
+	BrithDay = ["It does not validate the information given"];</li>
+</ul>
+</li><li>
+2:<ul><li>
+	UserName = ["It does not check the formatting of the information"];</li><li>
+	Email = ["It does not have a maximum length"];</li><li>
+	Confirm Email = ["None"];</li><li>
+	Password = ["It does not have a maximum length”, “It does not validate the information given"];</li><li>
+	Confirm Password = ["It does not validate the information given"];</li><li>
+	First Name = ["None"];</li><li>
+	LastName = ["None"];</li><li>
+	Middle Initial = ["It does not check the formatting of the information"];</li><li>
+	Phone Number = ["It does not check the formatting of the information”, “It does not have a maximum length"];</li><li>
+	BrithDay = ["It does not check the formatting of the information"];</li>
+</ul>
+</li><li>
+3:<ul><li>
+	UserName = ["It does not have a maximum length"];</li><li>
+	Email = ["It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Confirm Email = ["It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Password = ["It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Confirm Password = ["It does not check the formatting of the information”, “It does not validate the information given”, and “It does not have a maximum length"];</li><li>
+	First Name = ["None"];</li><li>
+	LastName = ["It does not check the formatting of the information"];</li><li>
+	Middle Initial = ["None"];</li><li>
+	Phone Number = ["It does not have a maximum length"];</li><li>
+	BrithDay = ["None"];</li>
+</ul>
+</li><li>
+4:<ul><li>
+	UserName = ["It does not have a maximum length”, “It does not check the formatting of the information"];</li><li>
+	Email = ["None"];</li><li>
+	Confirm Email = ["It does not have a maximum length"];</li><li>
+	Password = ["It does not validate the information given"];</li><li>
+	Confirm Password = ["It does not validate the information given"];</li><li>
+	First Name = ["It does not have a maximum length”, “It does not check the formatting of the information"];</li><li>
+	LastName = ["None"];</li><li>
+	Middle Initial = ["None"];</li><li>
+	Phone Number = ["None"];</li><li>
+	BrithDay = ["It does not check the formatting of the information", "It does not have a maximum length"];</li>
+</ul>
+</li><li>
+5:<ul><li>
+	UserName = ["None"];
+	Email = ["It does not validate the information given"];
+	Confirm Email = ["It does not validate the information given”, “It does not check the formatting of the information"];</li><li>
+	Password = ["It does not have a maximum length”, “It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Confirm Password = ["It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	First Name = ["It does not check the formatting of the information"];</li><li>
+	LastName = ["None"];</li><li>
+	Middle Initial = ["It does not have a maximum length"];</li><li>
+	Phone Number = ["It does not have a maximum length"];</li><li>
+	BrithDay = ["None"];</li>
+</ul>
+</li><li>
+6:<ul><li>
+	UserName = ["It does not have a maximum length”, “It does not check the formatting of the information"];</li><li>
+	Email = ["None"];</li><li>
+	Confirm Email = ["None"];</li><li>
+	Password = ["It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Confirm Password = ["It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	First Name = ["None"];</li><li>
+	LastName = ["It does not have a maximum length"];</li><li>
+	Middle Initial = ["It does not check the formatting of the information"];</li><li>
+	Phone Number = ["It does not check the formatting of the information"];</li><li>
+	BrithDay = ["It does not validate the information given"];</li>
+</ul>
+</li><li>
+7:<ul><li>
+	UserName = ["It does not have a maximum length"];</li><li>
+	Email = ["It does not have a maximum length”, “It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Confirm Email = ["It does not have a maximum length”, “It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Password = ["None"];</li><li>
+	Confirm Password = ["None"];</li><li>
+	First Name = ["None"];</li><li>
+	LastName = ["None"];</li><li>
+	Middle Initial = ["It does not have a maximum length”, “It does not check the formatting of the information"];</li><li>
+	Phone Number = ["It does not have a maximum length”, “It does not check the formatting of the information"];</li><li>
+	BrithDay = ["None"];</li>
+</ul>
+</li><li>
+8:<ul><li>
+	UserName = ["It does not check the formatting of the information"];</li><li>
+	Email = ["None"];</li><li>
+	Confirm Email = ["None"];</li><li>
+	Password = ["It does not have a maximum length"];</li><li>
+	Confirm Password = ["None"];</li><li>
+	First Name = ["It does not have a maximum length"];</li><li>
+	LastName = ["None"];</li><li>
+	Middle Initial = ["It does not check the formatting of the information"];</li><li>
+	Phone Number = ["It does not have a maximum length”, “It does not check the formatting of the information"];</li><li>
+	BrithDay = ["It does not have a maximum length”, “It does not check the formatting of the information”, “It does not validate the information given"];</li>
+</ul>
+</li><li>
+9:<ul><li>
+	UserName = ["It does not have a maximum length"];</li><li>
+	Email = ["It does not have a maximum length”, “It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Confirm Email = ["It does not have a maximum length”, “It does not check the formatting of the information”, “It does not validate the information given"];</li><li>
+	Password = ["None"];</li><li>
+	Confirm Password = ["It does not have a maximum length"];</li><li>
+	First Name = ["None"];</li><li>
+	LastName = ["It does not have a maximum length”, “It does not check the formatting of the information"];</li><li>
+	Middle Initial = ["It does not have a maximum length"];</li><li>
+	Phone Number = ["None"];</li><li>
+	BrithDay = ["It does not check the formatting of the information"];</li>
+</ul>
+</li>
+</ul>
+
+
+</p>
+
   {% endblock %}

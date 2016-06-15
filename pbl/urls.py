@@ -7,6 +7,7 @@ urlpatterns = [
         url(r'^score/(?P<student_id>[0-9]+)/$',views.score_details,name='score_details'),
         url(r'^instructor_page/$',views.instructor_page,name='instructor_page'),
         url(r'^instructor_page/webForm_instructions/$',views.webForm_instructions,name='webForm_instructions'),
+        # url(r'^instructor_page/hello_pdf/$',views.hello_pdf,name='hello_pdf'),
         url(r'^challenges/$',views.challenge_details,name='challenge_details'),
         url(r'^about/$',views.about,name='about'),
         url(r'^contact/$',views.contact,name='contact'),
