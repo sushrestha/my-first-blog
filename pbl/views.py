@@ -62,6 +62,16 @@ def instructor_page(request):
     	return render(request,'pbl/invalid_access.html',{ })
     return render(request,'pbl/instructor_page.html',{})
 
+def webForm_instructions(request):
+    if not request.user.is_authenticated():
+    	messages.error(request,"You must first login to access this page.")
+    	return render(request,'pbl/invalid_access.html',{ })
+    if not request.user.is_superuser:
+    	messages.error(request,"Invalid access")
+    	return render(request,'pbl/invalid_access.html',{ })
+    return render(request,'pbl/webForm_instructions.txt',{}) #Web2Instrucitons_wuth_answerCheat_V1.0
+    # return render(request,'pbl/Web2Instrucitons_wuth_answerCheat_V1.0.pdf',{})
+
 # @login_required(login_url='/accounts/login')
 def score_list(request):
     if not request.user.is_authenticated():
