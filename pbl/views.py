@@ -380,9 +380,9 @@ def rand_demo(request):
 	
 
 def rand_form(request):
-	# if not request.user.is_authenticated():
-	# 	messages.error(request,"You must first login to access this page.")
-	# 	return render(request,'pbl/invalid_access.html',{ })
+	if not request.user.is_authenticated():
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	# rnd = str(random.randint(0,4))
 	# # BASE_DIR = settings.BASE_DIR
 	# FILE_DIR = settings.FILE_DIR
@@ -626,9 +626,9 @@ def load_file(rnd,FILE_DIR):
 	return answer_dict,infile
 
 def sql0(request):
-	# if not request.user.is_authenticated():
-	# 	messages.error(request,"You must first login to access this page.")
-	# 	return render(request,'pbl/invalid_access.html',{ })
+	if not request.user.is_authenticated():
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != 'POST':
 		return render(request, 'pbl/sql/sql0.html', {})
 	if request.POST.get('userName') is not None:
@@ -651,9 +651,9 @@ def sql0(request):
 		return render(request, 'pbl/sql/sql0.html', {})
 
 def sql1(request):
-	# if not request.user.is_authenticated():
-	# 	messages.error(request,"You must first login to access this page.")
-	# 	return render(request,'pbl/invalid_access.html',{ })
+	if not request.user.is_authenticated():
+		messages.error(request,"You must first login to access this page.")
+		return render(request,'pbl/invalid_access.html',{ })
 	if request.method != 'POST':
 		return render(request, 'pbl/sql/sql1.html',{})
 	if request.POST.get('userName') is not None:
